@@ -1,1 +1,17 @@
-<button mat-raised-button>Hello World</button>
+<mat-toolbar>
+  <span>Models</span>
+  <span class="navbar-spacer"></span>
+  <a routerLink='/add-model'><button mat-raised-button color="primary">Add Model</button></a>
+</mat-toolbar>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let model of models">
+    <mat-icon matListIcon>image</mat-icon>
+    <a matLine href=''>{{ model.name }}</a>
+    <p matLine>Uploaded: {{model.created | date}}</p>
+    <p matLine>Last Modified: {{model.lastModified | date}}</p>
+    <button mat-raised-button color="primary">View</button>
+    <button mat-raised-button color="warn" (click)="openDeleteDialog(model)">Delete</button>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-nav-list>

@@ -1,0 +1,33 @@
+mat-sidenav-container {
+    height: 93%;
+}
+
+mat-sidenav, mat-sidenav-content {
+
+}
+
+mat-sidenav {
+    width: 20%;
+    background-color: #f5f5f5;
+    color: rgba(0,0,0,.87);
+    padding: 16px;
+}
+
+mat-form-field {
+    width: 100%;
+    background-color: #f5f5f5;
+}
+
+#pointer-message {
+    height: 30rem;
+    resize: none;
+}
+
+.mat-raised-button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.navbar-spacer {
+    flex: 1 1 auto;
+}

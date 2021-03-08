@@ -1,0 +1,36 @@
+<div class="mat-headline">Add Model Form</div>
+<form [formGroup]="addModelForm">
+  <div>
+    <div class="mat-subheading-1">Model Name</div>
+
+    <mat-form-field hideRequiredMarker appearance="outline">
+      <mat-label>Model Name</mat-label>
+      <input formControlName="modelName" type="text" matInput>
+      <mat-hint *ngIf="modelName.invalid && modelName.touched && modelName.errors?.required">Model name is required</mat-hint>
+      <mat-hint *ngIf="modelName.invalid && modelName.touched && modelName.errors?.minlength">Model name must be at least 5 characters</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <div class="mat-subheading-1">Model Source(s)</div>
+    <button mat-raised-button class="additionalSources" (click)="addAdditionalSource()" [disabled]="modelSource.invalid">Add additional source</button>
+
+    <mat-form-field hideRequiredMarker appearance="outline">
+      <mat-label>Source URL</mat-label>
+      <input formControlName="modelSource" type="text" matInput>
+      <mat-hint *ngIf="modelSource.invalid && modelSource.touched">At least one source is required</mat-hint>
+    </mat-form-field>
+
+    <div formArrayName="additionalSources" *ngFor="let source of additionalSources.controls; let i = index">
+      <mat-form-field hideRequiredMarker appearance="outline">
+        <mat-label>Source URL</mat-label>
+        <input [formControlName]="i" type="text" matInput [readonly]="modelSource.invalid">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div>
+    <button mat-raised-button color="warn" (click)="goBack()">Back</button>
+    <button [disabled]="addModelForm.invalid" mat-raised-button color="primary" class="addModel">Add Model</button>
+  </div>
+</form>

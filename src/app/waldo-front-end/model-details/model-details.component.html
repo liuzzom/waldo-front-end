@@ -1,1 +1,42 @@
-<p>model-details works!</p>
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <span>Model Name</span>
+
+      <span class="navbar-spacer"></span>
+
+      <div *ngIf="!editModelMode && !editPointerMode">
+        <button mat-raised-button color="primary" (click)="toggleEditModelMode(true)">Edit</button>
+        <button mat-raised-button color="warn" (click)="goBack()">Back</button>
+      </div>
+
+      <button *ngIf="editModelMode" mat-raised-button color="primary" (click)="toggleEditModelMode(false)">Done</button>
+    </mat-toolbar>
+
+    <div id="rendering-area" style="border: solid black 1px; width: 95%; height: 85%; margin: auto"></div>
+  </mat-sidenav-content>
+
+  <mat-sidenav #sidenav mode="side" opened position="end">
+    <h3>Pointer Message</h3>
+    <form>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Leave a comment</mat-label>
+        <textarea id="pointer-message" matInput [readonly]="!editModelMode || !editPointerMode"></textarea>
+      </mat-form-field>
+
+      <div>
+        <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode">
+          <button mat-raised-button color="primary" (click)="toggleEditPointerMode(true)">Edit Message</button>
+          <button mat-raised-button color="warn" (click)="openDeleteDialog()">Delete Pointer</button>
+        </div>
+
+        <div class="edit-pointer-mode-buttons" *ngIf="editModelMode && editPointerMode">
+          <button mat-raised-button>Clear Message Field</button>
+          <button mat-raised-button color="warn" (click)="toggleEditPointerMode(false)">Back</button>
+          <button mat-raised-button color="primary" (click)="toggleEditPointerMode(false)">Save</button>
+        </div>
+
+      </div>
+    </form>
+  </mat-sidenav>
+</mat-sidenav-container>
