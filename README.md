@@ -27,9 +27,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## TO DO
-- getModel (metodo service per ottenere i modelli dal back-end e mostrarli nella pagina con l'elenco)
-- mostrare il messaggio della marcartura come risposta al click
-- attivare i pulsaanti per la modifica della marcatura (edit message o delete pointer) come risposta al click
+- getModels (metodo service per ottenere i modelli dal back-end e mostrarli nella pagina con l'elenco)
+- getModel (metodo service per ottenere un singolo modello dal back-end)
+- mostrare il messaggio della marcartura come risposta al click su una marcatura
+- attivare i pulsanti per la modifica della marcatura (edit message o delete pointer) come risposta al click su marcatura
 - funzioni di risposta ai dialog di delete
     - model
     - pointer
+- redirect al completamento di un'operazione 

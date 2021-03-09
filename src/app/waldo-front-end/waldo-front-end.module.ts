@@ -7,9 +7,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModelDetailsComponent} from './model-details/model-details.component';
 import {WaldoEntryPointComponent} from './waldo-entry-point/waldo-entry-point.component';
 import {RouterModule} from "@angular/router";
-import { DeleteModelDialogComponent } from './delete-model-dialog/delete-model-dialog.component';
-import { AddModelFormComponent } from './add-model-form/add-model-form.component';
-import { DeletePointerDialogComponent } from './delete-pointer-dialog/delete-pointer-dialog.component';
+import {DeleteModelDialogComponent} from './delete-model-dialog/delete-model-dialog.component';
+import {AddModelFormComponent} from './add-model-form/add-model-form.component';
+import {DeletePointerDialogComponent} from './delete-pointer-dialog/delete-pointer-dialog.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DeletePointerDialogComponent } from './delete-pointer-dialog/delete-poi
     MaterialModule,
     FormsModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     ModelsListComponent,

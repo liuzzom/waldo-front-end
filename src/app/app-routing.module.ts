@@ -7,8 +7,8 @@ import {ModelDetailsComponent} from "./waldo-front-end/model-details/model-detai
 const routes: Routes = [
   {path: '', redirectTo: '/models', pathMatch: 'full'},
   {path: 'models', component: ModelsListComponent},
-  {path: 'add-model', component: AddModelFormComponent},
-  {path: 'model-details', component:ModelDetailsComponent}
+  {path: 'models/:id', component: ModelDetailsComponent},
+  {path: 'add-model', component: AddModelFormComponent}
 ];
 
 @NgModule({

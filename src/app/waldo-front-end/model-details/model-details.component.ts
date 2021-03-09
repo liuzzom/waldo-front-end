@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import {MatDialog} from "@angular/material/dialog";
 import {DeletePointerDialogComponent} from "../delete-pointer-dialog/delete-pointer-dialog.component";
+import {ActivatedRoute} from "@angular/router";
+import {ModelsService} from "../services/models.service";
+import {Model} from "../domain-model/Model";
 
 @Component({
   selector: 'app-model-details',
@@ -9,15 +12,19 @@ import {DeletePointerDialogComponent} from "../delete-pointer-dialog/delete-poin
   styleUrls: ['./model-details.component.css']
 })
 export class ModelDetailsComponent implements OnInit {
+  model: Model = this.emptyModel();
   editModelMode = false;
   editPointerMode = false;
 
   constructor(
+    private route: ActivatedRoute,
     private location: Location,
+    private modelsService: ModelsService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
+    this.getModel();
   }
 
   toggleEditModelMode(edit: boolean){
@@ -40,5 +47,22 @@ export class ModelDetailsComponent implements OnInit {
 
   goBack(){
     this.location.back();
+  }
+
+  getModel(): void{
+    const id = this.route.snapshot.paramMap.get('id');
+    this.modelsService.getModel(id)
+      .subscribe(model => this.model = model);
+  }
+
+  emptyModel(): Model{
+    return {
+      id: '',
+      name: '',
+      sources: [],
+      uploaded: '',
+      lastModified: '',
+      supportedProviders: []
+    }
   }
 }

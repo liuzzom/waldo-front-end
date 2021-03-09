@@ -7,10 +7,10 @@
 <mat-nav-list>
   <mat-list-item *ngFor="let model of models">
     <mat-icon matListIcon>image</mat-icon>
-    <a matLine href=''>{{ model.name }}</a>
-    <p matLine>Uploaded: {{model.created | date}}</p>
+    <a matLine routerLink="/models/{{model.id}}">{{ model.name }}</a>
+    <p matLine>Uploaded: {{model.uploaded | date}}</p>
     <p matLine>Last Modified: {{model.lastModified | date}}</p>
-    <button mat-raised-button color="primary">View</button>
+    <a routerLink="/models/{{model.id}}"><button mat-raised-button color="primary">View</button></a>
     <button mat-raised-button color="warn" (click)="openDeleteDialog(model)">Delete</button>
     <mat-divider></mat-divider>
   </mat-list-item>
