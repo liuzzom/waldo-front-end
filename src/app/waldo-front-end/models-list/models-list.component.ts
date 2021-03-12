@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {DeleteModelDialogComponent} from "../delete-model-dialog/delete-model-dialog.component";
 import {ModelsService} from "../services/models.service";
 import {Model} from "../domain-model/Model";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -15,7 +16,8 @@ export class ModelsListComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private modelsService: ModelsService
+    private modelsService: ModelsService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -33,11 +35,33 @@ export class ModelsListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+
+      if(result === "true") this.deleteModel(model);
     })
   }
 
-  getModels(): void{
+  openSnackBar(message: string, action: string): void{
+    let snackBarRef = this.snackBar.open(message, action, {duration: 2000});
+
+    snackBarRef.afterDismissed().subscribe(() => {
+      console.log('snackbar dismissed');
+    })
+  }
+
+  private getModels(): void{
     this.modelsService.getModels()
       .subscribe(models => this.models = models);
+  }
+
+  private deleteModel(model: Model): void{
+    console.log(model);
+    this.modelsService.deleteModel(model).subscribe(res => {
+      if(res){
+        this.models = this.models.filter(m => m !== model);
+        this.openSnackBar('Model deleted', 'Ok');
+      } else {
+        this.openSnackBar('Failed to delete the model', 'OK');
+      }
+    });
   }
 }

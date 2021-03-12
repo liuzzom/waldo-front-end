@@ -27,11 +27,22 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## TO DO
+- rimuovi modello:
+  - ~~inserire funzione in risposta al tasto si~~
+  - ~~inserire funzione in risposta al tasto no (??)~~
+  - ~~implementare funzione deleteModel nel servizio per i modelli.~~
+  - ~~messaggio di notifica tramite snackbar~~
+  - ~~tests (200, 404, No Server)~~
+- aggiungi modello:
+  - inserire funzione in risposta al tasto si
+  - inserire funzione in risposta al tasto no (??)
+  - implementare funzione loadModel nel servizio per i modelli.
+  - messaggio di notifica tramite snackbar
+  - redirect al completamento di un'operazione
 - getModels (metodo service per ottenere i modelli dal back-end e mostrarli nella pagina con l'elenco)
+  - Inserire il campo per la ricerca e il filtraggio (vedere tour of heroes)
+  - implementare ricerca per nome nel servizio per i modelli
 - getModel (metodo service per ottenere un singolo modello dal back-end)
 - mostrare il messaggio della marcartura come risposta al click su una marcatura
 - attivare i pulsanti per la modifica della marcatura (edit message o delete pointer) come risposta al click su marcatura
-- funzioni di risposta ai dialog di delete
-    - model
-    - pointer
-- redirect al completamento di un'operazione 
+

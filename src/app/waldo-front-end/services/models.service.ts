@@ -1,15 +1,18 @@
 import {Injectable} from '@angular/core';
-import {MODELS} from "../mock-models";
 import {Model} from "../domain-model/Model";
 import {Observable, of} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModelsService {
-  private modelsUrl = 'http://localhost:3000/models'
+  private modelsUrl = 'http://localhost:3000/models';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http: HttpClient
@@ -30,6 +33,17 @@ export class ModelsService {
     return this.http.get<Model>(url);
   }
 
+  deleteModel(model: Model): Observable<Model>{
+    const id = model.id;
+    // const id = 'error';
+    const url = `${this.modelsUrl}/${id}`;
+
+    return this.http.delete<Model>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`deleted model with id: ${id}`)),
+      catchError(this.handleError<Model>('deleteHero'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -46,5 +60,4 @@ export class ModelsService {
       return of(result as T);
     };
   }
-
 }
