@@ -1,5 +1,5 @@
 <div class="mat-headline">Add Model Form</div>
-<form [formGroup]="addModelForm">
+<form [formGroup]="addModelForm" (ngSubmit)="onSubmit()">
   <div>
     <div class="mat-subheading-1">Model Name</div>
 
@@ -13,7 +13,7 @@
 
   <div>
     <div class="mat-subheading-1">Model Source(s)</div>
-    <button mat-raised-button class="additionalSources" (click)="addAdditionalSource()" [disabled]="modelSource.invalid">Add additional source</button>
+    <button type="button" mat-raised-button class="additionalSources" (click)="addAdditionalSource()" [disabled]="modelSource.invalid">Add additional source</button>
 
     <mat-form-field hideRequiredMarker appearance="outline">
       <mat-label>Source URL</mat-label>
@@ -30,7 +30,7 @@
   </div>
 
   <div>
-    <button mat-raised-button color="warn" (click)="goBack()">Back</button>
-    <button [disabled]="addModelForm.invalid" mat-raised-button color="primary" class="addModel">Add Model</button>
+    <button type="button" mat-raised-button color="warn" (click)="goBack()">Back</button>
+    <button type="submit" [disabled]="addModelForm.invalid" mat-raised-button color="primary" class="addModel">Load Model</button>
   </div>
 </form>

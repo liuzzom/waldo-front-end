@@ -5,4 +5,5 @@ export interface Model{
   uploaded: string;
   lastModified: string;
   supportedProviders: string[];
+  defaultProvider: string;
 }

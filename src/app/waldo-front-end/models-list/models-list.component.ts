@@ -5,7 +5,6 @@ import {ModelsService} from "../services/models.service";
 import {Model} from "../domain-model/Model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
-
 @Component({
   selector: 'app-modules-list',
   templateUrl: './models-list.component.html',

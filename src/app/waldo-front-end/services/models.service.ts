@@ -35,12 +35,18 @@ export class ModelsService {
 
   deleteModel(model: Model): Observable<Model>{
     const id = model.id;
-    // const id = 'error';
     const url = `${this.modelsUrl}/${id}`;
 
     return this.http.delete<Model>(url, this.httpOptions).pipe(
       tap(_ => console.log(`deleted model with id: ${id}`)),
       catchError(this.handleError<Model>('deleteHero'))
+    );
+  }
+
+  loadModel(newModel: Model) {
+    return this.http.post<Model>(this.modelsUrl, newModel, this.httpOptions).pipe(
+      tap((model: Model) => console.log(`loaded hero with id: ${model.id}`)),
+      catchError(this.handleError<Model>('loadHero'))
     );
   }
 
