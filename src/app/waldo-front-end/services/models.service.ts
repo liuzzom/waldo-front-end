@@ -11,7 +11,7 @@ export class ModelsService {
   private modelsUrl = 'http://localhost:3000/models';
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
   constructor(
@@ -20,20 +20,34 @@ export class ModelsService {
 
   /** GET models from the server */
   getModels(): Observable<Model[]> {
-    return this.http.get<Model[]>(this.modelsUrl)
-      .pipe(
-        tap(_ => console.log('fetched models')),
-        catchError(this.handleError<Model[]>('getModels', []))
-      );
+    return this.http.get<Model[]>(this.modelsUrl).pipe(
+      tap(_ => console.log('fetched models')),
+      catchError(this.handleError<Model[]>('getModels', []))
+    );
   }
 
   /** GET model by id. Will 404 if id not found */
-  getModel(id: string): Observable<Model>{
+  getModel(id: string): Observable<Model> {
     const url = `${this.modelsUrl}/${id}`;
-    return this.http.get<Model>(url);
+    return this.http.get<Model>(url).pipe(
+      tap(_ => console.log(`fetched model with id: ${id}`)),
+      catchError(this.handleError<Model>(`getModel id:${id}`))
+    );
   }
 
-  deleteModel(model: Model): Observable<Model>{
+  /** GET model searching by name */
+  searchByName(name: string) {
+    const url = `${this.modelsUrl}/?name=${name}`;
+    return this.http.get<Model[]>(url).pipe(
+      tap(res => {
+        res.length ? console.log(`found model matching ${name}`) : console.log(`no models matching ${name}`)
+      }),
+      catchError(this.handleError<Model[]>('searchByName', []))
+    );
+  }
+
+  /** DELETE a model from the server */
+  deleteModel(model: Model): Observable<Model> {
     const id = model.id;
     const url = `${this.modelsUrl}/${id}`;
 
@@ -43,6 +57,7 @@ export class ModelsService {
     );
   }
 
+  /** PUT a model into the server */
   loadModel(newModel: Model) {
     return this.http.post<Model>(this.modelsUrl, newModel, this.httpOptions).pipe(
       tap((model: Model) => console.log(`loaded hero with id: ${model.id}`)),
@@ -59,8 +74,7 @@ export class ModelsService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      console.error(error);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

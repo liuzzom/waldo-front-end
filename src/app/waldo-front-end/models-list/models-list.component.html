@@ -1,8 +1,16 @@
 <mat-toolbar>
   <span>Models</span>
   <span class="navbar-spacer"></span>
-  <a routerLink='/add-model'><button mat-raised-button color="primary">Add Model</button></a>
+  <a routerLink='/add-model'>
+    <button mat-raised-button color="primary">Add Model</button>
+  </a>
 </mat-toolbar>
+
+<form id="search-form">
+  <label class="mat-title" for="search-box">Name</label>
+  <input #searchBox id="search-box" type="text" matInput>
+  <button type="submit" mat-raised-button (click)="searchModel(searchBox.value)">Search</button>
+</form>
 
 <mat-nav-list>
   <mat-list-item *ngFor="let model of models">
@@ -10,7 +18,9 @@
     <a matLine routerLink="/models/{{model.id}}">{{ model.name }}</a>
     <p matLine>Uploaded: {{model.uploaded | date}}</p>
     <p matLine>Last Modified: {{model.lastModified | date}}</p>
-    <a routerLink="/models/{{model.id}}"><button mat-raised-button color="primary">View</button></a>
+    <a routerLink="/models/{{model.id}}">
+      <button mat-raised-button color="primary">View</button>
+    </a>
     <button mat-raised-button color="warn" (click)="openDeleteDialog(model)">Delete</button>
     <mat-divider></mat-divider>
   </mat-list-item>

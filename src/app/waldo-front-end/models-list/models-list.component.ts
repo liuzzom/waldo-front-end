@@ -36,7 +36,7 @@ export class ModelsListComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
 
       if(result === "true") this.deleteModel(model);
-    })
+    });
   }
 
   openSnackBar(message: string, action: string): void{
@@ -53,7 +53,6 @@ export class ModelsListComponent implements OnInit {
   }
 
   private deleteModel(model: Model): void{
-    console.log(model);
     this.modelsService.deleteModel(model).subscribe(res => {
       if(res){
         this.models = this.models.filter(m => m !== model);
@@ -61,6 +60,20 @@ export class ModelsListComponent implements OnInit {
       } else {
         this.openSnackBar('Failed to delete the model', 'OK');
       }
+    });
+  }
+
+  searchModel(name: string) {
+    // with an empty name, do some kind of "refresh"
+    if(!name.trim()){
+      console.log('empty name');
+      this.getModels();
+      return;
+    }
+
+    console.log(name);
+    this.modelsService.searchByName(name).subscribe(models => {
+      this.models = models;
     });
   }
 }

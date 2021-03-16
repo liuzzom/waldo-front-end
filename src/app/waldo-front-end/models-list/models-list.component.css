@@ -5,3 +5,20 @@ button {
 .navbar-spacer {
     flex: 1 1 auto;
 }
+#search-form {
+    background: #f5f5f5;
+    color: rgba(0,0,0,.87);
+    height: 45px;
+}
+
+#search-form * {
+    margin-left: 10px;
+}
+
+#search-form label{
+    margin-left: 16px;
+}
+
+#search-box {
+    height: 30px;
+}

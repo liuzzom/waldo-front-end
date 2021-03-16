@@ -125,10 +125,8 @@ export class AddModelFormComponent implements OnInit {
   }
 
   async onSubmit() {
-    console.log('submit');
     let formData = this.addModelForm.value;
     let newModel = await this.prepareModel(formData);
-    console.log(newModel);
 
     this.modelsService.loadModel(newModel).subscribe(res => {
       if(res){
