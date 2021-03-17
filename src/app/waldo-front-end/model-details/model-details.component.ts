@@ -5,6 +5,7 @@ import {DeletePointerDialogComponent} from "../delete-pointer-dialog/delete-poin
 import {ActivatedRoute} from "@angular/router";
 import {ModelsService} from "../services/models.service";
 import {Model} from "../domain-model/Model";
+import {AFrameViewProvider} from "../providers/a-frame/view/AFrameViewProvider";
 
 @Component({
   selector: 'app-model-details',
@@ -52,7 +53,12 @@ export class ModelDetailsComponent implements OnInit {
   getModel(): void{
     const id = this.route.snapshot.paramMap.get('id');
     this.modelsService.getModel(id)
-      .subscribe(model => this.model = model);
+      .subscribe(model => {
+        this.model = model;
+
+        let provider = new AFrameViewProvider();
+        provider.renderModel(this.model);
+      });
   }
 
   emptyModel(): Model{

@@ -9,15 +9,15 @@ export class ProviderUtils {
       default: "31435989-d23e-401a-b1a7-44b4ae9889fb",
       supported: [
         "b4c31c82-b345-4c7d-bccc-22b6170153af",
-        "d83badec-80b7-4b63-9e49-278d6540cbce",
         "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
         "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
-        "31435989-d23e-401a-b1a7-44b4ae9889fb"
+        "31435989-d23e-401a-b1a7-44b4ae9889fb",
       ]
     },
     "gltf": {
       default: "31435989-d23e-401a-b1a7-44b4ae9889fb",
       supported: [
+        "b4c31c82-b345-4c7d-bccc-22b6170153af",
         "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
         "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
         "31435989-d23e-401a-b1a7-44b4ae9889fb",
