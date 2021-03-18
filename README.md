@@ -2,7 +2,20 @@
 
 ## TO DO
 
+### Documentazione
+
 - Motivare abbandono provider WebGL+Leaflet
+- mettere nella documentazione una pagina dove vengono spiegati i vari provider
+- Ridefinire la sezione API:
+  - relazione
+  - presentazione
+- Spiegare procedura di installazione A-Frame
+  - Polyfill.ts
+  - CUSTOM_ELEMENTS_SCHEMA
+- Motivare utilizzo di cascade durante la cancellazione di un modello per trasparenza 
+
+### Implementazione
+
 - Aggiungi Modello:
   - ~~inserire funzione in risposta al tasto si~~
   - ~~inserire funzione in risposta al tasto no (??)~~
@@ -34,7 +47,7 @@
       - Progettazione interfaccia Provider
         - renderModel per renderizzare il modello
         - renderPointer per renderizzare un mark
-        - inserire un click handler per i mark, che mostrano il messaggio 
+        - inserire un click handler per i mark, che mostrano il messaggio
       - WebGL
         - ~~Fecth dei materiali con file .mtl esplicito~~
         - ~~provare a convertire le IIFE~~
@@ -42,8 +55,7 @@
       - Three.js
         - test dell'import delle classi
       - A-Frame
-        - vedere come inserire tag nel template html tramite typescript (vedere [innerHTML])
-          https://www.digitalocean.com/community/tutorials/angular-innerhtml-binding-angular
+        - ~~vedere come inserire tag nel template html tramite typescript (attualmente con innerHTML)~~
 - Modifica Modello
   - rendere il titolo della pagina (i.e. nome modello) modificabile
 - Rimuovi Modello
@@ -54,7 +66,7 @@
   - ~~tests (200, 404, No Server)~~
   - ~~relazione e presentazione~~
   - ~~testare delete cascade su json-server~~
-  - la rimozione del modello causa la rimozione dei mark ad esso associati
+  - ~~la rimozione del modello causa la rimozione dei mark ad esso associati (utilizzo di Cascade nel Back-End)~~
 - Inserimento Marcatura
   - addPointer per inserire un nuovo mark (collabora con addPointer del PointersService)
   - chiamare renderPointer per inserire il mark visivamente
@@ -71,10 +83,5 @@
     - A-Frame
     - Three.js
   - removePointer per rimuovere un mark (collabora con removePointer del PointersService)
-- Documentazione
-  - mettere nella documentazione una pagina dove vengono spiegati i vari provider
-  - Ridefinire la sezione API:
-    - relazione
-    - presentazione
 
 

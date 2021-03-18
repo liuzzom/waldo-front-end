@@ -6,6 +6,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ModelsService} from "../services/models.service";
 import {Model} from "../domain-model/Model";
 import {AFrameViewProvider} from "../providers/a-frame/view/AFrameViewProvider";
+import {ThreejsViewProvider} from "../providers/three-js/view/ThreejsViewProvider";
 
 @Component({
   selector: 'app-model-details',
@@ -56,7 +57,7 @@ export class ModelDetailsComponent implements OnInit {
       .subscribe(model => {
         this.model = model;
 
-        let provider = new AFrameViewProvider();
+        let provider = new ThreejsViewProvider();
         provider.renderModel(this.model);
       });
   }

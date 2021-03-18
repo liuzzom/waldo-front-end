@@ -31,3 +31,10 @@ mat-form-field {
 .navbar-spacer {
     flex: 1 1 auto;
 }
+
+#rendering-area {
+    border: solid black 1px;
+    width: 95%;
+    height: 85%;
+    margin: auto;
+}
