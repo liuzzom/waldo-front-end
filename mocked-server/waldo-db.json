@@ -46,8 +46,8 @@
       "id": "c325f36c-15fe-4ebf-b45b-d85178281806",
       "name": "Windmill",
       "sources": [
-        "/path/file.obj",
-        "/path/file.mtl"
+        "http://localhost:4200/assets/models/Windmill/windmill.obj",
+        "http://localhost:4200/assets/models/Windmill/windmill-fixed.mtl"
       ],
       "uploaded": "2021-03-02T18:11:19.772Z",
       "lastModified": "2021-03-02T18:11:19.772Z",
@@ -65,7 +65,9 @@
     {
       "id": "c94fcdc6-031d-4a67-814f-8e3ae0cc2910",
       "name": "Boom Box",
-      "sources": [],
+      "sources": [
+        "http://localhost:4200/assets/models/BoomBox/BoomBox.gltf"
+      ],
       "uploaded": "2021-03-02T18:11:19.772Z",
       "lastModified": "2021-03-02T18:11:19.772Z",
       "supportedProviders": [
@@ -81,7 +83,9 @@
     {
       "id": "38075132-6a5d-4b96-9274-c6dfbed398dc",
       "name": "Fantasy Assault",
-      "sources": [],
+      "sources": [
+        "http://localhost:4200/assets/models/Scene/scene.gltf"
+      ],
       "uploaded": "2021-03-02T18:11:19.772Z",
       "lastModified": "2021-03-02T18:11:19.772Z",
       "supportedProviders": [

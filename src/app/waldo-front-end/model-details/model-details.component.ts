@@ -5,8 +5,12 @@ import {DeletePointerDialogComponent} from "../delete-pointer-dialog/delete-poin
 import {ActivatedRoute} from "@angular/router";
 import {ModelsService} from "../services/models.service";
 import {Model} from "../domain-model/Model";
+
 import {AFrameViewProvider} from "../providers/a-frame/view/AFrameViewProvider";
-import {ThreejsViewProvider} from "../providers/three-js/view/ThreejsViewProvider";
+import {ThreejsViewProvider} from "../providers/three-js/obj/view/ThreejsViewProvider";
+import {ThreejsViewNavProvider} from '../providers/three-js/obj/nav/ThreeJsViewNavProvider'
+
+import {Provider} from "../domain-model/Provider";
 
 @Component({
   selector: 'app-model-details',
@@ -57,7 +61,7 @@ export class ModelDetailsComponent implements OnInit {
       .subscribe(model => {
         this.model = model;
 
-        let provider = new ThreejsViewProvider();
+        let provider: Provider = new ThreejsViewNavProvider()
         provider.renderModel(this.model);
       });
   }
