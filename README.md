@@ -40,6 +40,7 @@
   - ~~getModel~~
   - ~~searchByName~~
 - Visualizza Modello
+  - Rendere sezione messaggi utilizzabile in base al tipo di provider (solo se mark è supportato)
   - Rendering dei Modelli:
     - funzione di utilità che crea il provider a partire dall'id ottenuto dal server (defaultProvider)
       - implementare in ProviderUtils
@@ -84,4 +85,34 @@
     - Three.js
   - removePointer per rimuovere un mark (collabora con removePointer del PointersService)
 
-
+- Providers
+  - OBJ
+    - WebGL
+      - view
+        - copia e incolla delle classi M4 e Utils
+        - copia e incolla codice per rendering
+    - Three JS
+      - view
+        - refactor del codice
+      - nav
+        - refactor del codice
+      - mark
+        - inserire THREEX
+        - inserire funzione per il rendering
+        - inserire event-handler
+    - A-Frame
+      - view
+        - inserire script postion-setter
+      - nav
+        - abilire i controlli wasd+fly
+      - mark
+        - inserire script click-handler
+  - GLTF
+    - Three JS
+      - view
+      - nav
+      - mark
+    - A-Frame
+      - view
+      - nav
+      - mark

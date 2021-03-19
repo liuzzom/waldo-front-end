@@ -123,10 +123,10 @@ export class ThreejsViewProvider implements Provider {
       canvas.width = container.clientWidth;
       canvas.height = container.clientHeight;
 
-      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.aspect = canvas.width / canvas.height;
       camera.updateProjectionMatrix();
 
-      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      renderer.setSize(canvas.width, canvas.height);
 
       renderer.render(scene, camera);
       requestAnimationFrame(render);

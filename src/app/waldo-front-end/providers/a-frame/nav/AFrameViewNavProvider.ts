@@ -3,7 +3,7 @@ import {Model} from "../../../domain-model/Model";
 import * as THREE from 'three';
 import * as AFRAME from 'aframe';
 
-export class AFrameViewProvider implements Provider {
+export class AFrameViewNavProvider implements Provider {
   id: string;
   name: string
   providerFeatures: string[];
@@ -42,7 +42,7 @@ export class AFrameViewProvider implements Provider {
         </a-obj-model>
 
         <!-- Camera -->
-        <a-camera look-controls="enabled: false" wasd-controls-enabled="false"></a-camera>
+        <a-camera wasd-controls="fly:true" position="0 0 0"></a-camera>
 
         <!-- Environment elements-->
         <a-sky id="sky" color="#000000"></a-sky>
