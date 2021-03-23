@@ -16,7 +16,7 @@
 
 ### Implementazione
 
-- Aggiungi Modello:
+- Inserimento Modello:
   - ~~inserire funzione in risposta al tasto si~~
   - ~~inserire funzione in risposta al tasto no (??)~~
   - ~~implementare funzione loadModel nel servizio per i modelli~~:
@@ -45,20 +45,34 @@
     - funzione di utilità che crea il provider a partire dall'id ottenuto dal server (defaultProvider)
       - implementare in ProviderUtils
     - Provider:
-      - Progettazione interfaccia Provider
-        - renderModel per renderizzare il modello
-        - renderPointer per renderizzare un mark
-        - inserire un click handler per i mark, che mostrano il messaggio
-      - WebGL
-        - ~~Fecth dei materiali con file .mtl esplicito~~
-        - ~~provare a convertire le IIFE~~
-        - test dell'import delle classi
-      - Three.js
-        - test dell'import delle classi
-      - A-Frame
-        - ~~vedere come inserire tag nel template html tramite typescript (attualmente con innerHTML)~~
+      - 2D:
+        - view only: usa tag <img>
+        - mark: usa leaflet
+      - OBJ + MTL:
+        - WebGL
+          - view-only
+        - Three JS
+          - view-only
+          - view-nav
+          - view-nav-mark
+        - A Frame
+          - view-only
+          - view-nav
+          - view-nav-mark
+      - GLTF
+        - WebGL
+          - view-only
+        - Three JS
+          - ~~view-only~~
+          - ~~view-nav~~
+          - view-nav-mark
+        - A Frame
+          - view-only
+          - view-nav
+          - view-nav-mark
 - Modifica Modello
   - rendere il titolo della pagina (i.e. nome modello) modificabile
+  - modifica della data lastModified
 - Rimuovi Modello
   - ~~inserire funzione in risposta al tasto si~~
   - ~~inserire funzione in risposta al tasto no (??)~~
@@ -69,15 +83,14 @@
   - ~~testare delete cascade su json-server~~
   - ~~la rimozione del modello causa la rimozione dei mark ad esso associati (utilizzo di Cascade nel Back-End)~~
 - Inserimento Marcatura
-  - addPointer per inserire un nuovo mark (collabora con addPointer del PointersService)
+  - addPointer per inserire un nuovo mark 
   - chiamare renderPointer per inserire il mark visivamente
 - Ricerca Marcature
   - getPointers(modelId) per ottenere i mark di un modello
   - getPointer(id) per ottenere un singolo mark
 - Consultazione Info Marcatura
   - mostrare il messaggio della marcartura come risposta al click su una marcatura
-  - attivare i pulsanti per la modifica della marcatura (edit message o delete pointer) come risposta al click su
-    marcatura
+  - attivare i pulsanti per la modifica della marcatura (edit message o delete pointer) come risposta al click su marcatura
 - Modifica Marcatura
 - Rimuovi Marcatura
   - vedere come eliminare la sferetta dalla scena:
@@ -85,34 +98,3 @@
     - Three.js
   - removePointer per rimuovere un mark (collabora con removePointer del PointersService)
 
-- Providers
-  - OBJ
-    - WebGL
-      - view
-        - copia e incolla delle classi M4 e Utils
-        - copia e incolla codice per rendering
-    - Three JS
-      - view
-        - refactor del codice
-      - nav
-        - refactor del codice
-      - mark
-        - inserire THREEX
-        - inserire funzione per il rendering
-        - inserire event-handler
-    - A-Frame
-      - view
-        - inserire script postion-setter
-      - nav
-        - abilire i controlli wasd+fly
-      - mark
-        - inserire script click-handler
-  - GLTF
-    - Three JS
-      - view
-      - nav
-      - mark
-    - A-Frame
-      - view
-      - nav
-      - mark

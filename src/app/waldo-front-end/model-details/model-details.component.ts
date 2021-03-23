@@ -61,7 +61,8 @@ export class ModelDetailsComponent implements OnInit {
       .subscribe(model => {
         this.model = model;
 
-        let provider: Provider = new AFrameViewProvider();
+        // const provider: Provider = new ThreejsViewProvider();
+        const provider: Provider = new ThreejsViewNavProvider();
         provider.renderModel(this.model);
       });
   }
