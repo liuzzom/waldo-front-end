@@ -3,7 +3,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Location} from '@angular/common';
 import {ModelsService} from "../services/models.service";
 import {v4 as uuidv4} from 'uuid';
-import {ProviderUtils} from "../providers/provider-utils.";
+import {ProviderUtils} from "../providers/provider-utils";
 import {Model} from "../domain-model/Model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";

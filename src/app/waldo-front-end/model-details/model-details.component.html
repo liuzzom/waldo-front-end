@@ -13,6 +13,15 @@
       <button *ngIf="editModelMode" mat-raised-button color="primary" (click)="toggleEditModelMode(false)">Done</button>
     </mat-toolbar>
 
+    <mat-form-field *ngIf="editModelMode" appearance="outline" style="width: 50%; margin-left: 8px">
+      <mat-label>Default Provider</mat-label>
+      <mat-select [(value)]="selectedProvider">
+        <mat-option *ngFor="let providerId of model.supportedProviders" [value]="providerId">
+          {{providerId}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <div id="rendering-area"></div>
   </mat-sidenav-content>
 
@@ -20,17 +29,18 @@
     <h3>Pointer Message</h3>
     <form>
       <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Leave a comment</mat-label>
-        <textarea id="pointer-message" matInput [readonly]="!editModelMode || !editPointerMode"></textarea>
+        <mat-label *ngIf="pointerSupport">Pointer Message</mat-label>
+        <mat-label *ngIf="!pointerSupport">Pointer are not supported</mat-label>
+        <textarea id="pointer-message" matInput [readonly]="!editModelMode || !editPointerMode || !pointerSupport"></textarea>
       </mat-form-field>
 
       <div>
-        <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode">
+        <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode && pointerSupport">
           <button mat-raised-button color="primary" (click)="toggleEditPointerMode(true)">Edit Message</button>
           <button mat-raised-button color="warn" (click)="openDeleteDialog()">Delete Pointer</button>
         </div>
 
-        <div class="edit-pointer-mode-buttons" *ngIf="editModelMode && editPointerMode">
+        <div class="edit-pointer-mode-buttons" *ngIf="editModelMode && editPointerMode && pointerSupport">
           <button mat-raised-button>Clear Message Field</button>
           <button mat-raised-button color="warn" (click)="toggleEditPointerMode(false)">Back</button>
           <button mat-raised-button color="primary" (click)="toggleEditPointerMode(false)">Save</button>

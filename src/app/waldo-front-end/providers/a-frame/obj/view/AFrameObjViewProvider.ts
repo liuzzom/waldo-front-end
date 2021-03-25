@@ -1,13 +1,20 @@
-import {Provider} from "../../../domain-model/Provider";
-import {Model} from "../../../domain-model/Model";
+import {Provider} from "../../../../domain-model/Provider";
+import {Model} from "../../../../domain-model/Model";
 import * as THREE from 'three';
 import * as AFRAME from 'aframe';
 
-export class AFrameViewProvider implements Provider {
+export class AFrameObjViewProvider implements Provider {
   id: string;
   name: string
   providerFeatures: string[];
   renderingEngine: string;
+
+  constructor(info: Provider) {
+    this.id = info.id;
+    this.name = info.name;
+    this.providerFeatures = info.providerFeatures;
+    this.renderingEngine = info.renderingEngine;
+  }
 
   renderModel(model: Model) {
     AFRAME.registerComponent('position-setter', {

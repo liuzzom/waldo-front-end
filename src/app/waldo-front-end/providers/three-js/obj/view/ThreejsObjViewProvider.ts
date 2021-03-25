@@ -4,13 +4,17 @@ import {Model} from "../../../../domain-model/Model";
 import * as THREE from 'three';
 import {ThreejsUtils} from "../ThreejsUtils";
 
-export class ThreejsViewProvider implements Provider {
+export class ThreejsObjViewProvider implements Provider {
   id: string;
-  name: string
+  name: string;
   providerFeatures: string[];
   renderingEngine: string;
 
-  constructor() {
+  constructor(info: Provider) {
+    this.id = info.id;
+    this.name = info.name;
+    this.providerFeatures = info.providerFeatures;
+    this.renderingEngine = info.renderingEngine;
   }
 
   private createChildCanvas(selector: string) {

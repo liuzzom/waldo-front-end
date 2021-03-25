@@ -5,13 +5,17 @@ import * as THREE from 'three';
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import {ThreejsUtils} from "../ThreejsUtils";
 
-export class ThreejsViewNavProvider implements Provider {
+export class ThreejsObjViewNavProvider implements Provider {
   id: string;
-  name: string
+  name: string;
   providerFeatures: string[];
   renderingEngine: string;
 
-  constructor() {
+  constructor(info: Provider) {
+    this.id = info.id;
+    this.name = info.name;
+    this.providerFeatures = info.providerFeatures;
+    this.renderingEngine = info.renderingEngine;
   }
 
   private createChildCanvas(selector: string) {
