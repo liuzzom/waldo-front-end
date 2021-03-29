@@ -1,5 +1,6 @@
 import {Provider} from "../../../domain-model/Provider";
 import {Model} from "../../../domain-model/Model";
+import {ResizeObserver} from "resize-observer";
 
 export class HtmlSimpleProvider implements Provider{
   id: string;
@@ -15,6 +16,16 @@ export class HtmlSimpleProvider implements Provider{
   }
 
   renderModel(model: Model) {
-    alert('renderModel will be implemented soon...');
+    const renderingArea = document.getElementById('rendering-area');
+    renderingArea.innerHTML = `
+    <img src="${model.sources[0]}" alt="${model.name}" width="${renderingArea.clientWidth}" height="${renderingArea.clientHeight}" />
+    `;
+
+    const ro = new ResizeObserver(() => {
+      renderingArea.innerHTML = `
+        <img src="${model.sources[0]}" alt="${model.name}" width="${renderingArea.clientWidth}" height="${renderingArea.clientHeight}" />
+      `;
+    });
+    ro.observe(renderingArea);
   }
 }

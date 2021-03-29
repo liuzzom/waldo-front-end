@@ -63,11 +63,12 @@ export class ModelDetailsComponent implements OnInit {
 
       const testId = "55800a26-fdc3-47d4-9c8e-b3d609646e1f";
 
-      this.providersService.getProvider(testId).subscribe(providerInfo => {
+      this.providersService.getProvider(model.defaultProvider).subscribe(providerInfo => {
         const provider = ProviderUtils.createProvider(providerInfo);
 
         provider.providerFeatures.includes('mark') ? this.pointerSupport = true : this.pointerSupport = false;
-        console.log(this.pointerSupport)
+        console.log(provider.name);
+        console.log(this.pointerSupport);
 
         provider.renderModel(this.model);
       });

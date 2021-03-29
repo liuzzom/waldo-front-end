@@ -43,6 +43,20 @@
   ],
   "models": [
     {
+      "id": "69cdce56-5e38-4746-9cf4-854a8e6abb2a",
+      "name": "Space Map",
+      "sources": [
+        "http://localhost:4200/assets/models/Space_Map/uqm_map_full.png"
+      ],
+      "uploaded": "2021-03-29T13:15:34.458Z",
+      "lastModified": "2021-03-29T13:15:34.458Z",
+      "supportedProvides": [
+        "da484bd9-25d9-43cc-a74d-115b2bf3337d",
+        "b14bffff-ad8d-4fec-99fe-8e753bad0dff"
+      ],
+      "defaultProvider": "da484bd9-25d9-43cc-a74d-115b2bf3337d"
+    },
+    {
       "id": "c325f36c-15fe-4ebf-b45b-d85178281806",
       "name": "Windmill",
       "sources": [

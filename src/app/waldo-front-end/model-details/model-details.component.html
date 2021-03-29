@@ -16,7 +16,7 @@
     <mat-form-field *ngIf="editModelMode" appearance="outline" style="width: 50%; margin-left: 8px">
       <mat-label>Default Provider</mat-label>
       <mat-select [(value)]="selectedProvider">
-        <mat-option *ngFor="let providerId of model.supportedProviders" [value]="providerId">
+        <mat-option *ngFor="let providerId of model.supportedProviders" value="{{providerId}}">
           {{providerId}}
         </mat-option>
       </mat-select>

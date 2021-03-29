@@ -6,11 +6,13 @@
   </a>
 </mat-toolbar>
 
-<form id="search-form">
-  <label class="mat-title" for="search-box">Name</label>
-  <input #searchBox id="search-box" type="text" matInput>
-  <button type="submit" mat-raised-button (click)="searchModel(searchBox.value)">Search</button>
-</form>
+<div>
+  <form id="search-form">
+    <label class="mat-title" for="search-box">Name</label>
+    <input #searchBox id="search-box" type="text">
+    <button type="submit" mat-raised-button (click)="searchModel(searchBox.value)">Search</button>
+  </form>
+</div>
 
 <mat-nav-list>
   <mat-list-item *ngFor="let model of models">

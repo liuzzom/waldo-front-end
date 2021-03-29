@@ -16,72 +16,15 @@
 
 ### Implementazione
 
-- Inserimento Modello:
-  - ~~inserire funzione in risposta al tasto si~~
-  - ~~inserire funzione in risposta al tasto no (??)~~
-  - ~~implementare funzione loadModel nel servizio per i modelli~~:
-    - ~~filtrare l'array url addizionali da elementi vuoti~~
-    - ~~chiedere al server gli uuid~~
-    - ~~generare un uuid unico~~
-      - ~~generare dati non inseriti dall'utente~~:
-      - ~~data caricamento~~
-      - ~~data modifica~~
-      - ~~provider supportati~~
-        - ~~regole hard-coded in una classe~~
-        - ~~messaggio di errore tramite snackbar per formato non supportato~~
-    - ~~fare richiesta al server~~
-  - ~~messaggio di notifica tramite snackbar~~
-    - ~~successo~~
-    - ~~errore~~
-  - ~~redirect al completamento di un'operazione~~
-  - ~~relazione e presentazione~~
-- Ricerca Modello:
-  - ~~getModels~~:
-  - ~~getModel~~
-  - ~~searchByName~~
+- ~~Inserimento Modello~~:
+- ~~Ricerca Modello~~:
 - Visualizza Modello
-  - Rendere sezione messaggi utilizzabile in base al tipo di provider (solo se mark è supportato)
-  - Rendering dei Modelli:
-    - funzione di utilità che crea il provider a partire dall'id ottenuto dal server (defaultProvider)
-      - implementare in ProviderUtils
-    - Provider:
-      - 2D:
-        - view only: usa tag <img>
-        - mark: usa leaflet
-      - OBJ + MTL:
-        - WebGL
-          - view-only
-        - Three JS
-          - view-only
-          - view-nav
-          - view-nav-mark
-        - A Frame
-          - view-only
-          - view-nav
-          - view-nav-mark
-      - GLTF
-        - WebGL
-          - view-only
-        - Three JS
-          - ~~view-only~~
-          - ~~view-nav~~
-          - view-nav-mark
-        - A Frame
-          - view-only
-          - view-nav
-          - view-nav-mark
+  - Vedere Tabella
 - Modifica Modello
-  - rendere il titolo della pagina (i.e. nome modello) modificabile
-  - modifica della data lastModified
-- Rimuovi Modello
-  - ~~inserire funzione in risposta al tasto si~~
-  - ~~inserire funzione in risposta al tasto no (??)~~
-  - ~~implementare funzione deleteModel nel servizio per i modelli.~~
-  - ~~messaggio di notifica tramite snackbar~~
-  - ~~tests (200, 404, No Server)~~
-  - ~~relazione e presentazione~~
-  - ~~testare delete cascade su json-server~~
-  - ~~la rimozione del modello causa la rimozione dei mark ad esso associati (utilizzo di Cascade nel Back-End)~~
+  - Modifica del nome
+  - Modifica del Provider default
+  - Modifica messaggio delle marcature
+- ~~Rimuovi Modello~~
 - Inserimento Marcatura
   - addPointer per inserire un nuovo mark 
   - chiamare renderPointer per inserire il mark visivamente
@@ -92,9 +35,27 @@
   - mostrare il messaggio della marcartura come risposta al click su una marcatura
   - attivare i pulsanti per la modifica della marcatura (edit message o delete pointer) come risposta al click su marcatura
 - Modifica Marcatura
+  - Modifica del messaggio
 - Rimuovi Marcatura
   - vedere come eliminare la sferetta dalla scena:
     - A-Frame
     - Three.js
   - removePointer per rimuovere un mark (collabora con removePointer del PointersService)
 
+|                    | ins mod | ric mod | vis mod | edit mod | rim mod | ins poi | info poi | ric poi | mod poi | rim poi |
+| ------------------ | ------- | ------- | ------- | -------- | ------- | ------- | -------- | ------- | ------- | ------- |
+| 2d view            | **X**   | **X**   |         |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| 2d mark            | **X**   | **X**   |         |          | **X**   |         |          |         |         |         |
+| webgl obj view     | **X**   | **X**   | **X**   |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| three js obj view  | **X**   | **X**   | **X**   |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| three js obj nav   | **X**   | **X**   | **X**   |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| three js obj mark  | **X**   | **X**   |         |          | **X**   |         |          |         |         |         |
+| a-frame obj view   | **X**   | **X**   | **X**   |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| a-frame obj nav    | **X**   | **X**   | **X**   |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| a-frame obj mark   | **X**   | **X**   |         |          | **X**   |         |          |         |         |         |
+| three js gltf view | **X**   | **X**   |         |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| three js gltf nav  | **X**   | **X**   |         |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| three js gltf mark | **X**   | **X**   |         |          | **X**   |         |          |         |         |         |
+| a-frame gltf view  | **X**   | **X**   |         |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| a-frame gltf nav   | **X**   | **X**   |         |          | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
+| a-frame gltf mark  | **X**   | **X**   |         |          | **X**   |         |          |         |         |         |
