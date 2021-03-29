@@ -53,7 +53,7 @@ export class ModelsService {
 
     return this.http.delete<Model>(url, this.httpOptions).pipe(
       tap(_ => console.log(`deleted model with id: ${id}`)),
-      catchError(this.handleError<Model>('deleteHero'))
+      catchError(this.handleError<Model>('deleteModel'))
     );
   }
 
@@ -61,7 +61,18 @@ export class ModelsService {
   loadModel(newModel: Model) {
     return this.http.post<Model>(this.modelsUrl, newModel, this.httpOptions).pipe(
       tap((model: Model) => console.log(`loaded hero with id: ${model.id}`)),
-      catchError(this.handleError<Model>('loadHero'))
+      catchError(this.handleError<Model>('loadModel'))
+    );
+  }
+
+  /** PATCH a model into the server*/
+  editModel(newData: any) {
+    const id = newData.id;
+    const url = `${this.modelsUrl}/${id}`;
+
+    return this.http.patch<Model>(url, newData, this.httpOptions).pipe(
+      tap((model: Model) => console.log(`edited hero with id: ${model.id}`)),
+      catchError(this.handleError<Model>('editModel'))
     );
   }
 

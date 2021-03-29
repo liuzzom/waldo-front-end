@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav-content>
     <mat-toolbar>
-      <span [contentEditable]="editModelMode">{{model.name}}</span>
+      <span #modelName [contentEditable]="editModelMode">{{model.name}}</span>
 
       <span class="navbar-spacer"></span>
 
@@ -10,7 +10,7 @@
         <button mat-raised-button color="warn" (click)="goBack()">Back</button>
       </div>
 
-      <button *ngIf="editModelMode" mat-raised-button color="primary" (click)="toggleEditModelMode(false)">Done</button>
+      <button *ngIf="editModelMode" mat-raised-button color="primary" (click)="editModel(modelName.innerHTML)">Done</button>
     </mat-toolbar>
 
     <mat-form-field *ngIf="editModelMode" appearance="outline" style="width: 50%; margin-left: 8px">
@@ -30,7 +30,7 @@
     <form>
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label *ngIf="pointerSupport">Pointer Message</mat-label>
-        <mat-label *ngIf="!pointerSupport">Pointer are not supported</mat-label>
+        <mat-label *ngIf="!pointerSupport">Pointers are not supported</mat-label>
         <textarea id="pointer-message" matInput [readonly]="!editModelMode || !editPointerMode || !pointerSupport"></textarea>
       </mat-form-field>
 
