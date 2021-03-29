@@ -30,7 +30,7 @@ export class AFrameObjViewProvider implements Provider {
           const maxBoxSize = Math.max(boxSizes.x, boxSizes.y, boxSizes.z);
 
           let model = document.getElementById("model");
-          model.setAttribute("position", "0 0 -" + 1.2 * maxBoxSize);
+          model.setAttribute("position", "0 " + (-0.3 * maxBoxSize) + " -" + 1.2 * maxBoxSize);
         })
       }
     });
@@ -40,8 +40,8 @@ export class AFrameObjViewProvider implements Provider {
       <a-scene embedded id="scene" cursor="rayOrigin: mouse" raycaster="objects: .clickable">
         <!-- Assets definition -->
         <a-assets>
-            <a-asset-item id="object-ref" src="assets/models/Windmill/windmill.obj"></a-asset-item>
-            <a-asset-item id="material-ref" src="assets/models/Windmill/windmill-fixed.mtl"></a-asset-item>
+            <a-asset-item id="object-ref" src="${model.sources[0]}"></a-asset-item>
+            <a-asset-item id="material-ref" src="${model.sources[1]}"></a-asset-item>
         </a-assets>
 
         <!-- Using the asset management system. -->

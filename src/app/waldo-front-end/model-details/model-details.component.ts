@@ -61,9 +61,9 @@ export class ModelDetailsComponent implements OnInit {
       this.model = model;
       this.selectedProvider = model.defaultProvider;
 
-      const testId = "55800a26-fdc3-47d4-9c8e-b3d609646e1f";
+      const testId = "34f51504-8326-421c-b0f1-383ebe88fa93";
 
-      this.providersService.getProvider(model.defaultProvider).subscribe(providerInfo => {
+      this.providersService.getProvider(testId).subscribe(providerInfo => {
         const provider = ProviderUtils.createProvider(providerInfo);
 
         provider.providerFeatures.includes('mark') ? this.pointerSupport = true : this.pointerSupport = false;
