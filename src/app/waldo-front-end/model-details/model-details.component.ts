@@ -36,7 +36,6 @@ export class ModelDetailsComponent implements OnInit {
 
   toggleEditModelMode(edit: boolean) {
     edit ? this.editModelMode = true : this.editModelMode = false;
-    // console.log(this.editModelMode);
   }
 
   toggleEditPointerMode(edit: boolean) {
@@ -99,10 +98,17 @@ export class ModelDetailsComponent implements OnInit {
     if(this.selectedProvider !== this.model.defaultProvider) newData.defaultProvider = this.selectedProvider;
     console.log(newData);
 
+    if(newData.name === undefined && newData.defaultProvider === undefined){
+      console.log('nothing to update');
+      this.toggleEditModelMode(false);
+      return;
+    }
+
     // Make a request to te server and handle the results
     this.modelsService.editModel(newData).subscribe(res => {
       if(res){
         // Successful Edit
+        this.toggleEditModelMode(false);
         let successSnackBar = this.snackBar.open('Model Edited', 'Ok', {duration: 2000});
         successSnackBar.afterDismissed().subscribe(() => {
           location.reload();
