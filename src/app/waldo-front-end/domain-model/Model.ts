@@ -6,4 +6,5 @@ export interface Model{
   lastModified: string;
   supportedProviders: string[];
   defaultProvider: string;
+  metadata?: any;
 }

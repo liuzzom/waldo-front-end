@@ -74,7 +74,11 @@
         "da484bd9-25d9-43cc-a74d-115b2bf3337d",
         "b14bffff-ad8d-4fec-99fe-8e753bad0dff"
       ],
-      "defaultProvider": "da484bd9-25d9-43cc-a74d-115b2bf3337d"
+      "defaultProvider": "b14bffff-ad8d-4fec-99fe-8e753bad0dff",
+      "metadata": {
+        "width": 2315,
+        "height": 2315
+      }
     },
     {
       "id": "c325f36c-15fe-4ebf-b45b-d85178281806",

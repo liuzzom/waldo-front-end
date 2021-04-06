@@ -23,6 +23,7 @@
     "@angular/router": "~11.2.3",
     "@types/three": "^0.126.1",
     "aframe": "^1.2.0",
+    "leaflet": "^1.7.1",
     "resize-observer": "^1.0.0",
     "rxjs": "~6.6.0",
     "three": "^0.126.1",

@@ -34,6 +34,8 @@ export class ModelDetailsComponent implements OnInit {
     this.renderModel();
   }
 
+  // ----- Handler Section ----- \\
+
   toggleEditModelMode(edit: boolean) {
     edit ? this.editModelMode = true : this.editModelMode = false;
   }
@@ -43,6 +45,9 @@ export class ModelDetailsComponent implements OnInit {
     console.log(this.editPointerMode);
   }
 
+  // ----- Method Section ----- \\
+
+  // Open the dialog for deleting a Pointer
   openDeleteDialog() {
     let dialogRef = this.dialog.open(DeletePointerDialogComponent, {disableClose: true});
 
@@ -51,17 +56,19 @@ export class ModelDetailsComponent implements OnInit {
     })
   }
 
+  // Go back into the home page
   goBack() {
     this.location.back();
   }
 
+  // Render the model into the rendering area
   renderModel(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
     this.modelsService.getModel(id).subscribe(model => {
       this.model = model;
       this.selectedProvider = model.defaultProvider;
-      console.log('supported Prov: ' + this.model.supportedProviders)
+      // console.log('supported Prov: ' + this.model.supportedProviders)
 
       const testId = "34f51504-8326-421c-b0f1-383ebe88fa93";
 
@@ -70,13 +77,14 @@ export class ModelDetailsComponent implements OnInit {
 
         provider.providerFeatures.includes('mark') ? this.pointerSupport = true : this.pointerSupport = false;
         console.log(provider.name);
-        console.log(this.pointerSupport);
+        // console.log(this.pointerSupport);
 
         provider.renderModel(this.model);
       });
     });
   }
 
+  // Create an empty model, used for page initialization
   emptyModel(): Model {
     return {
       id: '',
@@ -89,6 +97,9 @@ export class ModelDetailsComponent implements OnInit {
     }
   }
 
+  // ----- Storage Section ----- \\
+
+  // Save edited model into the back-end (via services)
   editModel(editedName: string) {
     let newData: any = {};
 
