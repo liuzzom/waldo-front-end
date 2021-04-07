@@ -60,7 +60,7 @@ export class ModelsService {
   /** PUT a model into the server */
   loadModel(newModel: Model) {
     return this.http.post<Model>(this.modelsUrl, newModel, this.httpOptions).pipe(
-      tap((model: Model) => console.log(`loaded hero with id: ${model.id}`)),
+      tap((model: Model) => console.log(`loaded model with id: ${model.id}`)),
       catchError(this.handleError<Model>('loadModel'))
     );
   }

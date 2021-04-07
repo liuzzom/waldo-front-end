@@ -1,8 +1,12 @@
 {
-  "pointers":[
+  "pointers": [
     {
       "id": "d08643b0-88a8-405c-8941-0ce133cf03bd",
-      "position": [0.142, 7.834, 1.379],
+      "position": [
+        0.142,
+        7.834,
+        1.379
+      ],
       "message": "message from pointer 1",
       "uploaded": "2021-03-17T09:13:07.936Z",
       "lastModified": "2021-03-17T09:13:07.936Z",
@@ -10,7 +14,11 @@
     },
     {
       "id": "8616f76-ed15-46e7-9f9a-496c056d2de4",
-      "position": [-0.489, 6.665, 1.439],
+      "position": [
+        -0.489,
+        6.665,
+        1.439
+      ],
       "message": "message from pointer 2",
       "uploaded": "2021-03-17T09:13:07.936Z",
       "lastModified": "2021-03-17T09:13:07.936Z",
@@ -18,7 +26,11 @@
     },
     {
       "id": "425c9fb1-9d86-4694-881c-f8f186f5ae93",
-      "position": [2.332, 9.524, 1.400],
+      "position": [
+        2.332,
+        9.524,
+        1.4
+      ],
       "message": "",
       "uploaded": "2021-03-17T09:13:07.936Z",
       "lastModified": "2021-03-17T09:13:07.936Z",
@@ -26,7 +38,11 @@
     },
     {
       "id": "2c47b8a3-4d3c-446c-ba07-556576c831d6",
-      "position": [2.440, 7.637, -2.898],
+      "position": [
+        2.44,
+        7.637,
+        -2.898
+      ],
       "message": "",
       "uploaded": "2021-03-17T09:13:07.936Z",
       "lastModified": "2021-03-17T09:13:07.936Z",
@@ -34,7 +50,11 @@
     },
     {
       "id": "d64a1e49-58a2-4892-8df3-eb7c12b4014e",
-      "position": [0.660, 3.159, 1.366],
+      "position": [
+        0.66,
+        3.159,
+        1.366
+      ],
       "message": "message from pointer 5",
       "uploaded": "2021-03-17T09:13:07.936Z",
       "lastModified": "2021-03-17T09:13:07.936Z",
@@ -50,11 +70,15 @@
       ],
       "uploaded": "2021-03-29T13:15:34.458Z",
       "lastModified": "2021-03-29T13:15:34.458Z",
-      "supportedProvides": [
+      "supportedProviders": [
         "da484bd9-25d9-43cc-a74d-115b2bf3337d",
         "b14bffff-ad8d-4fec-99fe-8e753bad0dff"
       ],
-      "defaultProvider": "da484bd9-25d9-43cc-a74d-115b2bf3337d"
+      "defaultProvider": "b14bffff-ad8d-4fec-99fe-8e753bad0dff",
+      "metadata": {
+        "width": 2315,
+        "height": 2315
+      }
     },
     {
       "id": "c325f36c-15fe-4ebf-b45b-d85178281806",
@@ -74,7 +98,7 @@
         "34f51504-8326-421c-b0f1-383ebe88fa93",
         "29b8afd0-43ab-42ba-bc8b-c184624f2e49"
       ],
-      "defaultProvider": "31435989-d23e-401a-b1a7-44b4ae9889fb"
+      "defaultProvider": "55800a26-fdc3-47d4-9c8e-b3d609646e1f"
     },
     {
       "id": "c94fcdc6-031d-4a67-814f-8e3ae0cc2910",

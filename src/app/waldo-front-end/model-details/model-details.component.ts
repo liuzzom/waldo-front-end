@@ -8,6 +8,8 @@ import {Model} from "../domain-model/Model";
 import {ProviderUtils} from "../providers/provider-utils";
 import {ProvidersService} from "../services/providers.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Provider} from "../domain-model/Provider";
+import {PointersService} from "../services/pointers.service";
 
 @Component({
   selector: 'app-model-details',
@@ -16,16 +18,21 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ModelDetailsComponent implements OnInit {
   model: Model = this.emptyModel();
+
   editModelMode = false;
   editPointerMode = false;
+  pointerTrigger = false;
+
   pointerSupport: boolean;
   selectedProvider: string;
+  provider: Provider = null;
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private modelsService: ModelsService,
     private providersService: ProvidersService,
+    private pointersService: PointersService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
   ) {}
@@ -43,6 +50,16 @@ export class ModelDetailsComponent implements OnInit {
   toggleEditPointerMode(edit: boolean) {
     edit ? this.editPointerMode = true : this.editPointerMode = false;
     console.log(this.editPointerMode);
+  }
+
+  activatePointerTrigger(){
+    this.pointerTrigger = true;
+    this.provider.pointerTrigger = true;
+  }
+
+  deactivatePointerTrigger() {
+    this.pointerTrigger = false;
+    this.provider.pointerTrigger = false;
   }
 
   // ----- Method Section ----- \\
@@ -73,13 +90,19 @@ export class ModelDetailsComponent implements OnInit {
       const testId = "34f51504-8326-421c-b0f1-383ebe88fa93";
 
       this.providersService.getProvider(this.model.defaultProvider).subscribe(providerInfo => {
-        const provider = ProviderUtils.createProvider(providerInfo);
+        this.provider = ProviderUtils.createProvider(providerInfo);
 
-        provider.providerFeatures.includes('mark') ? this.pointerSupport = true : this.pointerSupport = false;
-        console.log(provider.name);
+        this.provider.providerFeatures.includes('mark') ? this.pointerSupport = true : this.pointerSupport = false;
+        console.log(this.provider.name);
         // console.log(this.pointerSupport);
 
-        provider.renderModel(this.model);
+        if(this.pointerSupport){
+          // pass the pointer service to the provider
+          // TODO: this is NOT the best solution, try to make a cleaner work
+          this.provider.setPointerService(this.pointersService);
+        }
+
+        this.provider.renderModel(this.model);
       });
     });
   }

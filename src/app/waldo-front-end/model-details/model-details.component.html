@@ -10,6 +10,7 @@
         <button mat-raised-button color="warn" (click)="goBack()">Back</button>
       </div>
 
+      <button *ngIf="editModelMode && !pointerTrigger" mat-raised-button color="accent" (click)="activatePointerTrigger()">Add Pointer</button>
       <button *ngIf="editModelMode" mat-raised-button color="primary" (click)="editModel(modelName.innerHTML)">Done</button>
     </mat-toolbar>
 
@@ -22,7 +23,7 @@
       </mat-select>
     </mat-form-field>
 
-    <div id="rendering-area"></div>
+    <div id="rendering-area" (click)="deactivatePointerTrigger()"></div>
   </mat-sidenav-content>
 
   <mat-sidenav #sidenav mode="side" opened position="end">

@@ -1,4 +1,5 @@
 import {Model} from "./Model";
+import {PointersService} from "../services/pointers.service";
 
 export interface Provider {
   // properties
@@ -6,7 +7,10 @@ export interface Provider {
   name: string
   providerFeatures: string[];
   renderingEngine: string;
+  pointerTrigger?: boolean;
 
   // methods
   renderModel(model: Model): void;
+
+  setPointerService?(pointersService: PointersService): void;
 }
