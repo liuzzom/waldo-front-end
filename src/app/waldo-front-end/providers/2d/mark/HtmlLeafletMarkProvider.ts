@@ -44,7 +44,9 @@ export class HtmlLeafletMarkProvider implements Provider{
     this.pointersService = service;
   }
 
+  // Click Handler
   onMapClick(event, model: Model){
+    // Get click position
     const lat = event.latlng["lat"];
     const lng = event.latlng["lng"];
 
@@ -79,7 +81,6 @@ export class HtmlLeafletMarkProvider implements Provider{
 
       // save pointer into the back-end
       this.pointersService.loadPointer(newPointer).subscribe(() => console.log('pointer loaded'));
-
       return;
     }
 
@@ -87,26 +88,41 @@ export class HtmlLeafletMarkProvider implements Provider{
     return;
   }
 
+  showPointer(pointer: Pointer){
+    const position = L.latLng(pointer.position);
+    L.marker(position).addTo(this.map);
+  }
+
   renderModel(model: Model) {
+    // get image size...used for set the bounds
     const modelWidth = model.metadata.width;
     const modelHeight = model.metadata.height;
 
     const renderingArea = document.getElementById('rendering-area');
     renderingArea.innerHTML = `<div id="map" style="height: 100%;"></div>`
 
+    // initialize the map
     this.map = L.map('map', {
       crs: L.CRS.Simple,
       minZoom: -5
     });
 
+    // set the bounds and add image to the map
     this.mapBounds = [[0,0], [modelHeight, modelWidth]];
     L.imageOverlay(model.sources[0], this.mapBounds).addTo(this.map);
 
+    // fit bounds and set view
     this.map.fitBounds(this.mapBounds);
     this.map.setView( [modelHeight/2, modelWidth/2], -1);
 
-    // TODO: get pointers from back-end and render them
+    // get pointers from back-end and render them
+    this.pointersService.getPointersByModelId(model.id).subscribe(pointers => {
+      for(let pointer of pointers){
+        this.showPointer(pointer);
+      }
+    });
 
+    // register the click handler
     this.map.on('click', (event) => this.onMapClick(event, model));
   }
 }

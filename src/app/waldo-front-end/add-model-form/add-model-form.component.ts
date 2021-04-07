@@ -133,13 +133,10 @@ export class AddModelFormComponent implements OnInit {
         let successSnackBar = this.snackBar.open('Model Loaded', 'Ok', {duration: 2000});
 
         successSnackBar.afterDismissed().subscribe(() => {
-          console.log('Success Bar was dismissed');
           this.goHome();
         });
 
-        successSnackBar.onAction().subscribe(() => {
-          console.log("The Success Bar action was triggered");
-        });
+        successSnackBar.onAction().subscribe(() => {});
       } else {
         this.snackBar.open('Something went wrong, Check your entries or contact support', 'Ok', {duration: 2000});
       }

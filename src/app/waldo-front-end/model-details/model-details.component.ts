@@ -49,7 +49,6 @@ export class ModelDetailsComponent implements OnInit {
 
   toggleEditPointerMode(edit: boolean) {
     edit ? this.editPointerMode = true : this.editPointerMode = false;
-    console.log(this.editPointerMode);
   }
 
   activatePointerTrigger(){
@@ -85,7 +84,6 @@ export class ModelDetailsComponent implements OnInit {
     this.modelsService.getModel(id).subscribe(model => {
       this.model = model;
       this.selectedProvider = model.defaultProvider;
-      // console.log('supported Prov: ' + this.model.supportedProviders)
 
       const testId = "34f51504-8326-421c-b0f1-383ebe88fa93";
 
@@ -93,11 +91,10 @@ export class ModelDetailsComponent implements OnInit {
         this.provider = ProviderUtils.createProvider(providerInfo);
 
         this.provider.providerFeatures.includes('mark') ? this.pointerSupport = true : this.pointerSupport = false;
-        console.log(this.provider.name);
-        // console.log(this.pointerSupport);
+        console.log(`Provider used: ${this.provider.name}`);
 
         if(this.pointerSupport){
-          // pass the pointer service to the provider
+          // Pass the pointer service to the provider
           // TODO: this is NOT the best solution, try to make a cleaner work
           this.provider.setPointerService(this.pointersService);
         }
@@ -130,10 +127,9 @@ export class ModelDetailsComponent implements OnInit {
     newData.id = this.model.id;
     if(editedName !== this.model.name) newData.name = editedName;
     if(this.selectedProvider !== this.model.defaultProvider) newData.defaultProvider = this.selectedProvider;
-    console.log(newData);
 
     if(newData.name === undefined && newData.defaultProvider === undefined){
-      console.log('nothing to update');
+      console.log('Nothing to update');
       this.toggleEditModelMode(false);
       return;
     }

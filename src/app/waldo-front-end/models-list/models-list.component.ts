@@ -43,7 +43,7 @@ export class ModelsListComponent implements OnInit {
     let snackBarRef = this.snackBar.open(message, action, {duration: 2000});
 
     snackBarRef.afterDismissed().subscribe(() => {
-      console.log('snackbar dismissed');
+
     })
   }
 
@@ -66,12 +66,10 @@ export class ModelsListComponent implements OnInit {
   searchModel(name: string) {
     // with an empty name, do some kind of "refresh"
     if(!name.trim()){
-      console.log('empty name');
       this.getModels();
       return;
     }
 
-    console.log(name);
     this.modelsService.searchByName(name).subscribe(models => {
       this.models = models;
     });
