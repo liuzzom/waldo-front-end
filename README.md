@@ -15,6 +15,7 @@
 - Motivare utilizzo di cascade durante la cancellazione di un modello per trasparenza 
 - Fare delle slide su come viene gestito il render del modello nei vari provider
 - Spiegare il tentativo fatto con leaflet e gli impedimenti trovati (pare non si sposi bene con ambienti "dinamici")
+  - questione latitudine/longitudine
 
 ### Implementazione
 
@@ -44,7 +45,7 @@
 |                    | ins mod | ric mod | vis mod | edit mod | rim mod | ins poi | info poi | ric poi | mod poi | rim poi |
 | ------------------ | ------- | ------- | ------- | -------- | ------- | ------- | -------- | ------- | ------- | ------- |
 | 2d view            | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| 2d mark            | **X**   | **X**   | **X**   | **X**    | **X**   |         |          |         |         |         |
+| 2d mark            | **X**   | **X**   | **X**   | **X**    | **X**   | **X**   | **X**    | **/**   |         |         |
 | webgl obj view     | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
 | three js obj view  | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
 | three js obj nav   | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |

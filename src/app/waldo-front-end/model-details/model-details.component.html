@@ -32,19 +32,19 @@
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label *ngIf="pointerSupport">Pointer Message</mat-label>
         <mat-label *ngIf="!pointerSupport">Pointers are not supported</mat-label>
-        <textarea id="pointer-message" matInput [readonly]="!editModelMode || !editPointerMode || !pointerSupport"></textarea>
+        <textarea #pointerMessage id="pointer-message" matInput [readonly]="!editModelMode || !editPointerMode || !pointerSupport"></textarea>
       </mat-form-field>
 
       <div>
         <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode && pointerSupport">
-          <button mat-raised-button color="primary" (click)="toggleEditPointerMode(true)">Edit Message</button>
+          <button mat-raised-button color="primary" (click)="startEditPointerMode(pointerMessage.value)">Edit Message</button>
           <button mat-raised-button color="warn" (click)="openDeleteDialog()">Delete Pointer</button>
         </div>
 
         <div class="edit-pointer-mode-buttons" *ngIf="editModelMode && editPointerMode && pointerSupport">
-          <button mat-raised-button>Clear Message Field</button>
-          <button mat-raised-button color="warn" (click)="toggleEditPointerMode(false)">Back</button>
-          <button mat-raised-button color="primary" (click)="toggleEditPointerMode(false)">Save</button>
+          <button mat-raised-button (click)="pointerMessage.value = ''">Clear Message Field</button>
+          <button mat-raised-button color="warn" (click)="undo()">Undo</button>
+          <button mat-raised-button color="primary" (click)="editPointerMessage(pointerMessage.value)">Save</button>
         </div>
 
       </div>

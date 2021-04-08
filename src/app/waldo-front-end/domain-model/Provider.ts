@@ -8,6 +8,7 @@ export interface Provider {
   providerFeatures: string[];
   renderingEngine: string;
   pointerTrigger?: boolean;
+  selectedPointerId?: string;
 
   // methods
   renderModel(model: Model): void;

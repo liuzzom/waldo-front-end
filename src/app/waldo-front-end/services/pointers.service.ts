@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Pointer} from "../domain-model/Pointer";
 import {Observable, of} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
@@ -18,7 +18,8 @@ export class PointersService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
   /** GET pointers by model id. Will 404 if id not found */
   getPointersByModelId(modelId: string): Observable<Pointer[]> {
@@ -29,11 +30,32 @@ export class PointersService {
     );
   }
 
+  /** GET pointer by id. Will 404 if id not found */
+  getPointer(id: string): Observable<Pointer> {
+    const url = `${this.pointersUrl}/${id}`;
+    return this.http.get<Pointer>(url).pipe(
+      tap(_ => console.log(`fetched pointer with id: ${id}`)),
+      catchError(this.handleError<Pointer>(`getModel id:${id}`))
+    );
+  }
+
   /** PUT a pointer into the server */
-  loadPointer(pointer: Pointer){
+  loadPointer(pointer: Pointer) {
     return this.http.post<Pointer>(this.pointersUrl, pointer, this.httpOptions).pipe(
       tap((pointer: Pointer) => console.log(`loaded provider with id: ${pointer.id}`)),
       catchError(this.handleError<Pointer>('loadPointer'))
+    );
+  }
+
+  /** PATCH a model into the server */
+  editPointerMessage(pointerId: string, newMessage: string) {
+    const url = `${this.pointersUrl}/${pointerId}`;
+    let data: any = {};
+    data.message = newMessage
+
+    return this.http.patch<Pointer>(url, data, this.httpOptions).pipe(
+      tap((pointer: Pointer) => console.log(`edited pointer with id: ${pointer.id}`)),
+      catchError(this.handleError<Pointer>('editModel'))
     );
   }
 

@@ -27,6 +27,8 @@ export class ModelDetailsComponent implements OnInit {
   selectedProvider: string;
   provider: Provider = null;
 
+  oldPointerMessage: string = null;
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -59,6 +61,13 @@ export class ModelDetailsComponent implements OnInit {
   deactivatePointerTrigger() {
     this.pointerTrigger = false;
     this.provider.pointerTrigger = false;
+  }
+
+  startEditPointerMode(value: string) {
+    this.oldPointerMessage = value;
+    console.log(this.oldPointerMessage);
+
+    this.toggleEditPointerMode(true);
   }
 
   // ----- Method Section ----- \\
@@ -155,5 +164,25 @@ export class ModelDetailsComponent implements OnInit {
         failSnackBar.onAction().subscribe(() => {});
       }
     });
+  }
+
+  editPointerMessage(newMessage: string) {
+    if (newMessage === this.oldPointerMessage) {
+      console.log('messsaggio non va aggiornato');
+      this.toggleEditPointerMode(false);
+      location.reload();
+      return;
+    }
+
+    console.log('messsaggio da aggiornare');
+    // edit the pointer message into the back-end
+    this.pointersService.editPointerMessage(this.provider.selectedPointerId, newMessage).subscribe(res => console.log(res))
+    this.toggleEditPointerMode(false);
+    location.reload();
+  }
+
+  undo() {
+    this.toggleEditPointerMode(false);
+    location.reload();
   }
 }

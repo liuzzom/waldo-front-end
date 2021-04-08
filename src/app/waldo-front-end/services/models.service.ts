@@ -65,7 +65,7 @@ export class ModelsService {
     );
   }
 
-  /** PATCH a model into the server*/
+  /** PATCH a model into the server */
   editModel(newData: any) {
     const id = newData.id;
     const url = `${this.modelsUrl}/${id}`;

@@ -31,8 +31,10 @@ export class HtmlLeafletMarkProvider implements Provider{
   private mapBounds;
   // state variable used to add into the map
   public pointerTrigger: boolean = false;
+  public selectedPointerId: string = null;
   private pointersService: PointersService;
 
+  // ----- Constructor ----- \\
   constructor(info: Provider) {
     this.id = info.id;
     this.name = info.name;
@@ -40,12 +42,17 @@ export class HtmlLeafletMarkProvider implements Provider{
     this.renderingEngine = info.renderingEngine;
   }
 
+  // ----- Method ----- \\
   public setPointerService(service: PointersService){
     this.pointersService = service;
   }
 
-  // Click Handler
+  // ----- Handlers ----- \\
+
+  // Map Click Handler
   onMapClick(event, model: Model){
+    document.getElementById('pointer-message').innerText = '';
+    
     // Get click position
     const lat = event.latlng["lat"];
     const lng = event.latlng["lng"];
@@ -58,12 +65,11 @@ export class HtmlLeafletMarkProvider implements Provider{
     if((lat >= this.mapBounds[0][0] && lat <= this.mapBounds[1][0]) && (lng >= this.mapBounds[0][1] && lng <= this.mapBounds[1][1])){
       // valid point
       const pointer = L.latLng([lat, lng]);
-      let newMarker = L.marker(pointer).addTo(this.map); // TODO: vedere se è possibile inserire un listener per il marker
-
+      console.log(pointer);
 
       // Prepare data for new Pointer
       const id: string = uuidv4();
-      const position: number[] = [newMarker._latlng['lat'], newMarker._latlng['lng']];
+      const position: number[] = [pointer.lat, pointer.lng];
       const message: string = "";
       const uploaded: string = new Date().toJSON();
       const lastModified: string = uploaded;
@@ -79,8 +85,12 @@ export class HtmlLeafletMarkProvider implements Provider{
         modelId: modelId
       }
 
+      console.log(position);
+
       // save pointer into the back-end
-      this.pointersService.loadPointer(newPointer).subscribe(() => console.log('pointer loaded'));
+      this.pointersService.loadPointer(newPointer).subscribe((pointer) => {
+        this.showPointer(pointer);
+      });
       return;
     }
 
@@ -88,9 +98,18 @@ export class HtmlLeafletMarkProvider implements Provider{
     return;
   }
 
+  // Pointer Click Handler
+  showPointerMessage(pointer: Pointer){
+    this.selectedPointerId = pointer.id;
+    document.getElementById('pointer-message').innerText = `${pointer.message}`;
+  }
+
+  // ----- Visual Methods ----- \\
+
   showPointer(pointer: Pointer){
     const position = L.latLng(pointer.position);
-    L.marker(position).addTo(this.map);
+    // show the pointer and register the click handler
+    L.marker(position).addTo(this.map).on('click', () => this.showPointerMessage(pointer));
   }
 
   renderModel(model: Model) {
