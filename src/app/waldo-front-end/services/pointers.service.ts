@@ -3,7 +3,6 @@ import {Pointer} from "../domain-model/Pointer";
 import {Observable, of} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, tap} from "rxjs/operators";
-import {Model} from "../domain-model/Model";
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +37,19 @@ export class PointersService {
       catchError(this.handleError<Pointer>(`getModel id:${id}`))
     );
   }
+
+  /** DELETE a model from the server */
+  // TODO: Test
+  deletePointer(pointerId: string): Observable<Pointer> {
+    const id = pointerId;
+    const url = `${this.pointersUrl}/${id}`;
+
+    return this.http.delete<Pointer>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`deleted pointer with id: ${id}`)),
+      catchError(this.handleError<Pointer>('deletePointer'))
+    );
+  }
+
 
   /** PUT a pointer into the server */
   loadPointer(pointer: Pointer) {

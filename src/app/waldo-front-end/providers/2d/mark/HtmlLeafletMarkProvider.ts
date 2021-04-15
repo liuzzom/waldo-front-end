@@ -40,6 +40,7 @@ export class HtmlLeafletMarkProvider implements Provider{
     this.name = info.name;
     this.providerFeatures = info.providerFeatures;
     this.renderingEngine = info.renderingEngine;
+    this.selectedPointerId = null;
   }
 
   // ----- Method ----- \\
@@ -52,6 +53,8 @@ export class HtmlLeafletMarkProvider implements Provider{
   // Map Click Handler
   onMapClick(event, model: Model){
     document.getElementById('pointer-message').innerText = '';
+    this.selectedPointerId = null;
+    console.log(this.selectedPointerId);
     
     // Get click position
     const lat = event.latlng["lat"];
@@ -101,6 +104,7 @@ export class HtmlLeafletMarkProvider implements Provider{
   // Pointer Click Handler
   showPointerMessage(pointer: Pointer){
     this.selectedPointerId = pointer.id;
+    console.log(this.selectedPointerId);
     document.getElementById('pointer-message').innerText = `${pointer.message}`;
   }
 

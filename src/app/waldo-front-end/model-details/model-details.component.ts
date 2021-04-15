@@ -76,9 +76,16 @@ export class ModelDetailsComponent implements OnInit {
   openDeleteDialog() {
     let dialogRef = this.dialog.open(DeletePointerDialogComponent, {disableClose: true});
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`result: ${result}`);
-    })
+    dialogRef.afterClosed().subscribe(response => {
+      if(response){
+        console.log(`${this.provider.selectedPointerId} selected to deletion`);
+        // delete the pointer
+        this.pointersService.deletePointer(this.provider.selectedPointerId).subscribe(res => console.log(res));
+        this.toggleEditPointerMode(false);
+        this.toggleEditModelMode(false);
+        location.reload();
+      }
+    });
   }
 
   // Go back into the home page
@@ -166,15 +173,16 @@ export class ModelDetailsComponent implements OnInit {
     });
   }
 
+  // Save edited pointer message into the back-end (via services)
   editPointerMessage(newMessage: string) {
     if (newMessage === this.oldPointerMessage) {
-      console.log('messsaggio non va aggiornato');
+      console.log('nothing to edit');
       this.toggleEditPointerMode(false);
       location.reload();
       return;
     }
 
-    console.log('messsaggio da aggiornare');
+    console.log('editing pointer message...');
     // edit the pointer message into the back-end
     this.pointersService.editPointerMessage(this.provider.selectedPointerId, newMessage).subscribe(res => console.log(res))
     this.toggleEditPointerMode(false);
