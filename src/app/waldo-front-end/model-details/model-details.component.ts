@@ -110,9 +110,9 @@ export class ModelDetailsComponent implements OnInit {
         console.log(`Provider used: ${this.provider.name}`);
 
         if(this.pointerSupport){
-          // Pass the pointer service to the provider
           // TODO: this is NOT the best solution, try to make a cleaner work
-          this.provider.setPointerService(this.pointersService);
+          // Pass the pointer service to the provider
+          // this.provider.setPointerService(this.pointersService);
         }
 
         this.provider.renderModel(this.model);
