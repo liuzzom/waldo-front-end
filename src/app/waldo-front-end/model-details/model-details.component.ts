@@ -112,7 +112,7 @@ export class ModelDetailsComponent implements OnInit {
         if(this.pointerSupport){
           // TODO: this is NOT the best solution, try to make a cleaner work
           // Pass the pointer service to the provider
-          // this.provider.setPointerService(this.pointersService);
+          this.provider.setPointerService(this.pointersService);
         }
 
         this.provider.renderModel(this.model);

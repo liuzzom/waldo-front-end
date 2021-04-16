@@ -1,66 +1,6 @@
 {
   "pointers": [
     {
-      "id": "d08643b0-88a8-405c-8941-0ce133cf03bd",
-      "position": [
-        0.142,
-        7.834,
-        1.379
-      ],
-      "message": "message from pointer 1",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
-      "id": "8616f76-ed15-46e7-9f9a-496c056d2de4",
-      "position": [
-        -0.489,
-        6.665,
-        1.439
-      ],
-      "message": "message from pointer 2",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
-      "id": "425c9fb1-9d86-4694-881c-f8f186f5ae93",
-      "position": [
-        2.332,
-        9.524,
-        1.4
-      ],
-      "message": "",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
-      "id": "2c47b8a3-4d3c-446c-ba07-556576c831d6",
-      "position": [
-        2.44,
-        7.637,
-        -2.898
-      ],
-      "message": "",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
-      "id": "d64a1e49-58a2-4892-8df3-eb7c12b4014e",
-      "position": [
-        0.66,
-        3.159,
-        1.366
-      ],
-      "message": "message from pointer 5",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
       "id": "9e591d94-3697-4ed4-bc9c-a48ec88c3042",
       "position": [
         895.6395988621972,
@@ -103,6 +43,30 @@
       "uploaded": "2021-04-08T14:19:02.120Z",
       "lastModified": "2021-04-08T14:19:02.120Z",
       "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
+    },
+    {
+      "id": "becf2696-1ccc-428c-9402-6afbb075b9df",
+      "position": [
+        2.33497177295763,
+        9.702193952128143,
+        1.3979215196417023
+      ],
+      "message": "",
+      "uploaded": "2021-04-16T17:30:57.233Z",
+      "lastModified": "2021-04-16T17:30:57.233Z",
+      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
+    },
+    {
+      "id": "a01084a0-855d-4b69-87b0-a5880fe79de4",
+      "position": [
+        2.4203500014042874,
+        3.5848381309725337,
+        -0.873216543992605
+      ],
+      "message": "",
+      "uploaded": "2021-04-16T17:48:38.052Z",
+      "lastModified": "2021-04-16T17:48:38.052Z",
+      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
     }
   ],
   "models": [

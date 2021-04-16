@@ -88,8 +88,6 @@ export class HtmlLeafletMarkProvider implements Provider{
         modelId: modelId
       }
 
-      console.log(position);
-
       // save pointer into the back-end
       this.pointersService.loadPointer(newPointer).subscribe((pointer) => {
         this.showPointer(pointer);

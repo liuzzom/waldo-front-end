@@ -1,8 +1,15 @@
 import * as THREE from "three";
 import {MTLLoader} from "three/examples/jsm/loaders/MTLLoader";
 import {OBJLoader} from "three/examples/jsm/loaders/OBJLoader";
+import {THREEx} from "./mark/threex.domevents";
 
 export class ThreejsUtils {
+  private static minBoxSize: number = null;
+
+  private static setMinBoxSize(value: number){
+    ThreejsUtils.minBoxSize = value;
+  }
+
   static setCamera(): THREE.PerspectiveCamera {
     const fov = 45;
     const aspect = 2;  // the canvas default
@@ -58,7 +65,7 @@ export class ThreejsUtils {
     camera.lookAt(boxCenter.x, boxCenter.y, boxCenter.z);
   }
 
-  static loadMtlAndObj(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mtlPath: string, objPath: string) {
+  static loadMtlAndObj(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mtlPath: string, objPath: string): void {
     const mtlLoader = new MTLLoader();
     mtlLoader.load(mtlPath, (mtl) => {
       mtl.preload();
@@ -78,7 +85,9 @@ export class ThreejsUtils {
         const box = new THREE.Box3().setFromObject(root);
 
         const boxSize = box.getSize(new THREE.Vector3()).length();
+        const boxSizes = box.getSize(new THREE.Vector3());
         const boxCenter = box.getCenter(new THREE.Vector3());
+        ThreejsUtils.setMinBoxSize(Math.min(boxSizes.x, boxSizes.y, boxSizes.z));
 
         // set the camera to frame the box
         ThreejsUtils.frameArea(boxSize * 1.2, boxSize, boxCenter, camera);
