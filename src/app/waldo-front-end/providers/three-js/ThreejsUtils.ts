@@ -1,7 +1,8 @@
 import * as THREE from "three";
 import {MTLLoader} from "three/examples/jsm/loaders/MTLLoader";
 import {OBJLoader} from "three/examples/jsm/loaders/OBJLoader";
-import {THREEx} from "./mark/threex.domevents";
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
+import {THREEx} from "./obj/mark/threex.domevents";
 
 export class ThreejsUtils {
   private static minBoxSize: number = null;
@@ -92,6 +93,55 @@ export class ThreejsUtils {
         // set the camera to frame the box
         ThreejsUtils.frameArea(boxSize * 1.2, boxSize, boxCenter, camera);
       });
+    });
+  }
+
+  static loadGltf(scene: THREE.Scene, camera: THREE.PerspectiveCamera, objectPath: string) {
+    const gltfLoader = new GLTFLoader();
+
+    gltfLoader.load(objectPath, (gltf) => {
+      const root = gltf.scene;
+      scene.add(root);
+
+      // compute the box that contains all the stuff
+      // from root and below
+      const box = new THREE.Box3().setFromObject(root);
+
+      const boxSize = box.getSize(new THREE.Vector3()).length();
+      const boxSizes = box.getSize(new THREE.Vector3());
+      ThreejsUtils.minBoxSize = Math.min(boxSizes.x, boxSizes.y, boxSizes.z);
+
+      const boxCenter = box.getCenter(new THREE.Vector3());
+
+      // set the camera to frame the box
+      ThreejsUtils.frameArea(boxSize * 1.2, boxSize, boxCenter, camera);
+    });
+  }
+
+  static loadGltfWithControls(scene: THREE.Scene, camera: THREE.PerspectiveCamera, controls, objectPath: string) {
+    const gltfLoader = new GLTFLoader();
+
+    gltfLoader.load(objectPath, (gltf) => {
+      const root = gltf.scene;
+      scene.add(root);
+
+      // compute the box that contains all the stuff
+      // from root and below
+      const box = new THREE.Box3().setFromObject(root);
+
+      const boxSize = box.getSize(new THREE.Vector3()).length();
+      const boxSizes = box.getSize(new THREE.Vector3());
+      ThreejsUtils.minBoxSize = Math.min(boxSizes.x, boxSizes.y, boxSizes.z);
+
+      const boxCenter = box.getCenter(new THREE.Vector3());
+
+      // set the camera to frame the box
+      ThreejsUtils.frameArea(boxSize * 1.2, boxSize, boxCenter, camera);
+
+      // update the Trackball controls to handle the new size
+      controls.maxDistance = boxSize * 10;
+      controls.target.copy(boxCenter);
+      controls.update();
     });
   }
 }

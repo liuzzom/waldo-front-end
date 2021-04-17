@@ -2,6 +2,7 @@ import {Provider} from "../../../../domain-model/Provider";
 import {Model} from "../../../../domain-model/Model";
 import * as THREE from 'three';
 import * as AFRAME from 'aframe';
+import {AFrameUtils} from "../../AFrameUtils";
 
 export class AFrameObjViewNavProvider implements Provider {
   id: string;
@@ -9,6 +10,7 @@ export class AFrameObjViewNavProvider implements Provider {
   providerFeatures: string[];
   renderingEngine: string;
 
+  // ----- Constructor ----- \\
   constructor(info: Provider) {
     this.id = info.id;
     this.name = info.name;
@@ -16,24 +18,9 @@ export class AFrameObjViewNavProvider implements Provider {
     this.renderingEngine = info.renderingEngine;
   }
 
+  // ----- Visual Methods ----- \\
   renderModel(model: Model) {
-    AFRAME.registerComponent('position-setter', {
-      init: function () {
-        this.el.addEventListener('model-loaded', () => {
-          // compute the box that contains the model
-          const modelAsAny = <any> document.getElementById("model");
-          const box = new THREE.Box3().setFromObject(modelAsAny.object3D);
-          const boxSizes = box.getSize(new THREE.Vector3());
-
-          // compute the max size of the box (x, y, z)
-          // it will be used to set model position
-          const maxBoxSize = Math.max(boxSizes.x, boxSizes.y, boxSizes.z);
-
-          let model = document.getElementById("model");
-          model.setAttribute("position", "0 " + (-0.3 * maxBoxSize) + " -" + 1.2 * maxBoxSize);
-        })
-      }
-    });
+    AFrameUtils.registerPositionSetter();
 
     let renderingArea = document.getElementById('rendering-area');
     renderingArea.innerHTML = `

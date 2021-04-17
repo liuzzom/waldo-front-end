@@ -107,7 +107,6 @@ export class HtmlLeafletMarkProvider implements Provider{
   }
 
   // ----- Visual Methods ----- \\
-
   showPointer(pointer: Pointer){
     const position = L.latLng(pointer.position);
     // show the pointer and register the click handler

@@ -1,7 +1,7 @@
 import {Provider} from "../../../../domain-model/Provider";
 import {Model} from "../../../../domain-model/Model";
 import * as THREE from "three";
-import {ThreejsUtils} from "../ThreejsUtils";
+import {ThreejsUtils} from "../../ThreejsUtils";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import {THREEx} from './threex.domevents.js';
 import {PointersService} from "../../../../services/pointers.service";

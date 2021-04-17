@@ -2,7 +2,7 @@ import {Provider} from "../../../../domain-model/Provider";
 import {Model} from "../../../../domain-model/Model";
 
 import * as THREE from 'three';
-import {ThreejsUtils} from "../ThreejsUtils";
+import {ThreejsUtils} from "../../ThreejsUtils";
 
 export class ThreejsObjViewProvider implements Provider {
   id: string;
@@ -10,6 +10,7 @@ export class ThreejsObjViewProvider implements Provider {
   providerFeatures: string[];
   renderingEngine: string;
 
+  // ----- Constructor ----- \\
   constructor(info: Provider) {
     this.id = info.id;
     this.name = info.name;
@@ -17,6 +18,7 @@ export class ThreejsObjViewProvider implements Provider {
     this.renderingEngine = info.renderingEngine;
   }
 
+  // ----- Methods ----- \\
   private createChildCanvas(selector: string) {
     let container = document.querySelector(selector);
 
@@ -30,7 +32,6 @@ export class ThreejsObjViewProvider implements Provider {
     container.appendChild(canvas);
     return canvas;
   }
-
 
   renderModel(model: Model) {
     const objPath = model.sources[0];

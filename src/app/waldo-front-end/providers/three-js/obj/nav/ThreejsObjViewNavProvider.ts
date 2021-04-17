@@ -3,7 +3,7 @@ import {Model} from "../../../../domain-model/Model";
 
 import * as THREE from 'three';
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
-import {ThreejsUtils} from "../ThreejsUtils";
+import {ThreejsUtils} from "../../ThreejsUtils";
 
 export class ThreejsObjViewNavProvider implements Provider {
   id: string;
