@@ -1,5 +1,6 @@
 import {Model} from "./Model";
 import {PointersService} from "../services/pointers.service";
+import {Pointer} from "./Pointer";
 
 export interface Provider {
   // properties
@@ -14,4 +15,6 @@ export interface Provider {
   renderModel(model: Model): void;
 
   setPointerService?(pointersService: PointersService): void;
+
+  setPointerTrigger?(value: boolean): void;
 }

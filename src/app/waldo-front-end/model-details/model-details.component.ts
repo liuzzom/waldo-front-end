@@ -17,8 +17,10 @@ import {PointersService} from "../services/pointers.service";
   styleUrls: ['./model-details.component.css']
 })
 export class ModelDetailsComponent implements OnInit {
+  // model to show and manage
   model: Model = this.emptyModel();
 
+  // edit flags
   editModelMode = false;
   editPointerMode = false;
   pointerTrigger = false;
@@ -55,17 +57,16 @@ export class ModelDetailsComponent implements OnInit {
 
   activatePointerTrigger(){
     this.pointerTrigger = true;
-    this.provider.pointerTrigger = true;
+    this.provider.setPointerTrigger(true);
   }
 
   deactivatePointerTrigger() {
     this.pointerTrigger = false;
-    this.provider.pointerTrigger = false;
+    this.provider.setPointerTrigger(false);
   }
 
   startEditPointerMode(value: string) {
     this.oldPointerMessage = value;
-    console.log(this.oldPointerMessage);
 
     this.toggleEditPointerMode(true);
   }

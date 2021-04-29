@@ -11,6 +11,9 @@ export class ThreejsGltfViewNavMarkProvider implements Provider{
   providerFeatures: string[];
   renderingEngine: string;
 
+  // state variable used to add into the map
+  public pointerTrigger: boolean = false;
+  public selectedPointerId: string = null;
   pointersService: PointersService;
 
   // ----- Constructor ----- \\
@@ -24,6 +27,10 @@ export class ThreejsGltfViewNavMarkProvider implements Provider{
   // ----- Method ----- \\
   public setPointerService(service: PointersService){
     this.pointersService = service;
+  }
+
+  public setPointerTrigger(value: boolean) {
+    this.pointerTrigger = value;
   }
 
   // ----- Visual Methods ----- \\

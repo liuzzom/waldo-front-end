@@ -1,121 +1,6 @@
 {
   "pointers": [
     {
-      "id": "d08643b0-88a8-405c-8941-0ce133cf03bd",
-      "position": [
-        0.142,
-        7.834,
-        1.379
-      ],
-      "message": "message from pointer 1",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
-      "id": "8616f76-ed15-46e7-9f9a-496c056d2de4",
-      "position": [
-        -0.489,
-        6.665,
-        1.439
-      ],
-      "message": "message from pointer 2",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
-      "id": "425c9fb1-9d86-4694-881c-f8f186f5ae93",
-      "position": [
-        2.332,
-        9.524,
-        1.4
-      ],
-      "message": "",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
-      "id": "2c47b8a3-4d3c-446c-ba07-556576c831d6",
-      "position": [
-        2.44,
-        7.637,
-        -2.898
-      ],
-      "message": "",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
-      "id": "d64a1e49-58a2-4892-8df3-eb7c12b4014e",
-      "position": [
-        0.66,
-        3.159,
-        1.366
-      ],
-      "message": "message from pointer 5",
-      "uploaded": "2021-03-17T09:13:07.936Z",
-      "lastModified": "2021-03-17T09:13:07.936Z",
-      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
-    },
-    {
-      "id": "9e591d94-3697-4ed4-bc9c-a48ec88c3042",
-      "position": [
-        895.6395988621972,
-        1096.011505507956
-      ],
-      "message": "",
-      "uploaded": "2021-04-07T15:53:29.110Z",
-      "lastModified": "2021-04-07T15:53:29.110Z",
-      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
-    },
-    {
-      "id": "76de5dd6-1ff0-45cd-b16a-c4b465198e1c",
-      "position": [
-        1582.0526545273342,
-        1207.984088127295
-      ],
-      "message": "",
-      "uploaded": "2021-04-07T15:53:32.192Z",
-      "lastModified": "2021-04-07T15:53:32.192Z",
-      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
-    },
-    {
-      "id": "5d85f7d7-44ed-4e95-965c-b8b4ed3d8caa",
-      "position": [
-        1526.0189356975272,
-        408.17992656058755
-      ],
-      "message": "",
-      "uploaded": "2021-04-07T15:53:34.972Z",
-      "lastModified": "2021-04-07T15:53:34.972Z",
-      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
-    },
-    {
-      "id": "08df19de-37c8-483b-a9ef-e0555be2232c",
-      "position": [
-        1139.7865166206425,
-        2035.4557996934082
-      ],
-      "message": "",
-      "uploaded": "2021-04-08T14:02:31.283Z",
-      "lastModified": "2021-04-08T14:02:31.283Z",
-      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
-    },
-    {
-      "id": "4feb020d-63c1-41bc-8491-19d14c295307",
-      "position": [
-        1179.810601499076,
-        1183.0204394481348
-      ],
-      "message": "",
-      "uploaded": "2021-04-08T14:18:05.306Z",
-      "lastModified": "2021-04-08T14:18:05.306Z",
-      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
-    },
-    {
       "id": "d5361583-6173-4176-b651-43792533a19f",
       "position": [
         1475.9888295994851,
@@ -124,6 +9,97 @@
       "message": "Message added using Postman and Waldo and Waldo again",
       "uploaded": "2021-04-08T14:19:02.120Z",
       "lastModified": "2021-04-08T14:19:02.120Z",
+      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
+    },
+    {
+      "id": "becf2696-1ccc-428c-9402-6afbb075b9df",
+      "position": [
+        2.33497177295763,
+        9.702193952128143,
+        1.3979215196417023
+      ],
+      "message": "",
+      "uploaded": "2021-04-16T17:30:57.233Z",
+      "lastModified": "2021-04-16T17:30:57.233Z",
+      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
+    },
+    {
+      "id": "a01084a0-855d-4b69-87b0-a5880fe79de4",
+      "position": [
+        2.4203500014042874,
+        3.5848381309725337,
+        -0.873216543992605
+      ],
+      "message": "",
+      "uploaded": "2021-04-16T17:48:38.052Z",
+      "lastModified": "2021-04-16T17:48:38.052Z",
+      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
+    },
+    {
+      "id": "01810e4b-eb06-445b-a7e0-00bde610f9f5",
+      "position": [
+        -0.14778958200975836,
+        7.644919837840369,
+        1.7616911328337217
+      ],
+      "message": "",
+      "uploaded": "2021-04-19T16:33:29.610Z",
+      "lastModified": "2021-04-19T16:33:29.610Z",
+      "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
+    },
+    {
+      "id": "851bbf17-6c17-4db5-a41e-86b4d4e371b1",
+      "position": [
+        1370.3397138827322,
+        1132.0106820410015
+      ],
+      "message": "",
+      "uploaded": "2021-04-19T18:31:10.177Z",
+      "lastModified": "2021-04-19T18:31:10.177Z",
+      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
+    },
+    {
+      "id": "1ea8abbb-5c2d-42b8-bfaf-b640a43285ee",
+      "position": [
+        1334.3614749143662,
+        785.944863108913
+      ],
+      "message": "",
+      "uploaded": "2021-04-19T18:32:47.547Z",
+      "lastModified": "2021-04-19T18:32:47.547Z",
+      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
+    },
+    {
+      "id": "26d3f4fa-308d-46c0-8f07-d41956a847a6",
+      "position": [
+        1634.180132984082,
+        1360.054054054054
+      ],
+      "message": "",
+      "uploaded": "2021-04-19T18:34:25.555Z",
+      "lastModified": "2021-04-19T18:34:25.555Z",
+      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
+    },
+    {
+      "id": "c2d4201e-49ec-4a43-8533-37e52bd9c0e9",
+      "position": [
+        1132.4835784807574,
+        1340.031607135018
+      ],
+      "message": "",
+      "uploaded": "2021-04-27T12:56:24.546Z",
+      "lastModified": "2021-04-27T12:56:24.546Z",
+      "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
+    },
+    {
+      "id": "c62183de-8b5f-4162-871d-fcf0b0c5874a",
+      "position": [
+        1136.176876132553,
+        1772.1324280425526
+      ],
+      "message": "",
+      "uploaded": "2021-04-27T18:02:52.910Z",
+      "lastModified": "2021-04-27T18:02:52.910Z",
       "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
     }
   ],
@@ -164,7 +140,7 @@
         "34f51504-8326-421c-b0f1-383ebe88fa93",
         "29b8afd0-43ab-42ba-bc8b-c184624f2e49"
       ],
-      "defaultProvider": "55800a26-fdc3-47d4-9c8e-b3d609646e1f"
+      "defaultProvider": "29b8afd0-43ab-42ba-bc8b-c184624f2e49"
     },
     {
       "id": "c94fcdc6-031d-4a67-814f-8e3ae0cc2910",
@@ -190,6 +166,9 @@
       "uploaded": "2021-03-02T18:11:19.772Z",
       "lastModified": "2021-03-02T18:11:19.772Z",
       "supportedProviders": [
+        "0fc10eae-66f5-49e4-a593-9b38af78da0c",
+        "72405b54-4d1f-4758-aa41-43009719aed8",
+        "7a65b86b-2a88-4964-8c6f-2519f90e479b",
         "87298a88-5b64-4ec6-a69e-a01297b7a764",
         "ac1cd20e-4ce2-4fd5-ad47-dd367566809b",
         "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb"

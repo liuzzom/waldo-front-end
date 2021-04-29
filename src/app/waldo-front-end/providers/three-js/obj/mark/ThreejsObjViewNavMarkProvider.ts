@@ -37,6 +37,10 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
     this.pointersService = service;
   }
 
+  public setPointerTrigger(value: boolean) {
+    this.pointerTrigger = value;
+  }
+
   // ----- Handlers ----- \\
   private onModelClick(event, model: Model, scene: THREE.Scene): void {
     let point = event.intersect.point;
@@ -72,7 +76,7 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
   }
 
   // ----- Visual Methods ----- \\
-  private showPointer(pointer: Pointer, scene: THREE.Scene) {
+  showPointer(pointer: Pointer, scene: THREE.Scene) {
     console.log(scene.children);
 
     // FIX: hard-coded division value

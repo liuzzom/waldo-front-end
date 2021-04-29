@@ -5,7 +5,7 @@ import {v4 as uuidv4} from 'uuid';
 import {PointersService} from "../../../services/pointers.service";
 import {Pointer} from "../../../domain-model/Pointer";
 
-// Define the icon
+// Define the pointer icon
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
@@ -29,7 +29,8 @@ export class HtmlLeafletMarkProvider implements Provider{
 
   private map;
   private mapBounds;
-  // state variable used to add into the map
+
+  // state variables used to manage pointers into the map
   public pointerTrigger: boolean = false;
   public selectedPointerId: string = null;
   private pointersService: PointersService;
@@ -48,13 +49,16 @@ export class HtmlLeafletMarkProvider implements Provider{
     this.pointersService = service;
   }
 
+  public setPointerTrigger(value: boolean) {
+    this.pointerTrigger = value;
+  }
+
   // ----- Handlers ----- \\
 
   // Map Click Handler
   onMapClick(event, model: Model){
     document.getElementById('pointer-message').innerText = '';
     this.selectedPointerId = null;
-    console.log(this.selectedPointerId);
     
     // Get click position
     const lat = event.latlng["lat"];
@@ -62,13 +66,14 @@ export class HtmlLeafletMarkProvider implements Provider{
 
     if(!this.pointerTrigger){
       // trigger is not active
+      console.log('INFO: trigger is not active');
       return;
     }
 
     if((lat >= this.mapBounds[0][0] && lat <= this.mapBounds[1][0]) && (lng >= this.mapBounds[0][1] && lng <= this.mapBounds[1][1])){
       // valid point
+      console.log('INFO: valid point');
       const pointer = L.latLng([lat, lng]);
-      console.log(pointer);
 
       // Prepare data for new Pointer
       const id: string = uuidv4();
@@ -90,7 +95,8 @@ export class HtmlLeafletMarkProvider implements Provider{
 
       // save pointer into the back-end
       this.pointersService.loadPointer(newPointer).subscribe((pointer) => {
-        this.showPointer(pointer);
+        this.showPointer(pointer); // add the pointer into the map
+        this.setPointerTrigger(false);
       });
       return;
     }
