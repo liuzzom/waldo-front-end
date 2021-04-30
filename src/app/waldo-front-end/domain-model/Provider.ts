@@ -1,6 +1,5 @@
 import {Model} from "./Model";
 import {PointersService} from "../services/pointers.service";
-import {Pointer} from "./Pointer";
 
 export interface Provider {
   // properties

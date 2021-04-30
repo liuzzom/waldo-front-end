@@ -1,6 +1,5 @@
 import {Provider} from "../domain-model/Provider";
 import {HtmlSimpleProvider} from "./2d/view/HtmlSimpleProvider";
-import {WebGlObjViewProvider} from "./webgl/view/WebGlObjViewProvider";
 import {ThreejsObjViewNavMarkProvider} from "./three-js/obj/mark/ThreejsObjViewNavMarkProvider";
 import {ThreejsObjViewProvider} from "./three-js/obj/view/ThreejsObjViewProvider";
 import {ThreejsObjViewNavProvider} from "./three-js/obj/nav/ThreejsObjViewNavProvider";
@@ -18,14 +17,14 @@ import {AFrameGltfViewNavMarkProvider} from "./a-frame/gltf/mark/AFrameGltfViewN
 export class ProviderUtils {
   private static supportedFormats = [
     "obj",
-    "gltf"
+    "gltf",
+    "png"
   ]
 
   private static supportedProviders = {
     "obj": {
       default: "31435989-d23e-401a-b1a7-44b4ae9889fb",
       supported: [
-        "b4c31c82-b345-4c7d-bccc-22b6170153af",
         "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
         "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
         "31435989-d23e-401a-b1a7-44b4ae9889fb",
@@ -41,6 +40,10 @@ export class ProviderUtils {
         "ac1cd20e-4ce2-4fd5-ad47-dd367566809b",
         "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb",
       ]
+    },
+    "png": {
+      default: "b14bffff-ad8d-4fec-99fe-8e753bad0dff",
+      supported: ["da484bd9-25d9-43cc-a74d-115b2bf3337d"]
     }
   }
 
@@ -64,8 +67,6 @@ export class ProviderUtils {
         return new HtmlSimpleProvider(providerInfo);
       case "b14bffff-ad8d-4fec-99fe-8e753bad0dff":
         return new HtmlLeafletMarkProvider(providerInfo);
-      case "b4c31c82-b345-4c7d-bccc-22b6170153af":
-        return new WebGlObjViewProvider(providerInfo);
       case "8d93f4c5-c214-453e-b876-d1d6463ca1f8":
         return new ThreejsObjViewProvider(providerInfo);
       case "55800a26-fdc3-47d4-9c8e-b3d609646e1f":
