@@ -77,7 +77,6 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
 
   // ----- Visual Methods ----- \\
   showPointer(pointer: Pointer, scene: THREE.Scene) {
-    console.log(scene.children);
 
     // FIX: hard-coded division value
     const geometry = new THREE.SphereGeometry(this.minBoxSize/25, 32, 32);
@@ -88,7 +87,6 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
     circle.position.z = pointer.position[2];
 
     scene.add(circle);
-    console.log(scene.children);
   }
 
   private createChildCanvas(selector: string) {
@@ -161,13 +159,15 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
       this.onModelClick(event, model, scene);
     });
 
-    // get pointers from back-end and render them
-    this.pointersService.getPointersByModelId(model.id).subscribe(pointers => {
-      console.log(pointers.length);
-      for(let pointer of pointers){
-        this.showPointer(pointer, scene); // TODO: vedere perché sono nella scena ma non vengono renderizzate
-      }
-    });
+    setTimeout(() => {
+      // get pointers from back-end and render them
+      this.pointersService.getPointersByModelId(model.id).subscribe(pointers => {
+        console.log(pointers.length);
+        for(let pointer of pointers){
+          this.showPointer(pointer, scene);
+        }
+      });
+    }, 125);
 
     function render() {
       canvas.width = container.clientWidth;

@@ -96,6 +96,7 @@ export class ModelDetailsComponent implements OnInit {
 
   // Render the model into the rendering area
   renderModel(): void {
+    console.log('render model');
     const id = this.route.snapshot.paramMap.get('id');
 
     this.modelsService.getModel(id).subscribe(model => {
