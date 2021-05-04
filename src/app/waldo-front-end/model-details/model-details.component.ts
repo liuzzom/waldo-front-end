@@ -67,7 +67,7 @@ export class ModelDetailsComponent implements OnInit {
 
   deactivatePointerTrigger() {
     if(this.pointerSupport){
-      console.log("Activate Pointer Trigger");
+      console.log("Deactivate Pointer Trigger");
       this.pointerTrigger = false;
       this.provider.setPointerTrigger(false);
     } else {

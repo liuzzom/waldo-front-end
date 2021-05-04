@@ -24,6 +24,9 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
   public selectedPointerId: string = null;
   private pointersService: PointersService;
 
+  // used to register click handlers
+  private domEvents: any = null;
+
   // ----- Constructor ----- \\
   constructor(info: Provider) {
     this.id = info.id;
@@ -43,6 +46,7 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
 
   // ----- Handlers ----- \\
   private onModelClick(event, model: Model, scene: THREE.Scene): void {
+    console.log('click on model');
     let point = event.intersect.point;
 
     if (this.pointerTrigger) {
@@ -81,12 +85,22 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
     // FIX: hard-coded division value
     const geometry = new THREE.SphereGeometry(this.minBoxSize/25, 32, 32);
     const material = new THREE.MeshBasicMaterial({ color: 0xcc0000 });
-    const circle = new THREE.Mesh(geometry, material);
-    circle.position.x = pointer.position[0];
-    circle.position.y = pointer.position[1];
-    circle.position.z = pointer.position[2];
+    const sphere = new THREE.Mesh(geometry, material);
+    sphere.position.x = pointer.position[0];
+    sphere.position.y = pointer.position[1];
+    sphere.position.z = pointer.position[2];
 
-    scene.add(circle);
+    scene.add(sphere);
+
+    this.domEvents.addEventListener(sphere, 'click', () => {
+      console.log('click on pointer');
+      this.showPointerMessage(pointer);
+    })
+  }
+
+  showPointerMessage(pointer: Pointer){
+    this.selectedPointerId = pointer.id;
+    console.log(this.selectedPointerId);
   }
 
   private createChildCanvas(selector: string) {
@@ -120,6 +134,9 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
     let scene = new THREE.Scene();
     scene.background = new THREE.Color('black');
 
+    // Click Handler
+    this.domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+
     ThreejsUtils.setHemisphereLight(scene);
     ThreejsUtils.setDirectionalLight(scene);
 
@@ -148,21 +165,18 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
 
         // set the camera to frame the box
         ThreejsUtils.frameArea(boxSize * 1.2, boxSize, boxCenter, camera);
+
+        // It seems that mouseup and mousedown events are not detected
+        this.domEvents.addEventListener(root, 'click', (event) => {
+          this.onModelClick(event, model, scene);
+        });
       });
-    });
-
-    // Click Handler
-    let domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-
-    // It seems that mouseup and mousedown events are not detected
-    domEvents.addEventListener(scene, 'click', (event) => {
-      this.onModelClick(event, model, scene);
     });
 
     setTimeout(() => {
       // get pointers from back-end and render them
       this.pointersService.getPointersByModelId(model.id).subscribe(pointers => {
-        console.log(pointers.length);
+        // console.log(pointers.length);
         for(let pointer of pointers){
           this.showPointer(pointer, scene);
         }
