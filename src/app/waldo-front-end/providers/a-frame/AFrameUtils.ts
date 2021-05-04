@@ -15,8 +15,16 @@ export class AFrameUtils{
           // it will be used to set model position
           const maxBoxSize = Math.max(boxSizes.x, boxSizes.y, boxSizes.z);
 
-          let model = document.getElementById("model");
-          model.setAttribute("position", "0 " + (-0.3 * maxBoxSize) + " -" + 1.2 * maxBoxSize);
+          let camera = document.getElementById("camera");
+
+          // compute camera position according to model size
+          let x = 0;
+          let y = 0.3 * maxBoxSize;
+          let z = 1.2 * maxBoxSize;
+          let positionString = `${x} ${y} ${z}`;
+
+          // console.log(positionString);
+          camera.setAttribute("position", positionString);
         })
       }
     });

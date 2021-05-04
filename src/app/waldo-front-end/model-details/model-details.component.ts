@@ -56,13 +56,23 @@ export class ModelDetailsComponent implements OnInit {
   }
 
   activatePointerTrigger(){
-    this.pointerTrigger = true;
-    this.provider.setPointerTrigger(true);
+    if(this.pointerSupport){
+      console.log("Activate Pointer Trigger");
+      this.pointerTrigger = true;
+      this.provider.setPointerTrigger(true);
+    } else {
+      console.log("No Pointer Support");
+    }
   }
 
   deactivatePointerTrigger() {
-    this.pointerTrigger = false;
-    this.provider.setPointerTrigger(false);
+    if(this.pointerSupport){
+      console.log("Activate Pointer Trigger");
+      this.pointerTrigger = false;
+      this.provider.setPointerTrigger(false);
+    } else {
+      console.log("No Pointer Support");
+    }
   }
 
   startEditPointerMode(value: string) {
@@ -102,8 +112,6 @@ export class ModelDetailsComponent implements OnInit {
     this.modelsService.getModel(id).subscribe(model => {
       this.model = model;
       this.selectedProvider = model.defaultProvider;
-
-      const testId = "34f51504-8326-421c-b0f1-383ebe88fa93";
 
       this.providersService.getProvider(this.model.defaultProvider).subscribe(providerInfo => {
         this.provider = ProviderUtils.createProvider(providerInfo);

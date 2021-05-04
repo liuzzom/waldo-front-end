@@ -79,7 +79,7 @@ export class AFrameObjViewNavMarkProvider implements Provider {
     let pointString = pointer.position[0].toFixed(3) + " "
       + pointer.position[1].toFixed(3) + " "
       + pointer.position[2].toFixed(3);
-    // console.log(pointString);
+    console.log(pointString);
 
     // compute the box that contains the model
     let modelRef = <any>document.getElementById("model");
@@ -160,7 +160,7 @@ export class AFrameObjViewNavMarkProvider implements Provider {
         </a-obj-model>
 
         <!-- Camera -->
-        <a-camera wasd-controls="fly:true" position="0 0 0"></a-camera>
+        <a-camera id="camera" wasd-controls="fly:true"></a-camera>
 
         <!-- Environment elements-->
         <a-sky id="sky" color="#000000"></a-sky>

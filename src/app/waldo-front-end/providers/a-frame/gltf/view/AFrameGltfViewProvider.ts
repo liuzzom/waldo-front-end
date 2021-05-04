@@ -32,7 +32,7 @@ export class AFrameGltfViewProvider implements Provider{
         <a-gltf-model id="model" class="clickable" src="#object-ref" click-handler position-setter></a-gltf-model>
 
         <!-- Camera -->
-        <a-camera look-controls="enabled: false" wasd-controls-enabled="false" position="0 0 0"></a-camera>
+        <a-camera id="camera" look-controls="enabled: false" wasd-controls-enabled="false"></a-camera>
 
         <!-- Environment elements-->
         <a-sky id="sky" color="#000000"></a-sky>

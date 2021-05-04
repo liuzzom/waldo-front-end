@@ -32,7 +32,7 @@ export class AFrameGltfViewNavProvider implements Provider{
         <a-gltf-model id="model" class="clickable" src="#object-ref" click-handler position-setter></a-gltf-model>
 
         <!-- Camera -->
-        <a-camera wasd-controls="fly:true" position="0 0 0"></a-camera>
+        <a-camera id="camera" wasd-controls="fly:true"></a-camera>
 
         <!-- Environment elements-->
         <a-sky id="sky" color="#000000"></a-sky>

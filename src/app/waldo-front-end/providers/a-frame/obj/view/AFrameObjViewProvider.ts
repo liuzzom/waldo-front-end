@@ -35,7 +35,7 @@ export class AFrameObjViewProvider implements Provider {
         <a-obj-model id="model" class="clickable" src="#object-ref" mtl="#material-ref" position-setter></a-obj-model>
 
         <!-- Camera -->
-        <a-camera look-controls="enabled: false" wasd-controls-enabled="false" position="0 0 0"></a-camera>
+        <a-camera id="camera" look-controls="enabled: false" wasd-controls-enabled="false"></a-camera>
 
         <!-- Environment elements-->
         <a-sky id="sky" color="#000000"></a-sky>

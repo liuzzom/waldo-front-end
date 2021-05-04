@@ -16,7 +16,7 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
   // state variable used to add into the map
   public pointerTrigger: boolean = false;
   public selectedPointerId: string = null;
-  pointersService: PointersService;
+  private pointersService: PointersService;
 
   // ----- Constructor ----- \\
   constructor(info: Provider) {
@@ -27,11 +27,11 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
   }
 
   // ----- Method ----- \\
-  public setPointerService(service: PointersService){
-    this.pointersService = service;
+  public setPointerService(pointersService: PointersService) {
+    this.pointersService = pointersService;
   }
 
-  public setPointerTrigger(value: boolean){
+  public setPointerTrigger(value: boolean) {
     this.pointerTrigger = value;
   }
 
@@ -79,17 +79,18 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
     let pointString = pointer.position[0].toFixed(3) + " "
       + pointer.position[1].toFixed(3) + " "
       + pointer.position[2].toFixed(3);
-    console.log(pointString);
 
     // compute the box that contains the model
     let modelRef = <any>document.getElementById("model");
     const box = new THREE.Box3().setFromObject(modelRef.object3D);
     const boxSizes = box.getSize(new THREE.Vector3());
+    console.log(boxSizes)
 
     // compute the min size of the box (x, y, z)
     // it will be used to set pointer radius
     let minBoxSize = Math.min(boxSizes.x, boxSizes.y, boxSizes.z);
     let radius = minBoxSize / 30;
+    console.log(radius)
 
     let scene = document.getElementById("scene");
     let marker = document.createElement("a-sphere");
@@ -156,11 +157,19 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
         <a-gltf-model id="model" class="clickable" src="#object-ref" position-setter click-handler></a-gltf-model>
 
         <!-- Camera -->
-        <a-camera wasd-controls="fly:true" position="0 0 0"></a-camera>
+        <a-camera id="camera" wasd-controls="fly:true"></a-camera>
 
         <!-- Environment elements-->
         <a-sky id="sky" color="#000000"></a-sky>
       </a-scene>
     `;
+
+    setTimeout(() => {
+      this.pointersService.getPointersByModelId(model.id).subscribe(pointers => {
+        for(let pointer of pointers){
+          this.showPointer(pointer);
+        }
+      });
+    }, 400);
   }
 }

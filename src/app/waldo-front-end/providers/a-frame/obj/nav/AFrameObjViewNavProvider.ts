@@ -32,11 +32,10 @@ export class AFrameObjViewNavProvider implements Provider {
         </a-assets>
 
         <!-- Using the asset management system. -->
-        <a-obj-model id="model" class="clickable" src="#object-ref" mtl="#material-ref" position-setter>
-        </a-obj-model>
+        <a-obj-model id="model" class="clickable" src="#object-ref" mtl="#material-ref" position-setter></a-obj-model>
 
         <!-- Camera -->
-        <a-camera wasd-controls="fly:true" position="0 0 0"></a-camera>
+        <a-camera id="camera" wasd-controls="fly:true"></a-camera>
 
         <!-- Environment elements-->
         <a-sky id="sky" color="#000000"></a-sky>
