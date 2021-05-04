@@ -71,7 +71,7 @@ export class ModelsService {
     const url = `${this.modelsUrl}/${id}`;
 
     return this.http.patch<Model>(url, newData, this.httpOptions).pipe(
-      tap((model: Model) => console.log(`edited hero with id: ${model.id}`)),
+      tap((model: Model) => console.log(`edited model with id: ${model.id}`)),
       catchError(this.handleError<Model>('editModel'))
     );
   }
