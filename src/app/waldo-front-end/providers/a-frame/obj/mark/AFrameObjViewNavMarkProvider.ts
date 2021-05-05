@@ -39,6 +39,9 @@ export class AFrameObjViewNavMarkProvider implements Provider {
 
   // click Handler
   clickHandler(event, model: Model){
+    document.getElementById('pointer-message').innerText = '';
+    this.selectedPointerId = null;
+
     let point = event.detail.intersection.point
     let pointString = point.x.toFixed(3) + " " + point.y.toFixed(3) + " " + point.z.toFixed(3);
 
@@ -86,7 +89,7 @@ export class AFrameObjViewNavMarkProvider implements Provider {
     // compute the min size of the box (x, y, z)
     // it will be used to set pointer radius
     let minBoxSize = Math.min(boxSizes.x, boxSizes.y, boxSizes.z);
-    let radius = minBoxSize / 30;
+    let radius = minBoxSize / 25;
 
     let scene = document.getElementById("scene");
     let marker = document.createElement("a-sphere");
@@ -96,7 +99,16 @@ export class AFrameObjViewNavMarkProvider implements Provider {
     marker.setAttribute("radius", `${radius}`);
     marker.setAttribute("color", "#CC0000");
     marker.setAttribute("position", pointString);
+
+    // TODO: vedere perché non rileva il click, nonostante sia registrato e marker.click() funziona
+    marker.addEventListener('click', () => this.showPointerMessage(pointer));
   }
+
+  showPointerMessage(pointer: Pointer){
+    this.selectedPointerId = pointer.id;
+    document.getElementById('pointer-message').innerText = `${pointer.message}`;
+  }
+
 
   // ----- Visual Methods ----- \\
   renderModel(model: Model) {
@@ -167,6 +179,6 @@ export class AFrameObjViewNavMarkProvider implements Provider {
           this.showPointer(pointer);
         }
       });
-    }, 125);
+    }, 300);
   }
 }
