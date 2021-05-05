@@ -47,6 +47,9 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
   // ----- Handlers ----- \\
   private onModelClick(event, model: Model, scene: THREE.Scene): void {
     console.log('click on model');
+    document.getElementById('pointer-message').innerText = '';
+    this.selectedPointerId = null;
+
     let point = event.intersect.point;
 
     if (this.pointerTrigger) {
@@ -99,8 +102,10 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
   }
 
   showPointerMessage(pointer: Pointer){
+    console.log('click on pointer');
     this.selectedPointerId = pointer.id;
     console.log(this.selectedPointerId);
+    document.getElementById('pointer-message').innerText = `${pointer.message}`;
   }
 
   private createChildCanvas(selector: string) {
@@ -134,7 +139,7 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
     let scene = new THREE.Scene();
     scene.background = new THREE.Color('black');
 
-    // Click Handler
+    // Click Handler init
     this.domEvents = new THREEx.DomEvents(camera, renderer.domElement);
 
     ThreejsUtils.setHemisphereLight(scene);
