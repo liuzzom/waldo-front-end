@@ -23,7 +23,6 @@ export class AFrameUtils{
           let z = 1.2 * maxBoxSize;
           let positionString = `${x} ${y} ${z}`;
 
-          // console.log(positionString);
           camera.setAttribute("position", positionString);
         })
       }

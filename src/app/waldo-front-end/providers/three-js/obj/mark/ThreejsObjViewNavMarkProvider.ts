@@ -46,7 +46,6 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
 
   // ----- Handlers ----- \\
   private onModelClick(event, model: Model, scene: THREE.Scene): void {
-    console.log('click on model');
     document.getElementById('pointer-message').innerText = '';
     this.selectedPointerId = null;
 
@@ -96,15 +95,12 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
     scene.add(sphere);
 
     this.domEvents.addEventListener(sphere, 'click', () => {
-      console.log('click on pointer');
       this.showPointerMessage(pointer);
     })
   }
 
   showPointerMessage(pointer: Pointer){
-    console.log('click on pointer');
     this.selectedPointerId = pointer.id;
-    console.log(this.selectedPointerId);
     document.getElementById('pointer-message').innerText = `${pointer.message}`;
   }
 
@@ -181,7 +177,6 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
     setTimeout(() => {
       // get pointers from back-end and render them
       this.pointersService.getPointersByModelId(model.id).subscribe(pointers => {
-        // console.log(pointers.length);
         for(let pointer of pointers){
           this.showPointer(pointer, scene);
         }

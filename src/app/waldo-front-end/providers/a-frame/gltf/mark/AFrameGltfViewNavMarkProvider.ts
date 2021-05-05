@@ -41,8 +41,6 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
   clickHandler(event, model: Model){
     let point = event.detail.intersection.point
     let pointString = point.x.toFixed(3) + " " + point.y.toFixed(3) + " " + point.z.toFixed(3);
-    console.log(`INFO: Click at: " + ${pointString}`);
-    console.log(`TRIGGER: ${this.pointerTrigger}`);
 
     if (!this.pointerTrigger) return;
 
@@ -84,13 +82,11 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
     let modelRef = <any>document.getElementById("model");
     const box = new THREE.Box3().setFromObject(modelRef.object3D);
     const boxSizes = box.getSize(new THREE.Vector3());
-    console.log(boxSizes)
 
     // compute the min size of the box (x, y, z)
     // it will be used to set pointer radius
     let minBoxSize = Math.min(boxSizes.x, boxSizes.y, boxSizes.z);
     let radius = minBoxSize / 30;
-    console.log(radius)
 
     let scene = document.getElementById("scene");
     let marker = document.createElement("a-sphere");

@@ -57,7 +57,6 @@ export class ModelDetailsComponent implements OnInit {
 
   activatePointerTrigger(){
     if(this.pointerSupport){
-      console.log("Activate Pointer Trigger");
       this.pointerTrigger = true;
       this.provider.setPointerTrigger(true);
     } else {
@@ -67,7 +66,6 @@ export class ModelDetailsComponent implements OnInit {
 
   deactivatePointerTrigger() {
     if(this.pointerSupport){
-      console.log("Deactivate Pointer Trigger");
       this.pointerTrigger = false;
       this.provider.setPointerTrigger(false);
     } else {
@@ -89,11 +87,13 @@ export class ModelDetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(response => {
       if(response){
-        console.log(`${this.provider.selectedPointerId} selected to deletion`);
         // delete the pointer
-        this.pointersService.deletePointer(this.provider.selectedPointerId).subscribe(res => console.log(res));
+        this.pointersService.deletePointer(this.provider.selectedPointerId).subscribe(res => {});
+        
         this.toggleEditPointerMode(false);
         this.toggleEditModelMode(false);
+        
+        // reload the page
         location.reload();
       }
     });
@@ -106,7 +106,6 @@ export class ModelDetailsComponent implements OnInit {
 
   // Render the model into the rendering area
   renderModel(): void {
-    console.log('render model');
     const id = this.route.snapshot.paramMap.get('id');
 
     this.modelsService.getModel(id).subscribe(model => {
@@ -192,9 +191,8 @@ export class ModelDetailsComponent implements OnInit {
       return;
     }
 
-    console.log('editing pointer message...');
     // edit the pointer message into the back-end
-    this.pointersService.editPointerMessage(this.provider.selectedPointerId, newMessage).subscribe(res => console.log(res))
+    this.pointersService.editPointerMessage(this.provider.selectedPointerId, newMessage).subscribe(res => {});
     this.toggleEditPointerMode(false);
     location.reload();
   }

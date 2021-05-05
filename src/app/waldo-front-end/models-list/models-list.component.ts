@@ -33,8 +33,6 @@ export class ModelsListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-
       if(result === "true") this.deleteModel(model);
     });
   }

@@ -41,8 +41,6 @@ export class AFrameObjViewNavMarkProvider implements Provider {
   clickHandler(event, model: Model){
     let point = event.detail.intersection.point
     let pointString = point.x.toFixed(3) + " " + point.y.toFixed(3) + " " + point.z.toFixed(3);
-    console.log(`INFO: Click at: " + ${pointString}`);
-    console.log(`TRIGGER: ${this.pointerTrigger}`);
 
     if (!this.pointerTrigger) return;
 
@@ -79,7 +77,6 @@ export class AFrameObjViewNavMarkProvider implements Provider {
     let pointString = pointer.position[0].toFixed(3) + " "
       + pointer.position[1].toFixed(3) + " "
       + pointer.position[2].toFixed(3);
-    console.log(pointString);
 
     // compute the box that contains the model
     let modelRef = <any>document.getElementById("model");
@@ -90,7 +87,6 @@ export class AFrameObjViewNavMarkProvider implements Provider {
     // it will be used to set pointer radius
     let minBoxSize = Math.min(boxSizes.x, boxSizes.y, boxSizes.z);
     let radius = minBoxSize / 30;
-    // console.log(`DEBUG: radius: ${radius}`);
 
     let scene = document.getElementById("scene");
     let marker = document.createElement("a-sphere");
@@ -106,8 +102,6 @@ export class AFrameObjViewNavMarkProvider implements Provider {
   renderModel(model: Model) {
     // position-setter is used to set the model position according to its size
     AFrameUtils.registerPositionSetter();
-
-    console.log('render model');
 
     // reference to the provider itself
     let caller: any = this;

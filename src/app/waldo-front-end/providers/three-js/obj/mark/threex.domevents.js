@@ -257,7 +257,6 @@ THREEx.DomEvents.prototype._bound	= function(eventName, object3d)
 
 THREEx.DomEvents.prototype._onMove	= function(eventName, mouseX, mouseY, origDomEvent)
 {
-//console.log('eventName', eventName, 'boundObjs', this._boundObjs[eventName])
 	// get objects bound to this event
 	var boundObjs	= this._boundObjs[eventName];
 	if( boundObjs === undefined || boundObjs.length === 0 )	return;
@@ -310,7 +309,6 @@ THREEx.DomEvents.prototype._onMove	= function(eventName, mouseX, mouseY, origDom
 
 THREEx.DomEvents.prototype._onEvent	= function(eventName, mouseX, mouseY, origDomEvent)
 {
-	//console.log('eventName', eventName, 'boundObjs', this._boundObjs[eventName])
 	// get objects bound to this event
 	var boundObjs	= this._boundObjs[eventName];
 	if( boundObjs === undefined || boundObjs.length === 0 )	return;

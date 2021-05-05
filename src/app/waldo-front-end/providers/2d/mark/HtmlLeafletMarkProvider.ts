@@ -66,13 +66,11 @@ export class HtmlLeafletMarkProvider implements Provider{
 
     if(!this.pointerTrigger){
       // trigger is not active
-      console.log('INFO: trigger is not active');
       return;
     }
 
     if((lat >= this.mapBounds[0][0] && lat <= this.mapBounds[1][0]) && (lng >= this.mapBounds[0][1] && lng <= this.mapBounds[1][1])){
       // valid point
-      console.log('INFO: valid point');
       const pointer = L.latLng([lat, lng]);
 
       // Prepare data for new Pointer
@@ -108,7 +106,6 @@ export class HtmlLeafletMarkProvider implements Provider{
   // Pointer Click Handler
   showPointerMessage(pointer: Pointer){
     this.selectedPointerId = pointer.id;
-    console.log(this.selectedPointerId);
     document.getElementById('pointer-message').innerText = `${pointer.message}`;
   }
 
