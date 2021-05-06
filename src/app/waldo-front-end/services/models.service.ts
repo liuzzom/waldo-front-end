@@ -21,7 +21,7 @@ export class ModelsService {
   /** GET models from the server */
   getModels(): Observable<Model[]> {
     return this.http.get<Model[]>(this.modelsUrl).pipe(
-      tap(_ => console.log('fetched models')),
+      tap(_ => console.log('Fetched models')),
       catchError(this.handleError<Model[]>('getModels', []))
     );
   }
@@ -30,7 +30,7 @@ export class ModelsService {
   getModel(id: string): Observable<Model> {
     const url = `${this.modelsUrl}/${id}`;
     return this.http.get<Model>(url).pipe(
-      tap(_ => console.log(`fetched model with id: ${id}`)),
+      tap(_ => console.log(`Fetched model with id: ${id}`)),
       catchError(this.handleError<Model>(`getModel id:${id}`))
     );
   }
@@ -40,7 +40,7 @@ export class ModelsService {
     const url = `${this.modelsUrl}/?name=${name}`;
     return this.http.get<Model[]>(url).pipe(
       tap(res => {
-        res.length ? console.log(`found model matching ${name}`) : console.log(`no models matching ${name}`)
+        res.length ? console.log(`Found model matching ${name}`) : console.log(`No models matching ${name}`)
       }),
       catchError(this.handleError<Model[]>('searchByName', []))
     );
@@ -52,7 +52,7 @@ export class ModelsService {
     const url = `${this.modelsUrl}/${id}`;
 
     return this.http.delete<Model>(url, this.httpOptions).pipe(
-      tap(_ => console.log(`deleted model with id: ${id}`)),
+      tap(_ => console.log(`Deleted model with id: ${id}`)),
       catchError(this.handleError<Model>('deleteModel'))
     );
   }
@@ -60,7 +60,7 @@ export class ModelsService {
   /** PUT a model into the server */
   loadModel(newModel: Model) {
     return this.http.post<Model>(this.modelsUrl, newModel, this.httpOptions).pipe(
-      tap((model: Model) => console.log(`loaded model with id: ${model.id}`)),
+      tap((model: Model) => console.log(`Loaded model with id: ${model.id}`)),
       catchError(this.handleError<Model>('loadModel'))
     );
   }
@@ -71,7 +71,7 @@ export class ModelsService {
     const url = `${this.modelsUrl}/${id}`;
 
     return this.http.patch<Model>(url, newData, this.httpOptions).pipe(
-      tap((model: Model) => console.log(`edited model with id: ${model.id}`)),
+      tap((model: Model) => console.log(`Edited model with id: ${model.id}`)),
       catchError(this.handleError<Model>('editModel'))
     );
   }

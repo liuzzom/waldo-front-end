@@ -65,6 +65,7 @@ export class ModelDetailsComponent implements OnInit {
   }
 
   deactivatePointerTrigger() {
+
     if(this.pointerSupport){
       this.pointerTrigger = false;
       this.provider.setPointerTrigger(false);
@@ -185,7 +186,7 @@ export class ModelDetailsComponent implements OnInit {
   // Save edited pointer message into the back-end (via services)
   editPointerMessage(newMessage: string) {
     if (newMessage === this.oldPointerMessage) {
-      console.log('nothing to edit');
+      console.log('Nothing to edit');
       this.toggleEditPointerMode(false);
       location.reload();
       return;

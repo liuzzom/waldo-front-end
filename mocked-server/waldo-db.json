@@ -97,7 +97,7 @@
         9.592336434142211,
         1.3001633517010225
       ],
-      "message": "Messaggio Pala 3",
+      "message": "Messaggio Pala 3 Modificato",
       "uploaded": "2021-05-05T15:34:25.441Z",
       "lastModified": "2021-05-05T15:34:25.441Z",
       "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
@@ -196,7 +196,7 @@
         "ac1cd20e-4ce2-4fd5-ad47-dd367566809b",
         "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb"
       ],
-      "defaultProvider": "7a65b86b-2a88-4964-8c6f-2519f90e479b"
+      "defaultProvider": "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb"
     }
   ],
   "providers": [

@@ -94,7 +94,6 @@ export class ThreejsGltfViewNavMarkProvider implements Provider {
     scene.add(sphere);
 
     this.domEvents.addEventListener(sphere, 'click', () => {
-      console.log("CLICK ON POINTER");
       this.showPointerMessage(pointer);
     })
   }

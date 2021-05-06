@@ -89,24 +89,23 @@ export class AFrameObjViewNavMarkProvider implements Provider {
     // compute the min size of the box (x, y, z)
     // it will be used to set pointer radius
     let minBoxSize = Math.min(boxSizes.x, boxSizes.y, boxSizes.z);
-    let radius = minBoxSize / 25;
+    let radius = minBoxSize / 30;
 
     let scene = document.getElementById("scene");
     let marker = document.createElement("a-sphere");
 
     marker.setAttribute("class", "pointer");
+    marker.setAttribute("class", "clickable");
     marker.setAttribute("radius", `${radius}`);
     marker.setAttribute("color", "#CC0000");
     marker.setAttribute("position", pointString);
 
-    // TODO: vedere perché non rileva il click, nonostante sia registrato e marker.click() funziona
-    marker.addEventListener('click', () => this.showPointerMessage(pointer));
+    marker.addEventListener('mousedown', () => this.showPointerMessage(pointer));
 
     scene.appendChild(marker);
   }
 
   showPointerMessage(pointer: Pointer){
-    console.log('CLICK ON POINTER');
     this.selectedPointerId = pointer.id;
     document.getElementById('pointer-message').innerText = `${pointer.message}`;
   }
@@ -126,7 +125,6 @@ export class AFrameObjViewNavMarkProvider implements Provider {
 
     // sets the behaviour in response to a click event
     AFRAME.registerComponent('click-handler', {
-      // init also calls update
       init: function () {
         let mouseDownTime: number = null;
         let mouseDownPoint: any = null;

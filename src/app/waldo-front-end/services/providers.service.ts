@@ -24,7 +24,7 @@ export class ProvidersService {
     const url = `${this.providersUrl}/${id}`;
 
     return this.http.get<Provider>(url).pipe(
-      tap(_ => console.log(`fetched provider with id: ${id}`)),
+      tap(_ => console.log(`Fetched provider with id: ${id}`)),
       catchError(this.handleError<Provider>(`getModel id:${id}`))
     );
   }

@@ -39,6 +39,10 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
 
   // click Handler
   clickHandler(event, model: Model){
+
+    document.getElementById('pointer-message').innerText = '';
+    this.selectedPointerId = null;
+
     let point = event.detail.intersection.point
     let pointString = point.x.toFixed(3) + " " + point.y.toFixed(3) + " " + point.z.toFixed(3);
 
@@ -73,6 +77,7 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
   }
 
   showPointer(pointer: Pointer){
+
     // create a string containing the position
     let pointString = pointer.position[0].toFixed(3) + " "
       + pointer.position[1].toFixed(3) + " "
@@ -90,12 +95,20 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
 
     let scene = document.getElementById("scene");
     let marker = document.createElement("a-sphere");
-    scene.appendChild(marker);
 
     marker.setAttribute("class", "pointer");
+    marker.setAttribute("class", "clickable");
     marker.setAttribute("radius", `${radius}`);
     marker.setAttribute("color", "#CC0000");
     marker.setAttribute("position", pointString);
+
+    marker.addEventListener('mousedown', () => this.showPointerMessage(pointer));
+    scene.appendChild(marker);
+  }
+
+  showPointerMessage(pointer: Pointer){
+    this.selectedPointerId = pointer.id;
+    document.getElementById('pointer-message').innerText = `${pointer.message}`;
   }
 
   // ----- Visual Methods ----- \\
@@ -112,7 +125,6 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
 
     // sets the behaviour in response to a click event
     AFRAME.registerComponent('click-handler', {
-      // init also calls update
       init: function () {
         let mouseDownTime: number = null;
         let mouseDownPoint: any = null;
@@ -166,6 +178,6 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
           this.showPointer(pointer);
         }
       });
-    }, 400);
+    }, 1000);
   }
 }

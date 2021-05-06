@@ -24,7 +24,7 @@ export class PointersService {
   getPointersByModelId(modelId: string): Observable<Pointer[]> {
     const url = `${this.modelsUrl}/${modelId}/pointers`;
     return this.http.get<Pointer[]>(url).pipe(
-      tap(_ => console.log(`fetched pointers related with model with id: ${modelId}`)),
+      tap(_ => console.log(`Fetched pointers related with model with id: ${modelId}`)),
       catchError(this.handleError<Pointer[]>(`getPointers model id:${modelId}`))
     );
   }
@@ -33,7 +33,7 @@ export class PointersService {
   getPointer(id: string): Observable<Pointer> {
     const url = `${this.pointersUrl}/${id}`;
     return this.http.get<Pointer>(url).pipe(
-      tap(_ => console.log(`fetched pointer with id: ${id}`)),
+      tap(_ => console.log(`Fetched pointer with id: ${id}`)),
       catchError(this.handleError<Pointer>(`getModel id:${id}`))
     );
   }
@@ -45,7 +45,7 @@ export class PointersService {
     const url = `${this.pointersUrl}/${id}`;
 
     return this.http.delete<Pointer>(url, this.httpOptions).pipe(
-      tap(_ => console.log(`deleted pointer with id: ${id}`)),
+      tap(_ => console.log(`Deleted pointer with id: ${id}`)),
       catchError(this.handleError<Pointer>('deletePointer'))
     );
   }
@@ -54,7 +54,7 @@ export class PointersService {
   /** PUT a pointer into the server */
   loadPointer(pointer: Pointer) {
     return this.http.post<Pointer>(this.pointersUrl, pointer, this.httpOptions).pipe(
-      tap((pointer: Pointer) => console.log(`loaded provider with id: ${pointer.id}`)),
+      tap((pointer: Pointer) => console.log(`Loaded provider with id: ${pointer.id}`)),
       catchError(this.handleError<Pointer>('loadPointer'))
     );
   }
@@ -66,7 +66,7 @@ export class PointersService {
     data.message = newMessage
 
     return this.http.patch<Pointer>(url, data, this.httpOptions).pipe(
-      tap((pointer: Pointer) => console.log(`edited pointer with id: ${pointer.id}`)),
+      tap((pointer: Pointer) => console.log(`Edited pointer with id: ${pointer.id}`)),
       catchError(this.handleError<Pointer>('editModel'))
     );
   }
