@@ -3,7 +3,7 @@ import {Model} from "../../../../domain-model/Model";
 import * as THREE from "three";
 import {ThreejsUtils} from "../../ThreejsUtils";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
-import {THREEx} from './threex.domevents.js';
+import {THREEx} from '../../threex.domevents.js';
 import {PointersService} from "../../../../services/pointers.service";
 import {MTLLoader} from "three/examples/jsm/loaders/MTLLoader";
 import {OBJLoader} from "three/examples/jsm/loaders/OBJLoader";
@@ -17,7 +17,7 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
   renderingEngine: string;
 
   // will be use to set the pointer radius
-  minBoxSize: number = null;
+  private minBoxSize: number = null;
 
   // state variable used to add into the map
   public pointerTrigger: boolean = false;
@@ -181,7 +181,7 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
           this.showPointer(pointer, scene);
         }
       });
-    }, 125);
+    }, 1000);
 
     function render() {
       canvas.width = container.clientWidth;

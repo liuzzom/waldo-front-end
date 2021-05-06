@@ -93,7 +93,6 @@ export class AFrameObjViewNavMarkProvider implements Provider {
 
     let scene = document.getElementById("scene");
     let marker = document.createElement("a-sphere");
-    scene.appendChild(marker);
 
     marker.setAttribute("class", "pointer");
     marker.setAttribute("radius", `${radius}`);
@@ -102,9 +101,12 @@ export class AFrameObjViewNavMarkProvider implements Provider {
 
     // TODO: vedere perché non rileva il click, nonostante sia registrato e marker.click() funziona
     marker.addEventListener('click', () => this.showPointerMessage(pointer));
+
+    scene.appendChild(marker);
   }
 
   showPointerMessage(pointer: Pointer){
+    console.log('CLICK ON POINTER');
     this.selectedPointerId = pointer.id;
     document.getElementById('pointer-message').innerText = `${pointer.message}`;
   }
@@ -179,6 +181,6 @@ export class AFrameObjViewNavMarkProvider implements Provider {
           this.showPointer(pointer);
         }
       });
-    }, 300);
+    }, 1000);
   }
 }

@@ -2,7 +2,7 @@ import * as THREE from "three";
 import {MTLLoader} from "three/examples/jsm/loaders/MTLLoader";
 import {OBJLoader} from "three/examples/jsm/loaders/OBJLoader";
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
-import {THREEx} from "./obj/mark/threex.domevents";
+import {THREEx} from "./threex.domevents";
 
 export class ThreejsUtils {
   private static minBoxSize: number = null;

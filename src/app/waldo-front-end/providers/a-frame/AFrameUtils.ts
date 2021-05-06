@@ -24,7 +24,7 @@ export class AFrameUtils{
           let positionString = `${x} ${y} ${z}`;
 
           camera.setAttribute("position", positionString);
-        })
+        });
       }
     });
   }

@@ -67,18 +67,6 @@
       "modelId": "69cdce56-5e38-4746-9cf4-854a8e6abb2a"
     },
     {
-      "id": "d14e5cc0-28ff-44fc-b316-90482e8e3cd6",
-      "position": [
-        -4.441145003293718,
-        16.435256869580677,
-        -9.280553016426161
-      ],
-      "message": "",
-      "uploaded": "2021-05-04T14:55:03.802Z",
-      "lastModified": "2021-05-04T14:55:03.802Z",
-      "modelId": "38075132-6a5d-4b96-9274-c6dfbed398dc"
-    },
-    {
       "id": "c327246c-5b9d-488d-abcc-3cfda27f3612",
       "position": [
         2.4488850233538066,
@@ -113,6 +101,30 @@
       "uploaded": "2021-05-05T15:34:25.441Z",
       "lastModified": "2021-05-05T15:34:25.441Z",
       "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
+    },
+    {
+      "id": "9bf3fb1d-a3a0-4e8f-bd4d-ac0515a6e8b9",
+      "position": [
+        22.934554655346496,
+        8.951017789633944,
+        -43.137578467712494
+      ],
+      "message": "Vela 02",
+      "uploaded": "2021-05-06T15:17:29.677Z",
+      "lastModified": "2021-05-06T15:17:29.677Z",
+      "modelId": "38075132-6a5d-4b96-9274-c6dfbed398dc"
+    },
+    {
+      "id": "4b71c893-bc34-43b8-ac99-6d606617387e",
+      "position": [
+        14.7229837086782,
+        7.275125321422138,
+        -40.85665253898311
+      ],
+      "message": "Vela 01",
+      "uploaded": "2021-05-06T15:17:42.156Z",
+      "lastModified": "2021-05-06T15:17:42.156Z",
+      "modelId": "38075132-6a5d-4b96-9274-c6dfbed398dc"
     }
   ],
   "models": [
@@ -184,7 +196,7 @@
         "ac1cd20e-4ce2-4fd5-ad47-dd367566809b",
         "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb"
       ],
-      "defaultProvider": "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb"
+      "defaultProvider": "7a65b86b-2a88-4964-8c6f-2519f90e479b"
     }
   ],
   "providers": [
