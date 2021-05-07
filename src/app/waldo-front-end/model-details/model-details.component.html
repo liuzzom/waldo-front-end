@@ -24,6 +24,15 @@
   <mat-sidenav #sidenav mode="side" opened position="end">
     <h3>Pointer Message</h3>
     <form>
+      <mat-form-field *ngIf="editModelMode" appearance="outline">
+        <mat-label>Default Provider</mat-label>
+        <mat-select [(value)]="selectedProvider">
+          <mat-option *ngFor="let provider of this.supportedProviders" value="{{provider.id}}">
+            {{provider.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label *ngIf="pointerSupport">Pointer Message</mat-label>
         <mat-label *ngIf="!pointerSupport">Pointers are not supported</mat-label>
@@ -45,15 +54,6 @@
         </div>
 
       </div>
-
-      <mat-form-field *ngIf="editModelMode" appearance="outline">
-        <mat-label>Default Provider</mat-label>
-        <mat-select [(value)]="selectedProvider">
-          <mat-option *ngFor="let providerId of model.supportedProviders" value="{{providerId}}">
-            {{providerId}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
     </form>
   </mat-sidenav>
 </mat-sidenav-container>

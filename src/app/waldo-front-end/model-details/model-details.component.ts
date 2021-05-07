@@ -31,6 +31,8 @@ export class ModelDetailsComponent implements OnInit {
 
   oldPointerMessage: string = null;
 
+  supportedProviders: Provider[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -112,6 +114,13 @@ export class ModelDetailsComponent implements OnInit {
     this.modelsService.getModel(id).subscribe(model => {
       this.model = model;
       this.selectedProvider = model.defaultProvider;
+
+      for(let providerId of model.supportedProviders){
+        this.providersService.getProvider(providerId).subscribe(provider => {
+          this.supportedProviders.push(provider);
+          console.log(this.supportedProviders);
+        });
+      }
 
       this.providersService.getProvider(this.model.defaultProvider).subscribe(providerInfo => {
         this.provider = ProviderUtils.createProvider(providerInfo);
