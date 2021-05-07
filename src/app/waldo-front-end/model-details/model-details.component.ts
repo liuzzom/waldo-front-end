@@ -118,12 +118,11 @@ export class ModelDetailsComponent implements OnInit {
       for(let providerId of model.supportedProviders){
         this.providersService.getProvider(providerId).subscribe(provider => {
           this.supportedProviders.push(provider);
-          console.log(this.supportedProviders);
         });
       }
 
       this.providersService.getProvider(this.model.defaultProvider).subscribe(providerInfo => {
-        this.provider = ProviderUtils.createProvider(providerInfo);
+        this.provider = ProviderUtils.createProvider(providerInfo, this.model);
 
         this.provider.providerFeatures.includes('mark') ? this.pointerSupport = true : this.pointerSupport = false;
         console.log(`Provider used: ${this.provider.name}`);
