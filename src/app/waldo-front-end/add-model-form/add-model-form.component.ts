@@ -7,6 +7,7 @@ import {ProviderUtils} from "../providers/provider-utils";
 import {Model} from "../domain-model/Model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {ProvidersService} from "../services/providers.service";
 
 @Component({
   selector: 'app-add-model-form',
@@ -20,6 +21,7 @@ export class AddModelFormComponent implements OnInit {
     private fb: FormBuilder,
     private location: Location,
     private modelsService: ModelsService,
+    private providersService: ProvidersService,
     private snackBar: MatSnackBar,
     private router: Router
   ) { }
@@ -64,6 +66,21 @@ export class AddModelFormComponent implements OnInit {
     return ids;
   }
 
+  private async getProvidersByFormat(format: string) : Promise<any>{
+    let providersIds: any = null;
+
+    const formats = await this.providersService.getFormats().toPromise();
+    for (let formatObject of formats){
+      if(formatObject.format === format){
+        providersIds = {};
+        providersIds.supported = formatObject.supported;
+        providersIds.default = formatObject.default;
+      }
+    }
+
+    return providersIds;
+  }
+
   private async prepareModel(formData) {
     let newModelName = formData.modelName;
     let newModelSources = [];
@@ -92,7 +109,7 @@ export class AddModelFormComponent implements OnInit {
 
     // set supported providers and set the default one
     let newModelFormat = newModelSources[0].split('.')[newModelSources[0].split('.').length -1];
-    let providers = ProviderUtils.getProvidersByFormat(newModelFormat);
+    let providers = await this.getProvidersByFormat(newModelFormat);
     if (! providers){
       this.snackBar.open("Error in source format. Check your entries or contact support", "Ok", {duration: 2000});
       return undefined;

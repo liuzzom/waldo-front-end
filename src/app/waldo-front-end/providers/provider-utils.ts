@@ -16,53 +16,11 @@ import {AFrameGltfViewNavMarkProvider} from "./a-frame/gltf/mark/AFrameGltfViewN
 import {Model} from "../domain-model/Model";
 
 export class ProviderUtils {
-  private static supportedFormats = [
-    "obj",
-    "gltf",
-    "png"
-  ]
-
-  private static supportedProviders = {
-    "obj": {
-      default: "31435989-d23e-401a-b1a7-44b4ae9889fb",
-      supported: [
-        "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
-        "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
-        "31435989-d23e-401a-b1a7-44b4ae9889fb",
-      ]
-    },
-    "gltf": {
-      default: "7a65b86b-2a88-4964-8c6f-2519f90e479b",
-      supported: [
-        "0fc10eae-66f5-49e4-a593-9b38af78da0c",
-        "72405b54-4d1f-4758-aa41-43009719aed8",
-        "7a65b86b-2a88-4964-8c6f-2519f90e479b",
-        "87298a88-5b64-4ec6-a69e-a01297b7a764",
-        "ac1cd20e-4ce2-4fd5-ad47-dd367566809b",
-        "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb",
-      ]
-    },
-    "png": {
-      default: "b14bffff-ad8d-4fec-99fe-8e753bad0dff",
-      supported: [
-        "da484bd9-25d9-43cc-a74d-115b2bf3337d"
-      ]
-    }
-  }
-
   // -------------------- Constructor --------------------
   constructor() {
   }
 
   // -------------------- Methods --------------------
-  static getProvidersByFormat(format: string): any{
-    if (!this.supportedFormats.includes(format)) {
-      console.error("Model source format is not supported");
-      return undefined;
-    }
-
-    return this.supportedProviders[format];
-  }
   static createProvider(providerInfo: Provider, model: Model): Provider{
     const renderingEngine = providerInfo.renderingEngine;
     const features = providerInfo.providerFeatures;

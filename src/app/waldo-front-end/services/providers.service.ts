@@ -10,6 +10,7 @@ import {Provider} from "../domain-model/Provider";
 })
 export class ProvidersService {
   private providersUrl = 'http://localhost:3000/providers';
+  private formatsUrl = 'http://localhost:3000/formats';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -26,6 +27,14 @@ export class ProvidersService {
     return this.http.get<Provider>(url).pipe(
       tap(_ => console.log(`Fetched provider with id: ${id}`)),
       catchError(this.handleError<Provider>(`getModel id:${id}`))
+    );
+  }
+
+  /** GET provider by id. Will 404 if id not found */
+  getFormats(): Observable<any> {
+    return this.http.get<any>(this.formatsUrl).pipe(
+      tap(_ => console.log(`Fetched formats`)),
+      catchError(this.handleError<Provider>(`getFormats`))
     );
   }
 
