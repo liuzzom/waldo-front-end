@@ -7,7 +7,7 @@
 
       <div *ngIf="!editModelMode && !editPointerMode">
         <button mat-raised-button color="primary" (click)="toggleEditModelMode(true)">Edit</button>
-        <button mat-raised-button color="warn" (click)="goBack()">Back</button>
+        <button mat-raised-button color="accent" (click)="goBack()">Back</button>
       </div>
 
       <button *ngIf="editModelMode && pointerSupport && !pointerTrigger" mat-raised-button color="accent"
@@ -42,14 +42,14 @@
 
       <div>
         <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode && pointerSupport">
-          <button mat-raised-button color="primary" (click)="startEditPointerMode(pointerMessage.value)">Edit Message
+          <button mat-raised-button color="primary" (click)="startEditPointerMode(pointerMessage.value)" [disabled]="provider.selectedPointerId === null">Edit Message
           </button>
-          <button mat-raised-button color="warn" (click)="openDeleteDialog()">Delete Pointer</button>
+          <button mat-raised-button color="warn" (click)="openDeleteDialog()" [disabled]="provider.selectedPointerId === null">Delete Pointer</button>
         </div>
 
         <div class="edit-pointer-mode-buttons" *ngIf="editModelMode && editPointerMode && pointerSupport">
           <button mat-raised-button (click)="pointerMessage.value = ''">Clear Message Field</button>
-          <button mat-raised-button color="warn" (click)="undo()">Undo</button>
+          <button mat-raised-button color="accent" (click)="undo()">Undo</button>
           <button mat-raised-button color="primary" (click)="editPointerMessage(pointerMessage.value)">Save</button>
         </div>
 

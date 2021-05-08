@@ -24,6 +24,7 @@ export class AFrameObjViewNavMarkProvider implements Provider {
     this.name = info.name;
     this.providerFeatures = info.providerFeatures;
     this.renderingEngine = info.renderingEngine;
+    this.selectedPointerId = null;
   }
 
   // ----- Method ----- \\
