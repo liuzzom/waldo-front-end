@@ -49,9 +49,12 @@
       <!-- Edit Pointer section -->
       <div>
         <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode && pointerSupport">
-          <button mat-raised-button color="primary" (click)="startEditPointerMode(pointerMessage.value)" [disabled]="provider.selectedPointerId === null">Edit Message
+          <button mat-raised-button color="primary" (click)="startEditPointerMode(pointerMessage.value)"
+                  [disabled]="provider.selectedPointerId === null">Edit Message
           </button>
-          <button mat-raised-button color="warn" (click)="openDeleteDialog()" [disabled]="provider.selectedPointerId === null">Delete Pointer</button>
+          <button mat-raised-button color="warn" (click)="openDeleteDialog()"
+                  [disabled]="provider.selectedPointerId === null">Delete Pointer
+          </button>
         </div>
 
         <div class="edit-pointer-mode-buttons" *ngIf="editModelMode && editPointerMode && pointerSupport">
@@ -60,12 +63,22 @@
           <button mat-raised-button color="primary" (click)="editPointerMessage(pointerMessage.value)">Save</button>
         </div>
 
-        <div *ngIf="provider.renderingEngine==='a-frame'" class="caption">
+        <div *ngIf="provider.providerFeatures.includes('nav')" class="caption">
           <p class="mat-title">Caption</p>
-          <ul>
-            <li><p>Use WASD to move within the scene</p></li>
-            <li><p>Use the mouse to rotate the view</p></li>
-          </ul>
+          <!-- A-Frame Caption -->
+          <div *ngIf="provider.renderingEngine==='a-frame'">
+            <ul>
+              <li><p>Use WASD to move within the scene</p></li>
+              <li><p>Use the mouse to rotate the view</p></li>
+            </ul>
+          </div>
+          <!-- ThreeJs Caption -->
+          <div *ngIf="provider.renderingEngine==='three.js'">
+            <ul>
+              <li><p>Use mouse wheel to zoom in/out</p></li>
+              <li><p>Use the mouse to rotate the view</p></li>
+            </ul>
+          </div>
         </div>
       </div>
     </form>

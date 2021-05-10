@@ -1,36 +1,79 @@
-# WaldoApp
+# Waldo (Front-End Module)
+
+Front-End module for model rendering and information marking. 
+
+The Waldo Module provides the user with the possibility to manage both 2D (i.e. digital images) and 3D models, render them into a web-based environment (using Providers) and place some markers on them.
+
+### Supported Formats
+
+- png
+- obj+mtl
+- gltf
+
+## Available Providers
+
+- **HTML nativo**
+  - *HTML Image View*: simple 2D image view using the <img> tag.
+- **HTML + Leaflet**
+  - *HTML Image Marker*: 2D image view (using <canvas> tag) and marking using Leaflet.
+- **ThreeJS**
+  - OBJ Model Viewer: view 3D models in OBJ+MTL format. 
+  - *OBJ Model Navigator*: view and navigate 3D models in OBJ+MTL format.
+  - *OBJ Model Marker*: view, navigate, and markup 3D models in OBJ+MTL format.
+  - *GLTF Model Viewer*: view 3D models in GLTF format.
+  - *GLTF Model Navigator*: view and navigate 3D models in GLTF format.
+  - OBJ Model Viewer: view 3D models in OBJ+MTL format. 
+  - *OBJ Model Navigator*: view and navigate 3D models in OBJ+MTL format.
+  - *OBJ Model Marker*: view, navigate, and markup 3D models in OBJ+MTL format.
+  - *GLTF Model Viewer*: view 3D models in GLTF format.
+  - *GLTF Model Navigator*: view and navigate 3D models in GLTF format.
+  - *GLTF Model Marker*: view, navigate, and markup 3D models in GLTF format.
+  - *GLTF Model Marker*: view, navigate, and markup 3D models in GLTF format.
+- **A-Frame**
+  - OBJ Model Viewer: view 3D models in OBJ+MTL format. 
+  - *OBJ Model Navigator*: view and navigate 3D models in OBJ+MTL format.
+  - *OBJ Model Marker*: view, navigate, and markup 3D models in OBJ+MTL format.
+  - *GLTF Model Viewer*: view 3D models in GLTF format.
+  - *GLTF Model Navigator*: view and navigate 3D models in GLTF format.
+  - *GLTF Model Marker*: view, navigate, and markup 3D models in GLTF format.
+
+## Installalation
+
+### Dependencies
+
+- [Node.js](https://nodejs.org/en/)
+- [npm](https://docs.npmjs.com/about-npm)
+- Angular CLI: `npm install -g @angular/cli`
+- [Json-Server](https://github.com/typicode/json-server) (for mocked backend)
+
+## Run in a local environment (for test purposes)
+
+- Clone this repository
+- Go to the downloaded directory
+- Open two terminal windows/tabs:
+  - In one window/tab, run `ng serve`
+  - In the other:
+    - go to the `mocked-server` directory
+    - run `json-server --watch waldo-db.json`
+
+## Screenshots
+
+![model-list](./docs/assets/images/model-list.png)
+![add-model-form](./docs/assets/images/add-model-form.png)
+![model-details-01](./docs/assets/images/model-details-01.png)
+![model-details-02](./docs/assets/images/model-details-02.png)
+![delete-model](./docs/assets/images/delete-model.png)
+![delete-pointer](./docs/assets/images/delete-pointer.png)
 
 ## TO DO
 
 ### Documentazione
 
-- Motivare abbandono provider WebGL+Leaflet
-- mettere nella documentazione una pagina dove vengono spiegati i vari provider
+- Motivare abbandono provider WebGL+Leaflet e mancato utilizzo di Babylon
 - Ridefinire la sezione API:
   - relazione
   - presentazione
-- Spiegare procedura d'installazione A-Frame
-  - Polyfill.ts
-  - CUSTOM_ELEMENTS_SCHEMA
-- Motivare utilizzo di cascade durante la cancellazione di un modello per trasparenza 
-- Fare delle slide su come viene gestito il render del modello nei vari provider
-- Spiegare il tentativo fatto con leaflet e gli impedimenti trovati (pare non si sposi bene con ambienti "dinamici")
-  - questione latitudine/longitudine
 
-###  TODO Implementazione
-| Provider           | ins mod | ric mod | vis mod | edit mod | rim mod | ins poi | info poi | ric poi | mod poi | rim poi |
-| ------------------ | ------- | ------- | ------- | -------- | ------- | ------- | -------- | ------- | ------- | ------- |
-| 2d view            | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| 2d mark            | **X**   | **X**   | **X**   | **X**    | **X**   | **X**   | **X**    | **/**   | **X**   | **X**   |
-| three js obj view  | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| three js obj nav   | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| three js obj mark  | **X**   | **X**   | **X**   | **X**    | **X**   | **X**   | **X**    | **X**   | **X**   | **X**   |
-| a-frame obj view   | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| a-frame obj nav    | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| a-frame obj mark   | **X**   | **X**   | **X**   | **X**    | **X**   | **X**   | **X**    | **X**   | **X**   | **X**   |
-| three js gltf view | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| three js gltf nav  | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| three js gltf mark | **X**   | **X**   | **X**   | **X**    | **X**   | **X**   | **X**    | **X**   | **X**   | **X**   |
-| a-frame gltf view  | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| a-frame gltf nav   | **X**   | **X**   | **X**   | **X**    | **X**   | **/**   | **/**    | **/**   | **/**   | **/**   |
-| a-frame gltf mark  | **X**   | **X**   | **X**   | **X**    | **X**   | **X**   | **X**    | **X**   | **X**   | **X**   |
+### Presentazione
+
+- Mettere in pari con SDD
