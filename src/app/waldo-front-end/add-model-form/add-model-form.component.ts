@@ -3,7 +3,6 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Location} from '@angular/common';
 import {ModelsService} from "../services/models.service";
 import {v4 as uuidv4} from 'uuid';
-import {ProviderUtils} from "../providers/provider-utils";
 import {Model} from "../domain-model/Model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
@@ -43,8 +42,9 @@ export class AddModelFormComponent implements OnInit {
   // -------------------- Init --------------------
 
   ngOnInit(): void {
+    // Define the model form and its fields (with validators)
     this.addModelForm = this.fb.group({
-      modelName: ['', [Validators.required, Validators.minLength(5)]],
+      modelName: ['', [Validators.required, Validators.minLength(3)]],
       modelSource: ['', Validators.required],
       additionalSources: this.fb.array([])
     })
@@ -52,10 +52,12 @@ export class AddModelFormComponent implements OnInit {
 
   // -------------------- Methods --------------------
 
+  /** Insert an additional source field into the form */
   addAdditionalSource(){
     this.additionalSources.push(this.fb.control(''))
   }
 
+  /** Get models id from the back-end */
   private async getModelsIds(): Promise<string[]>{
     let ids: string[] = [];
     const models = await this.modelsService.getModels().toPromise();
@@ -66,6 +68,7 @@ export class AddModelFormComponent implements OnInit {
     return ids;
   }
 
+  /** Get providers that supports a given format, using the back-end via services */
   private async getProvidersByFormat(format: string) : Promise<any>{
     let providersIds: any = null;
 
@@ -81,7 +84,8 @@ export class AddModelFormComponent implements OnInit {
     return providersIds;
   }
 
-  private async prepareModel(formData) {
+  /** Prepares the model data to send to the back-end  */
+  private async prepareModel(formData): Promise<Model> {
     let newModelName = formData.modelName;
     let newModelSources = [];
     let usedIds: string[] = [];
@@ -141,10 +145,12 @@ export class AddModelFormComponent implements OnInit {
     this.router.navigate(['models']);
   }
 
+  /** Handle the Submit event*/
   async onSubmit() {
     let formData = this.addModelForm.value;
     let newModel = await this.prepareModel(formData);
 
+    // Load the new model into the back-end
     this.modelsService.loadModel(newModel).subscribe(res => {
       if(res){
         let successSnackBar = this.snackBar.open('Model Loaded', 'Ok', {duration: 2000});

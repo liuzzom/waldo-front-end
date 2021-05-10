@@ -21,6 +21,7 @@ export class HtmlSimpleProvider implements Provider{
     <img src="${model.sources[0]}" alt="${model.name}" width="${renderingArea.clientWidth}" height="${renderingArea.clientHeight}" />
     `;
 
+    // Handle resize
     const ro = new ResizeObserver(() => {
       renderingArea.innerHTML = `
         <img src="${model.sources[0]}" alt="${model.name}" width="${renderingArea.clientWidth}" height="${renderingArea.clientHeight}" />

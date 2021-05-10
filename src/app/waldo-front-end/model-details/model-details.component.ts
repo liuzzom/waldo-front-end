@@ -17,21 +17,25 @@ import {PointersService} from "../services/pointers.service";
   styleUrls: ['./model-details.component.css']
 })
 export class ModelDetailsComponent implements OnInit {
-  // model to show and manage
+  /** model to show and manage
+   * it is initialized as an empty model to avoid runtime errors
+   */
   model: Model = this.emptyModel();
+
+  // Provider used to render the model
+  provider: Provider = null;
+  supportedProviders: Provider[] = [];
+  selectedProvider: string;
+  // determines if the provider supports pointer management
+  pointerSupport: boolean;
 
   // edit flags
   editModelMode = false;
   editPointerMode = false;
   pointerTrigger = false;
 
-  pointerSupport: boolean;
-  selectedProvider: string;
-  provider: Provider = null;
-
+  // saves the old message to avoid unnecessary edits
   oldPointerMessage: string = null;
-
-  supportedProviders: Provider[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -78,7 +82,6 @@ export class ModelDetailsComponent implements OnInit {
 
   startEditPointerMode(value: string) {
     this.oldPointerMessage = value;
-
     this.toggleEditPointerMode(true);
   }
 
@@ -105,6 +108,11 @@ export class ModelDetailsComponent implements OnInit {
   // Go back into the home page
   goBack() {
     this.location.back();
+  }
+
+  undo() {
+    this.toggleEditPointerMode(false);
+    location.reload();
   }
 
   // Render the model into the rendering area
@@ -202,11 +210,6 @@ export class ModelDetailsComponent implements OnInit {
 
     // edit the pointer message into the back-end
     this.pointersService.editPointerMessage(this.provider.selectedPointerId, newMessage).subscribe(res => {});
-    this.toggleEditPointerMode(false);
-    location.reload();
-  }
-
-  undo() {
     this.toggleEditPointerMode(false);
     location.reload();
   }

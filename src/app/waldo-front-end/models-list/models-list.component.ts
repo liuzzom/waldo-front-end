@@ -13,16 +13,19 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class ModelsListComponent implements OnInit {
   models: Model[] = [];
 
+  // ----- Constructor ----- \\
   constructor(
     public dialog: MatDialog,
     private modelsService: ModelsService,
     private snackBar: MatSnackBar
   ) {}
 
+  // ----- Init ----- \\
   ngOnInit(): void {
     this.getModels();
   }
 
+  // ----- Dialog ----- \\
   openDeleteDialog(model) {
     let dialogRef = this.dialog.open(DeleteModelDialogComponent, {
       data: {
@@ -37,6 +40,7 @@ export class ModelsListComponent implements OnInit {
     });
   }
 
+  // ----- Feedback ----- \\
   openSnackBar(message: string, action: string): void{
     let snackBarRef = this.snackBar.open(message, action, {duration: 2000});
 
@@ -45,11 +49,15 @@ export class ModelsListComponent implements OnInit {
     })
   }
 
+  // ----- Methods ----- \\
+
+  /** Get Models from back-end via services*/
   private getModels(): void{
     this.modelsService.getModels()
       .subscribe(models => this.models = models);
   }
 
+  /** Send a DELETE request to beck-end via service */
   private deleteModel(model: Model): void{
     this.modelsService.deleteModel(model).subscribe(res => {
       if(res){
@@ -61,6 +69,7 @@ export class ModelsListComponent implements OnInit {
     });
   }
 
+  /** Search a Model by name */
   searchModel(name: string) {
     // with an empty name, do some kind of "refresh"
     if(!name.trim()){

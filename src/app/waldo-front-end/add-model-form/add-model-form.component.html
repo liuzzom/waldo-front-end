@@ -6,8 +6,9 @@
     <mat-form-field hideRequiredMarker appearance="outline">
       <mat-label>Model Name</mat-label>
       <input formControlName="modelName" type="text" matInput>
+      <!-- hints shown in case of error -->
       <mat-hint *ngIf="modelName.invalid && modelName.touched && modelName.errors?.required">Model name is required</mat-hint>
-      <mat-hint *ngIf="modelName.invalid && modelName.touched && modelName.errors?.minlength">Model name must be at least 5 characters</mat-hint>
+      <mat-hint *ngIf="modelName.invalid && modelName.touched && modelName.errors?.minlength">Model name must be at least 3 characters</mat-hint>
     </mat-form-field>
   </div>
 
@@ -15,12 +16,15 @@
     <div class="mat-subheading-1">Model Source(s)</div>
     <button type="button" mat-raised-button class="additionalSources" (click)="addAdditionalSource()" [disabled]="modelSource.invalid">Add additional source</button>
 
+    <!-- Source URL -->
     <mat-form-field hideRequiredMarker appearance="outline">
       <mat-label>Source URL</mat-label>
       <input formControlName="modelSource" type="text" matInput>
+      <!-- hint shown in case of error -->
       <mat-hint *ngIf="modelSource.invalid && modelSource.touched">At least one source is required</mat-hint>
     </mat-form-field>
 
+    <!-- Additional Source URLs -->
     <div formArrayName="additionalSources" *ngFor="let source of additionalSources.controls; let i = index">
       <mat-form-field hideRequiredMarker appearance="outline">
         <mat-label>Source URL</mat-label>

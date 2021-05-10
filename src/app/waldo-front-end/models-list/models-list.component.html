@@ -7,6 +7,7 @@
 </mat-toolbar>
 
 <div>
+  <!-- Search model form -->
   <form id="search-form">
     <label class="mat-title" for="search-box">Name</label>
     <input #searchBox id="search-box" type="text">
@@ -15,6 +16,7 @@
   </form>
 </div>
 
+<!-- Model list -->
 <mat-nav-list>
   <mat-list-item *ngFor="let model of models">
     <mat-icon matListIcon>image</mat-icon>

@@ -1,15 +1,18 @@
 <mat-sidenav-container>
   <mat-sidenav-content>
+    <!-- toolbar that contains model name, navigation buttons and edit buttons -->
     <mat-toolbar>
       <span #modelName [contentEditable]="editModelMode">{{model.name}}</span>
 
       <span class="navbar-spacer"></span>
 
+      <!-- navigation mode buttons-->
       <div *ngIf="!editModelMode && !editPointerMode">
         <button mat-raised-button color="primary" (click)="toggleEditModelMode(true)">Edit</button>
         <button mat-raised-button color="accent" (click)="goBack()">Back</button>
       </div>
 
+      <!-- edit mode buttons-->
       <button *ngIf="editModelMode && pointerSupport && !pointerTrigger" mat-raised-button color="accent"
               (click)="activatePointerTrigger()">Add Pointer
       </button>
@@ -17,13 +20,15 @@
       </button>
     </mat-toolbar>
 
+    <!-- rendering area -->
+    <!-- some providers inject their own html tags -->
     <div id="rendering-area" (click)="deactivatePointerTrigger()"></div>
-
   </mat-sidenav-content>
 
-  <mat-sidenav #sidenav mode="side" opened position="end">
+  <mat-sidenav mode="side" opened position="end">
     <h3>Pointer Message</h3>
     <form>
+      <!-- Default Provider selection -->
       <mat-form-field *ngIf="editModelMode" appearance="outline">
         <mat-label>Default Provider</mat-label>
         <mat-select [(value)]="selectedProvider">
@@ -33,6 +38,7 @@
         </mat-select>
       </mat-form-field>
 
+      <!-- Pointer message view -->
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label *ngIf="pointerSupport">Pointer Message</mat-label>
         <mat-label *ngIf="!pointerSupport">Pointers are not supported</mat-label>
@@ -40,6 +46,7 @@
                   [readonly]="!editModelMode || !editPointerMode || !pointerSupport"></textarea>
       </mat-form-field>
 
+      <!-- Edit Pointer section -->
       <div>
         <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode && pointerSupport">
           <button mat-raised-button color="primary" (click)="startEditPointerMode(pointerMessage.value)" [disabled]="provider.selectedPointerId === null">Edit Message
