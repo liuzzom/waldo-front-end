@@ -39,7 +39,6 @@ export class PointersService {
   }
 
   /** DELETE a model from the server */
-  // TODO: Test
   deletePointer(pointerId: string): Observable<Pointer> {
     const id = pointerId;
     const url = `${this.pointersUrl}/${id}`;

@@ -1,6 +1,7 @@
 import {Provider} from "../../../../domain-model/Provider";
 import {Model} from "../../../../domain-model/Model";
 import {AFrameUtils} from "../../AFrameUtils";
+import * as AFRAME from 'aframe';
 
 export class AFrameGltfViewNavProvider implements Provider{
   id: string;
@@ -18,6 +19,9 @@ export class AFrameGltfViewNavProvider implements Provider{
 
   // ----- Visual Methods ----- \\
   renderModel(model: Model) {
+    // Delete AFrame components to avoid runtime error
+    delete AFRAME.components['position-setter'];
+
     AFrameUtils.registerPositionSetter();
 
     let renderingArea = document.getElementById('rendering-area');

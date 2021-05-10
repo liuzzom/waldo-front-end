@@ -106,7 +106,13 @@ export class HtmlLeafletMarkProvider implements Provider{
   // Pointer Click Handler
   showPointerMessage(pointer: Pointer){
     this.selectedPointerId = pointer.id;
-    document.getElementById('pointer-message').innerText = `${pointer.message}`;
+    const defaultMessage = "This pointer has no message yet";
+
+    if(!pointer.message){
+      document.getElementById('pointer-message').innerText = `${defaultMessage}`;
+    } else {
+      document.getElementById('pointer-message').innerText = `${pointer.message}`;
+    }
   }
 
   // ----- Visual Methods ----- \\

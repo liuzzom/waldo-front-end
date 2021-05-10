@@ -107,13 +107,23 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
     scene.appendChild(marker);
   }
 
-  showPointerMessage(pointer: Pointer){
+  showPointerMessage(pointer: Pointer){  
     this.selectedPointerId = pointer.id;
-    document.getElementById('pointer-message').innerText = `${pointer.message}`;
+    const defaultMessage = "This pointer has no message yet";
+
+    if(!pointer.message){
+      document.getElementById('pointer-message').innerText = `${defaultMessage}`;
+    } else {
+      document.getElementById('pointer-message').innerText = `${pointer.message}`;
+    }
   }
 
   // ----- Visual Methods ----- \\
   renderModel(model: Model) {
+    // Delete AFrame components to avoid runtime error
+    delete AFRAME.components['position-setter'];
+    delete AFRAME.components['click-handler'];
+
     // This component sets the position of the model according to its size
     AFrameUtils.registerPositionSetter();
 

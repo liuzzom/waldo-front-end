@@ -20,6 +20,9 @@ export class AFrameObjViewProvider implements Provider {
 
   // ----- Visual Methods ----- \\
   renderModel(model: Model) {
+    // Delete AFrame components to avoid runtime error
+    delete AFRAME.components['position-setter'];
+
     AFrameUtils.registerPositionSetter();
 
     let renderingArea = document.getElementById('rendering-area');

@@ -108,12 +108,22 @@ export class AFrameObjViewNavMarkProvider implements Provider {
 
   showPointerMessage(pointer: Pointer){
     this.selectedPointerId = pointer.id;
-    document.getElementById('pointer-message').innerText = `${pointer.message}`;
+    const defaultMessage = "This pointer has no message yet";
+
+    if(!pointer.message){
+      document.getElementById('pointer-message').innerText = `${defaultMessage}`;
+    } else {
+      document.getElementById('pointer-message').innerText = `${pointer.message}`;
+    }
   }
 
 
   // ----- Visual Methods ----- \\
   renderModel(model: Model) {
+    // Delete AFrame components to avoid runtime error
+    delete AFRAME.components['position-setter'];
+    delete AFRAME.components['click-handler'];
+
     // position-setter is used to set the model position according to its size
     AFrameUtils.registerPositionSetter();
 

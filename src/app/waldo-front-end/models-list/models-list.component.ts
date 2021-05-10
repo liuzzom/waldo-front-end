@@ -65,6 +65,10 @@ export class ModelsListComponent implements OnInit {
     // with an empty name, do some kind of "refresh"
     if(!name.trim()){
       this.getModels();
+
+      let searchBox = <any> document.getElementById('search-box');
+      searchBox.value = "";
+
       return;
     }
 

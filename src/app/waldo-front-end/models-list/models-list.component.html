@@ -10,7 +10,8 @@
   <form id="search-form">
     <label class="mat-title" for="search-box">Name</label>
     <input #searchBox id="search-box" type="text">
-    <button type="submit" mat-raised-button (click)="searchModel(searchBox.value)">Search</button>
+    <button mat-raised-button (click)="searchModel('')">Clear</button>
+    <button type="submit" color="primary" mat-raised-button (click)="searchModel(searchBox.value)">Search</button>
   </form>
 </div>
 

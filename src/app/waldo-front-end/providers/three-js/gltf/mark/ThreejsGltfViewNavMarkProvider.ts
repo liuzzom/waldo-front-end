@@ -101,7 +101,13 @@ export class ThreejsGltfViewNavMarkProvider implements Provider {
 
   showPointerMessage(pointer: Pointer){
     this.selectedPointerId = pointer.id;
-    document.getElementById('pointer-message').innerText = `${pointer.message}`;
+    const defaultMessage = "This pointer has no message yet";
+
+    if(!pointer.message){
+      document.getElementById('pointer-message').innerText = `${defaultMessage}`;
+    } else {
+      document.getElementById('pointer-message').innerText = `${pointer.message}`;
+    }
   }
 
   private createChildCanvas(selector: string) {
