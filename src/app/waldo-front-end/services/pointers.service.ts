@@ -17,8 +17,7 @@ export class PointersService {
 
   constructor(
     private http: HttpClient
-  ) {
-  }
+  ) {}
 
   /** GET pointers by model id. Will 404 if id not found */
   getPointersByModelId(modelId: string): Observable<Pointer[]> {

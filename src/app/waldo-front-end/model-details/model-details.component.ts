@@ -92,7 +92,7 @@ export class ModelDetailsComponent implements OnInit {
     let dialogRef = this.dialog.open(DeletePointerDialogComponent, {disableClose: true});
 
     dialogRef.afterClosed().subscribe(response => {
-      if(response){
+      if(response === "true"){
         // delete the pointer
         this.pointersService.deletePointer(this.provider.selectedPointerId).subscribe(res => {});
         
