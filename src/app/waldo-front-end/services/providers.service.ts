@@ -30,7 +30,7 @@ export class ProvidersService {
     );
   }
 
-  /** GET provider by id. Will 404 if id not found */
+  /** GET formats */
   getFormats(): Observable<any> {
     return this.http.get<any>(this.formatsUrl).pipe(
       tap(_ => console.log(`Fetched formats`)),

@@ -60,6 +60,13 @@
           <button mat-raised-button color="primary" (click)="editPointerMessage(pointerMessage.value)">Save</button>
         </div>
 
+        <div *ngIf="provider.renderingEngine==='a-frame'" class="caption">
+          <p class="mat-title">Caption</p>
+          <ul>
+            <li><p>Use WASD to move within the scene</p></li>
+            <li><p>Use the mouse to rotate the view</p></li>
+          </ul>
+        </div>
       </div>
     </form>
   </mat-sidenav>
