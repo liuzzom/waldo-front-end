@@ -152,6 +152,7 @@ export class ModelDetailsComponent implements OnInit {
       id: '',
       name: '',
       sources: [],
+      description: '',
       uploaded: '',
       lastModified: '',
       supportedProviders: [],

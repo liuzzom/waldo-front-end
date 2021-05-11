@@ -2,7 +2,10 @@
   <mat-sidenav-content>
     <!-- toolbar that contains model name, navigation buttons and edit buttons -->
     <mat-toolbar>
-      <span #modelName [contentEditable]="editModelMode">{{model.name}}</span>
+      <div>
+        <span #modelName [contentEditable]="editModelMode">{{model.name}} </span>
+      </div>
+
 
       <span class="navbar-spacer"></span>
 
@@ -19,68 +22,80 @@
       <button *ngIf="editModelMode" mat-raised-button color="primary" (click)="editModel(modelName.innerHTML)">Done
       </button>
     </mat-toolbar>
-
     <!-- rendering area -->
     <!-- some providers inject their own html tags -->
     <div id="rendering-area" (click)="deactivatePointerTrigger()"></div>
   </mat-sidenav-content>
 
   <mat-sidenav mode="side" opened position="end">
-    <h3>Pointer Message</h3>
-    <form>
-      <!-- Default Provider selection -->
-      <mat-form-field *ngIf="editModelMode" appearance="outline">
-        <mat-label>Default Provider</mat-label>
-        <mat-select [(value)]="selectedProvider">
-          <mat-option *ngFor="let provider of this.supportedProviders" value="{{provider.id}}">
-            {{provider.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <!-- model metadata -->
+    <div id="model-info">
+      <h3><b>Model Info</b></h3>
+      <p><em>{{model.description}}</em></p>
+      <p *ngIf="provider !== null">Current Provider: {{provider.name}}</p>
+      <p *ngIf="model.sources[0] !== undefined">Format: {{model.sources[0].split('.')[model.sources[0].split('.').length - 1] | uppercase}}</p>
+      <p>Uploaded: {{model.uploaded | date}}</p>
+      <p>Last Modified: {{model.lastModified | date}}</p>
+    </div>
 
-      <!-- Pointer message view -->
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label *ngIf="pointerSupport">Pointer Message</mat-label>
-        <mat-label *ngIf="!pointerSupport">Pointers are not supported</mat-label>
-        <textarea #pointerMessage id="pointer-message" matInput
-                  [readonly]="!editModelMode || !editPointerMode || !pointerSupport"></textarea>
-      </mat-form-field>
+    <div id="pointer-message-section">
+      <h3><b>Pointer Message</b></h3>
+      <form>
+        <!-- Default Provider selection -->
+        <mat-form-field *ngIf="editModelMode" appearance="outline">
+          <mat-label>Default Provider</mat-label>
+          <mat-select [(value)]="selectedProvider">
+            <mat-option *ngFor="let provider of this.supportedProviders" value="{{provider.id}}">
+              {{provider.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <!-- Edit Pointer section -->
-      <div>
-        <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode && pointerSupport">
-          <button mat-raised-button color="primary" (click)="startEditPointerMode(pointerMessage.value)"
-                  [disabled]="provider.selectedPointerId === null">Edit Message
-          </button>
-          <button mat-raised-button color="warn" (click)="openDeleteDialog()"
-                  [disabled]="provider.selectedPointerId === null">Delete Pointer
-          </button>
-        </div>
+        <!-- Pointer message view -->
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label *ngIf="pointerSupport">Pointer Message</mat-label>
+          <mat-label *ngIf="!pointerSupport">Pointers are not supported</mat-label>
+          <textarea #pointerMessage id="pointer-message" matInput
+                    [readonly]="!editModelMode || !editPointerMode || !pointerSupport"></textarea>
+        </mat-form-field>
 
-        <div class="edit-pointer-mode-buttons" *ngIf="editModelMode && editPointerMode && pointerSupport">
-          <button mat-raised-button (click)="pointerMessage.value = ''">Clear Message Field</button>
-          <button mat-raised-button color="accent" (click)="undo()">Undo</button>
-          <button mat-raised-button color="primary" (click)="editPointerMessage(pointerMessage.value)">Save</button>
-        </div>
-
-        <div *ngIf="provider.providerFeatures.includes('nav')" class="caption">
-          <p class="mat-title">Caption</p>
-          <!-- A-Frame Caption -->
-          <div *ngIf="provider.renderingEngine==='a-frame'">
-            <ul>
-              <li><p>Use WASD to move within the scene</p></li>
-              <li><p>Use the mouse to rotate the view</p></li>
-            </ul>
+        <!-- Edit Pointer section -->
+        <div>
+          <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode && pointerSupport">
+            <button mat-raised-button color="primary" (click)="startEditPointerMode(pointerMessage.value)"
+                    [disabled]="provider.selectedPointerId === null">Edit Message
+            </button>
+            <button mat-raised-button color="warn" (click)="openDeleteDialog()"
+                    [disabled]="provider.selectedPointerId === null">Delete Pointer
+            </button>
           </div>
-          <!-- ThreeJs Caption -->
-          <div *ngIf="provider.renderingEngine==='three.js'">
-            <ul>
-              <li><p>Use mouse wheel to zoom in/out</p></li>
-              <li><p>Use the mouse to rotate the view</p></li>
-            </ul>
+
+          <div class="edit-pointer-mode-buttons" *ngIf="editModelMode && editPointerMode && pointerSupport">
+            <button mat-raised-button (click)="pointerMessage.value = ''">Clear Message Field</button>
+            <button mat-raised-button color="accent" (click)="undo()">Undo</button>
+            <button mat-raised-button color="primary" (click)="editPointerMessage(pointerMessage.value)">Save</button>
           </div>
         </div>
+      </form>
+    </div>
+
+    <!-- Navigation Caption -->
+    <div *ngIf="provider !== null && provider.providerFeatures.includes('nav')" class="caption">
+      <p class="mat-title">Caption</p>
+      <!-- A-Frame Caption -->
+      <div *ngIf="provider.renderingEngine==='a-frame'">
+        <ul>
+          <li><p>Use WASD to move within the scene</p></li>
+          <li><p>Use the mouse to rotate the view</p></li>
+        </ul>
       </div>
-    </form>
+      <!-- ThreeJs Caption -->
+      <div *ngIf="provider.renderingEngine==='three.js'">
+        <ul>
+          <li><p>Use mouse wheel to zoom in/out</p></li>
+          <li><p>Use the mouse to rotate the view</p></li>
+        </ul>
+      </div>
+    </div>
   </mat-sidenav>
 </mat-sidenav-container>

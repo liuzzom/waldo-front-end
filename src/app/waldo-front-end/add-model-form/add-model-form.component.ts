@@ -126,6 +126,7 @@ export class AddModelFormComponent implements OnInit {
       id: newModelId,
       name: newModelName,
       sources: newModelSources,
+      description: "There\'s no description yet",
       uploaded: newModelUploaded,
       lastModified: newModelLastModified,
       supportedProviders: newModelSupportedProviders,

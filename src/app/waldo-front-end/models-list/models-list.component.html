@@ -21,6 +21,7 @@
   <mat-list-item *ngFor="let model of models">
     <mat-icon matListIcon>image</mat-icon>
     <a matLine routerLink="/models/{{model.id}}">{{ model.name }}</a>
+    <p matLine>Format: {{model.sources[0].split('.')[model.sources[0].split('.').length - 1] | uppercase}}</p>
     <p matLine>Uploaded: {{model.uploaded | date}}</p>
     <p matLine>Last Modified: {{model.lastModified | date}}</p>
     <a routerLink="/models/{{model.id}}">
