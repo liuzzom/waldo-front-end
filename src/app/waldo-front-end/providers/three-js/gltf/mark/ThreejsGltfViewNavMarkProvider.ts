@@ -46,7 +46,8 @@ export class ThreejsGltfViewNavMarkProvider implements Provider {
 
   // ----- Handlers ----- \\
   private onModelClick(event, model: Model, scene: THREE.Scene): void {
-    document.getElementById('pointer-message').innerText = '';
+    document.getElementById('pointer-message-edit').innerText = '';
+    document.getElementById('pointer-message').innerText = 'Click on a pointer';
     this.selectedPointerId = null;
 
     let point = event.intersect.point;
@@ -104,8 +105,10 @@ export class ThreejsGltfViewNavMarkProvider implements Provider {
     const defaultMessage = "This pointer has no message yet";
 
     if(!pointer.message){
+      document.getElementById('pointer-message-edit').innerText = `${defaultMessage}`;
       document.getElementById('pointer-message').innerText = `${defaultMessage}`;
     } else {
+      document.getElementById('pointer-message-edit').innerText = `${pointer.message}`;
       document.getElementById('pointer-message').innerText = `${pointer.message}`;
     }
   }

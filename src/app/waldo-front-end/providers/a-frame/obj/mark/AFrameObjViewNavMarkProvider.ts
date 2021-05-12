@@ -40,7 +40,8 @@ export class AFrameObjViewNavMarkProvider implements Provider {
 
   // click Handler
   clickHandler(event, model: Model){
-    document.getElementById('pointer-message').innerText = '';
+    document.getElementById('pointer-message-edit').innerText = '';
+    document.getElementById('pointer-message').innerText = 'Click on a pointer';
     this.selectedPointerId = null;
 
     let point = event.detail.intersection.point
@@ -111,8 +112,10 @@ export class AFrameObjViewNavMarkProvider implements Provider {
     const defaultMessage = "This pointer has no message yet";
 
     if(!pointer.message){
+      document.getElementById('pointer-message-edit').innerText = `${defaultMessage}`;
       document.getElementById('pointer-message').innerText = `${defaultMessage}`;
     } else {
+      document.getElementById('pointer-message-edit').innerText = `${pointer.message}`;
       document.getElementById('pointer-message').innerText = `${pointer.message}`;
     }
   }

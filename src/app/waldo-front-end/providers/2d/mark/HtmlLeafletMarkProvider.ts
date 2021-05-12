@@ -57,7 +57,8 @@ export class HtmlLeafletMarkProvider implements Provider{
 
   // Map Click Handler
   onMapClick(event, model: Model){
-    document.getElementById('pointer-message').innerText = '';
+    document.getElementById('pointer-message-edit').innerText = '';
+    document.getElementById('pointer-message').innerText = 'Click on a pointer';
     this.selectedPointerId = null;
     
     // Get click position
@@ -109,8 +110,10 @@ export class HtmlLeafletMarkProvider implements Provider{
     const defaultMessage = "This pointer has no message yet";
 
     if(!pointer.message){
+      document.getElementById('pointer-message-edit').innerText = `${defaultMessage}`;
       document.getElementById('pointer-message').innerText = `${defaultMessage}`;
     } else {
+      document.getElementById('pointer-message-edit').innerText = `${pointer.message}`;
       document.getElementById('pointer-message').innerText = `${pointer.message}`;
     }
   }
