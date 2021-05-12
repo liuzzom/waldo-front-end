@@ -122,7 +122,13 @@ export class HtmlLeafletMarkProvider implements Provider{
   showPointer(pointer: Pointer){
     const position = L.latLng(pointer.position);
     // show the pointer and register the click handler
-    L.marker(position).addTo(this.map).on('click', () => this.showPointerMessage(pointer));
+    let marker = L.marker(position).addTo(this.map).on('click', () => this.showPointerMessage(pointer));
+
+    if (!pointer.message){
+      marker.bindPopup(`This pointer has no message yet`);
+    } else {
+      marker.bindPopup(`${pointer.message}`);
+    }
   }
 
   renderModel(model: Model) {
