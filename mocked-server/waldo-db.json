@@ -86,9 +86,9 @@
         9.592336434142211,
         1.3001633517010225
       ],
-      "message": "Messaggio Pala 3 Modificato",
+      "message": "Messaggio Pala 3",
       "uploaded": "2021-05-05T15:34:25.441Z",
-      "lastModified": "2021-05-05T15:34:25.441Z",
+      "lastModified": "2021-05-12T10:59:02.273Z",
       "modelId": "c325f36c-15fe-4ebf-b45b-d85178281806"
     },
     {
@@ -135,6 +135,7 @@
       "sources": [
         "http://localhost:4200/assets/models/Space_Map/uqm_map_full.png"
       ],
+      "description": "There's no description yet",
       "uploaded": "2021-03-29T13:15:34.458Z",
       "lastModified": "2021-03-29T13:15:34.458Z",
       "supportedProviders": [
@@ -154,9 +155,9 @@
         "http://localhost:4200/assets/models/Windmill/windmill.obj",
         "http://localhost:4200/assets/models/Windmill/windmill-fixed.mtl"
       ],
-      "description": "Mulino a vento con pale simmetriche",
+      "description": "Mulino a vento con pale",
       "uploaded": "2021-03-02T18:11:19.772Z",
-      "lastModified": "2021-03-02T18:11:19.772Z",
+      "lastModified": "2021-05-12T08:28:07.505Z",
       "supportedProviders": [
         "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
         "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
@@ -173,6 +174,7 @@
       "sources": [
         "http://localhost:4200/assets/models/BoomBox/BoomBox.gltf"
       ],
+      "description": "There's no description yet",
       "uploaded": "2021-03-02T18:11:19.772Z",
       "lastModified": "2021-03-02T18:11:19.772Z",
       "supportedProviders": [
@@ -188,6 +190,7 @@
       "sources": [
         "http://localhost:4200/assets/models/Scene/scene.gltf"
       ],
+      "description": "There's no description yet",
       "uploaded": "2021-03-02T18:11:19.772Z",
       "lastModified": "2021-03-02T18:11:19.772Z",
       "supportedProviders": [

@@ -15,6 +15,7 @@ import {ProvidersService} from "../services/providers.service";
 })
 export class AddModelFormComponent implements OnInit {
   addModelForm: FormGroup;
+  addMetadata: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -39,14 +40,24 @@ export class AddModelFormComponent implements OnInit {
     return this.addModelForm.get('additionalSources') as FormArray
   }
 
+  get modelWidth(){
+    return this.addModelForm.get('modelWidth');
+  }
+
+  get modelHeight(){
+    return this.addModelForm.get('modelHeight');
+  }
   // -------------------- Init --------------------
 
   ngOnInit(): void {
     // Define the model form and its fields (with validators)
     this.addModelForm = this.fb.group({
       modelName: ['', [Validators.required, Validators.minLength(3)]],
+      modelDescription: [''],
       modelSource: ['', Validators.required],
-      additionalSources: this.fb.array([])
+      additionalSources: this.fb.array([]),
+      modelWidth: ['', Validators.pattern('\\d+')],
+      modelHeight: ['', Validators.pattern('\\d+')]
     })
   }
 
@@ -86,9 +97,12 @@ export class AddModelFormComponent implements OnInit {
 
   /** Prepares the model data to send to the back-end  */
   private async prepareModel(formData): Promise<Model> {
-    let newModelName = formData.modelName;
-    let newModelSources = [];
+    let newModelName: string = formData.modelName.trim();
+    let newModelDescription: string = "There's no description yet";
+    let newModelSources: string[] = [];
     let usedIds: string[] = [];
+
+    if(formData.modelDescription.trim() !== "") newModelDescription = formData.modelDescription.trim();
 
     // Set sources array
     newModelSources.push(formData.modelSource);
@@ -126,12 +140,18 @@ export class AddModelFormComponent implements OnInit {
       id: newModelId,
       name: newModelName,
       sources: newModelSources,
-      description: "There\'s no description yet",
+      description: newModelDescription,
       uploaded: newModelUploaded,
       lastModified: newModelLastModified,
       supportedProviders: newModelSupportedProviders,
       defaultProvider: newModelDefaultProvider
     }
+
+    // put metadata, if any
+    let metadata: any = {};
+    if (formData.modelWidth !== "") metadata.width = formData.modelWidth;
+    if (formData.modelHeight !== "") metadata.height = formData.modelHeight;
+    if (Object.keys(metadata).length > 0) newModel.metadata = metadata;
 
     return newModel;
   }
@@ -144,6 +164,12 @@ export class AddModelFormComponent implements OnInit {
 
   goHome(){
     this.router.navigate(['models']);
+  }
+
+  toggleMetadata(){
+    this.addMetadata = !this.addMetadata;
+    this.modelHeight.setValue("");
+    this.modelWidth.setValue("");
   }
 
   /** Handle the Submit event*/

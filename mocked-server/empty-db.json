@@ -1,0 +1,145 @@
+{
+  "pointers": [],
+  "models": [],
+  "providers": [
+    {
+      "id": "da484bd9-25d9-43cc-a74d-115b2bf3337d",
+      "name": "HTML Image Viewer",
+      "providerFeatures": [],
+      "renderingEngine": "html-img"
+    },
+    {
+      "id": "b14bffff-ad8d-4fec-99fe-8e753bad0dff",
+      "name": "HTML Image Marker",
+      "providerFeatures": [
+        "mark"
+      ],
+      "renderingEngine": "html-canvas-leaflet"
+    },
+    {
+      "id": "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
+      "name": "ThreeJS OBJ Viewer",
+      "providerFeatures": [],
+      "renderingEngine": "three.js"
+    },
+    {
+      "id": "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
+      "name": "ThreeJS OBJ Navigator",
+      "providerFeatures": [
+        "nav"
+      ],
+      "renderingEngine": "three.js"
+    },
+    {
+      "id": "31435989-d23e-401a-b1a7-44b4ae9889fb",
+      "name": "ThreeJS OBJ Marker",
+      "providerFeatures": [
+        "nav",
+        "mark"
+      ],
+      "renderingEngine": "three.js"
+    },
+    {
+      "id": "f6bc3993-456a-4cf3-900b-69e6c8ff888b",
+      "name": "A-Frame OBJ Viewer",
+      "providerFeatures": [],
+      "renderingEngine": "a-frame"
+    },
+    {
+      "id": "34f51504-8326-421c-b0f1-383ebe88fa93",
+      "name": "A-Frame OBJ Navigator",
+      "providerFeatures": [
+        "nav"
+      ],
+      "renderingEngine": "a-frame"
+    },
+    {
+      "id": "29b8afd0-43ab-42ba-bc8b-c184624f2e49",
+      "name": "A-Frame OBJ Marker",
+      "providerFeatures": [
+        "nav",
+        "mark"
+      ],
+      "renderingEngine": "a-frame"
+    },
+    {
+      "id": "0fc10eae-66f5-49e4-a593-9b38af78da0c",
+      "name": "ThreeJS GLTF Viewer",
+      "providerFeatures": [],
+      "renderingEngine": "three.js"
+    },
+    {
+      "id": "72405b54-4d1f-4758-aa41-43009719aed8",
+      "name": "ThreeJS GLTF Navigator",
+      "providerFeatures": [
+        "nav"
+      ],
+      "renderingEngine": "three.js"
+    },
+    {
+      "id": "7a65b86b-2a88-4964-8c6f-2519f90e479b",
+      "name": "ThreeJS GLTF Marker",
+      "providerFeatures": [
+        "nav",
+        "mark"
+      ],
+      "renderingEngine": "three.js"
+    },
+    {
+      "id": "87298a88-5b64-4ec6-a69e-a01297b7a764",
+      "name": "A-Frame GLTF Viewer",
+      "providerFeatures": [],
+      "renderingEngine": "a-frame"
+    },
+    {
+      "id": "ac1cd20e-4ce2-4fd5-ad47-dd367566809b",
+      "name": "A-Frame GLTF Navigator",
+      "providerFeatures": [
+        "nav"
+      ],
+      "renderingEngine": "a-frame"
+    },
+    {
+      "id": "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb",
+      "name": "A-Frame GLTF Marker",
+      "providerFeatures": [
+        "nav",
+        "mark"
+      ],
+      "renderingEngine": "a-frame"
+    }
+  ],
+  "formats": [
+    {
+      "id": "22637b70-ad7a-4718-9051-3d392101e6fa",
+      "format": "obj",
+      "default": "31435989-d23e-401a-b1a7-44b4ae9889fb",
+      "supported": [
+        "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
+        "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
+        "31435989-d23e-401a-b1a7-44b4ae9889fb"
+      ]
+    },
+    {
+      "id": "d01adfd1-a895-4254-8935-329720a53ab6",
+      "format": "gltf",
+      "default": "7a65b86b-2a88-4964-8c6f-2519f90e479b",
+      "supported": [
+        "0fc10eae-66f5-49e4-a593-9b38af78da0c",
+        "72405b54-4d1f-4758-aa41-43009719aed8",
+        "7a65b86b-2a88-4964-8c6f-2519f90e479b",
+        "87298a88-5b64-4ec6-a69e-a01297b7a764",
+        "ac1cd20e-4ce2-4fd5-ad47-dd367566809b",
+        "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb"
+      ]
+    },
+    {
+      "id": "ad54da71-1fa1-4ad6-93bb-efe68b88efb6",
+      "format": "png",
+      "default": "b14bffff-ad8d-4fec-99fe-8e753bad0dff",
+      "supported": [
+        "da484bd9-25d9-43cc-a74d-115b2bf3337d"
+      ]
+    }
+  ]
+}

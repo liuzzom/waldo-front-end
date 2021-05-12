@@ -58,12 +58,10 @@ export class PointersService {
   }
 
   /** PATCH a model into the server */
-  editPointerMessage(pointerId: string, newMessage: string) {
+  editPointer(pointerId: string, newData: any) {
     const url = `${this.pointersUrl}/${pointerId}`;
-    let data: any = {};
-    data.message = newMessage
 
-    return this.http.patch<Pointer>(url, data, this.httpOptions).pipe(
+    return this.http.patch<Pointer>(url, newData, this.httpOptions).pipe(
       tap((pointer: Pointer) => console.log(`Edited pointer with id: ${pointer.id}`)),
       catchError(this.handleError<Pointer>('editModel'))
     );

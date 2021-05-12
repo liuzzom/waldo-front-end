@@ -18,3 +18,7 @@ button.addModel {
 button.additionalSources {
     margin-bottom: 10px;
 }
+
+mat-checkbox {
+    margin-bottom: 10px;
+}

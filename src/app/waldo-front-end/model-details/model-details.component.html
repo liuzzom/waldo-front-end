@@ -3,7 +3,7 @@
     <!-- toolbar that contains model name, navigation buttons and edit buttons -->
     <mat-toolbar>
       <div>
-        <span #modelName [contentEditable]="editModelMode">{{model.name}} </span>
+        <span #modelName [class.editable]="editModelMode" [contentEditable]="editModelMode">{{model.name}} </span>
       </div>
 
 
@@ -19,7 +19,7 @@
       <button *ngIf="editModelMode && pointerSupport && !pointerTrigger" mat-raised-button color="accent"
               (click)="activatePointerTrigger()">Add Pointer
       </button>
-      <button *ngIf="editModelMode" mat-raised-button color="primary" (click)="editModel(modelName.innerHTML)">Done
+      <button *ngIf="editModelMode" mat-raised-button color="primary" (click)="editModel(modelName.innerHTML, modelDescription.innerText)">Done
       </button>
     </mat-toolbar>
     <!-- rendering area -->
@@ -31,7 +31,7 @@
     <!-- model metadata -->
     <div id="model-info">
       <h3><b>Model Info</b></h3>
-      <p><em>{{model.description}}</em></p>
+      <p #modelDescription [class.editable]="editModelMode" [contentEditable]="editModelMode"><em>{{model.description}}</em></p>
       <p *ngIf="provider !== null">Current Provider: {{provider.name}}</p>
       <p *ngIf="model.sources[0] !== undefined">Format: {{model.sources[0].split('.')[model.sources[0].split('.').length - 1] | uppercase}}</p>
       <p>Uploaded: {{model.uploaded | date}}</p>
@@ -39,7 +39,6 @@
     </div>
 
     <div id="pointer-message-section">
-      <h3><b>Pointer Message</b></h3>
       <form>
         <!-- Default Provider selection -->
         <mat-form-field *ngIf="editModelMode" appearance="outline">
@@ -52,7 +51,8 @@
         </mat-form-field>
 
         <!-- Pointer message view -->
-        <mat-form-field class="example-full-width" appearance="outline">
+        <h3><b>Pointer Message</b></h3>
+        <mat-form-field [class.hidden]="!editPointerMode" class="example-full-width" appearance="outline">
           <mat-label *ngIf="pointerSupport">Pointer Message</mat-label>
           <mat-label *ngIf="!pointerSupport">Pointers are not supported</mat-label>
           <textarea #pointerMessage id="pointer-message" matInput

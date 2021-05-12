@@ -163,15 +163,17 @@ export class ModelDetailsComponent implements OnInit {
   // ----- Storage Section ----- \\
 
   // Save edited model into the back-end (via services)
-  editModel(editedName: string) {
+  editModel(editedName: string, editedDescription: string) {
     let newData: any = {};
 
     // Build new data
     newData.id = this.model.id;
-    if(editedName !== this.model.name) newData.name = editedName;
+    if(editedName.trim() !== this.model.name) newData.name = editedName;
+    if(editedDescription.trim() !== this.model.description) newData.description = editedDescription;
     if(this.selectedProvider !== this.model.defaultProvider) newData.defaultProvider = this.selectedProvider;
+    newData.lastModified = new Date().toJSON();
 
-    if(newData.name === undefined && newData.defaultProvider === undefined){
+    if(newData.name === undefined && newData.defaultProvider === undefined && newData.description === undefined){
       console.log('Nothing to update');
       this.toggleEditModelMode(false);
       return;
@@ -202,6 +204,8 @@ export class ModelDetailsComponent implements OnInit {
 
   // Save edited pointer message into the back-end (via services)
   editPointerMessage(newMessage: string) {
+    let newData: any = {};
+
     if (newMessage === this.oldPointerMessage) {
       console.log('Nothing to edit');
       this.toggleEditPointerMode(false);
@@ -209,8 +213,12 @@ export class ModelDetailsComponent implements OnInit {
       return;
     }
 
+    // prepare data
+    newData.message = newMessage;
+    newData.lastModified = new Date().toJSON();
+
     // edit the pointer message into the back-end
-    this.pointersService.editPointerMessage(this.provider.selectedPointerId, newMessage).subscribe(res => {});
+    this.pointersService.editPointer(this.provider.selectedPointerId, newData).subscribe(res => {});
     this.toggleEditPointerMode(false);
     location.reload();
   }

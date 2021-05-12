@@ -38,3 +38,11 @@ mat-form-field {
 #model-info{
     margin-bottom: 32px;
 }
+
+.editable {
+    border: 1px solid black;
+}
+
+.hidden {
+    display: none;
+}

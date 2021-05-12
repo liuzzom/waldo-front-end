@@ -1,25 +1,35 @@
 <div class="mat-headline">Add Model Form</div>
 <form [formGroup]="addModelForm" (ngSubmit)="onSubmit()">
   <div>
-    <div class="mat-subheading-1">Model Name</div>
+    <div class="mat-subheading-1">Model Data</div>
 
     <mat-form-field hideRequiredMarker appearance="outline">
       <mat-label>Model Name</mat-label>
       <input formControlName="modelName" type="text" matInput>
       <!-- hints shown in case of error -->
-      <mat-hint *ngIf="modelName.invalid && modelName.touched && modelName.errors?.required">Model name is required</mat-hint>
-      <mat-hint *ngIf="modelName.invalid && modelName.touched && modelName.errors?.minlength">Model name must be at least 3 characters</mat-hint>
+      <mat-hint *ngIf="modelName.invalid && modelName.touched && modelName.errors?.required">Model name is required
+      </mat-hint>
+      <mat-hint *ngIf="modelName.invalid && modelName.touched && modelName.errors?.minlength">Model name must be at
+        least 3 characters
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Model Description (Optional)</mat-label>
+      <input formControlName="modelDescription" type="text" matInput>
     </mat-form-field>
   </div>
 
   <div>
     <div class="mat-subheading-1">Model Source(s)</div>
-    <button type="button" mat-raised-button class="additionalSources" (click)="addAdditionalSource()" [disabled]="modelSource.invalid">Add additional source</button>
+    <button type="button" mat-raised-button class="additionalSources" (click)="addAdditionalSource()"
+            [disabled]="modelSource.invalid">Add additional source
+    </button>
 
     <!-- Source URL -->
     <mat-form-field hideRequiredMarker appearance="outline">
       <mat-label>Source URL</mat-label>
-      <input formControlName="modelSource" type="text" matInput>
+      <input #modelSourceInput formControlName="modelSource" type="text" matInput>
       <!-- hint shown in case of error -->
       <mat-hint *ngIf="modelSource.invalid && modelSource.touched">At least one source is required</mat-hint>
     </mat-form-field>
@@ -33,8 +43,30 @@
     </div>
   </div>
 
+  <mat-checkbox (change)="toggleMetadata()" class="example-margin" color="primary">Add Metadata
+  </mat-checkbox>
+  <div *ngIf="addMetadata">
+    <div class="mat-subheading-1">Model Metadata</div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Model Width (Optional)</mat-label>
+      <input formControlName="modelWidth" type="text" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Model Height (Optional)</mat-label>
+      <input formControlName="modelHeight" type="text" matInput>
+      <!-- hint shown in case of error -->
+      <mat-hint *ngIf="modelHeight.invalid && modelHeight.touched">Height must be a number</mat-hint>
+    </mat-form-field>
+  </div>
+
   <div>
     <button type="button" mat-raised-button color="warn" (click)="goBack()">Back</button>
-    <button type="submit" [disabled]="addModelForm.invalid" mat-raised-button color="primary" class="addModel">Load Model</button>
+    <button type="submit" [disabled]="addModelForm.invalid" mat-raised-button color="primary" class="addModel">Load
+      Model
+    </button>
   </div>
+
+  {{modelSourceInput.innerText}}
 </form>
