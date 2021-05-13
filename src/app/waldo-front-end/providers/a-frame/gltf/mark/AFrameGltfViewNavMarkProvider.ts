@@ -44,6 +44,12 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
     document.getElementById('pointer-message').innerText = 'Click on a pointer';
     this.selectedPointerId = null;
 
+    // Set color of every pointer to red
+    let pointers = Array.from(document.getElementsByClassName('pointer'));
+    for(let pointer of pointers){
+      pointer.setAttribute("color", "#CC0000");
+    }
+
     let point = event.detail.intersection.point
     let pointString = point.x.toFixed(3) + " " + point.y.toFixed(3) + " " + point.z.toFixed(3);
 
@@ -78,7 +84,6 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
   }
 
   showPointer(pointer: Pointer){
-
     // create a string containing the position
     let pointString = pointer.position[0].toFixed(3) + " "
       + pointer.position[1].toFixed(3) + " "
@@ -97,17 +102,26 @@ export class AFrameGltfViewNavMarkProvider implements Provider{
     let scene = document.getElementById("scene");
     let marker = document.createElement("a-sphere");
 
-    marker.setAttribute("class", "pointer");
-    marker.setAttribute("class", "clickable");
+    marker.setAttribute("class", "pointer clickable");
     marker.setAttribute("radius", `${radius}`);
     marker.setAttribute("color", "#CC0000");
     marker.setAttribute("position", pointString);
 
-    marker.addEventListener('mousedown', () => this.showPointerMessage(pointer));
+    marker.addEventListener('mousedown', (event) => this.showPointerMessage(pointer, event));
     scene.appendChild(marker);
   }
 
-  showPointerMessage(pointer: Pointer){  
+  showPointerMessage(pointer: Pointer, event){
+    // Set color of every pointer to red
+    let pointers = Array.from(document.getElementsByClassName('pointer'));
+    for(let pointer of pointers){
+      pointer.setAttribute("color", "#CC0000");
+    }
+
+    // Set selected pointer color to blue (Da ba dee da ba di)
+    let marker = event.target;
+    marker.setAttribute("color", "#0000CC");
+
     this.selectedPointerId = pointer.id;
     const defaultMessage = "This pointer has no message yet";
 
