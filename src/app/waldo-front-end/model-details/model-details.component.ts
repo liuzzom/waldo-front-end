@@ -176,6 +176,8 @@ export class ModelDetailsComponent implements OnInit {
     if(newData.name === undefined && newData.defaultProvider === undefined && newData.description === undefined){
       console.log('Nothing to update');
       this.toggleEditModelMode(false);
+      this.editPointerMode = false;
+      this.pointerTrigger = false;
       return;
     }
 

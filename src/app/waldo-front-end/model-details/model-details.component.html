@@ -16,10 +16,10 @@
       </div>
 
       <!-- edit mode buttons-->
-      <button *ngIf="editModelMode && pointerSupport && !pointerTrigger" mat-raised-button color="accent"
+      <button *ngIf="editModelMode && pointerSupport && !pointerTrigger" mat-raised-button color="primary"
               (click)="activatePointerTrigger()">Add Pointer
       </button>
-      <button *ngIf="editModelMode" mat-raised-button color="primary"
+      <button *ngIf="editModelMode" mat-raised-button color="accent" [disabled]="editPointerMode"
               (click)="editModel(modelName.innerHTML, modelDescription.innerText)">Done
       </button>
     </mat-toolbar>
@@ -88,7 +88,7 @@
     </div>
 
     <!-- Navigation Caption -->
-    <div *ngIf="provider !== null && provider.providerFeatures.includes('nav')" class="caption">
+    <div *ngIf="provider !== null && provider.providerFeatures.includes('nav') && !editPointerMode" class="caption">
       <p class="mat-title">Caption</p>
       <!-- A-Frame Caption -->
       <div *ngIf="provider.renderingEngine==='a-frame'">
