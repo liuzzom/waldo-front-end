@@ -12,6 +12,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ModelsListComponent implements OnInit {
   models: Model[] = [];
+  filteredModels: Model[] = [];
 
   // ----- Constructor ----- \\
   constructor(
@@ -54,7 +55,10 @@ export class ModelsListComponent implements OnInit {
   /** Get Models from back-end via services*/
   private getModels(): void{
     this.modelsService.getModels()
-      .subscribe(models => this.models = models);
+      .subscribe(models => {
+        this.models = models;
+        this.filteredModels = this.models;
+      });
   }
 
   /** Send a DELETE request to beck-end via service */
@@ -62,6 +66,7 @@ export class ModelsListComponent implements OnInit {
     this.modelsService.deleteModel(model).subscribe(res => {
       if(res){
         this.models = this.models.filter(m => m !== model);
+        this.filteredModels = this.models;
         this.openSnackBar('Model deleted', 'Ok');
       } else {
         this.openSnackBar('Failed to delete the model', 'OK');
@@ -81,8 +86,11 @@ export class ModelsListComponent implements OnInit {
       return;
     }
 
-    this.modelsService.searchByName(name).subscribe(models => {
-      this.models = models;
-    });
+    // filter model list shown on the template
+    this.filteredModels = this.models.filter(model => model.name.toLowerCase().includes(name.trim().toLowerCase()));
+  }
+
+  applyFilter(value: string) {
+    this.searchModel(value.trim());
   }
 }

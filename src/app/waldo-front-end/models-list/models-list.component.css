@@ -22,3 +22,12 @@
 mat-list-item button {
     margin-left: 10px;
 }
+
+#empty-list-msg {
+    text-align: center;
+    margin-top: 15%;
+}
+
+label{
+    font-size: 16px;
+}

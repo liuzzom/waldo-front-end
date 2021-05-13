@@ -9,21 +9,21 @@
 <div>
   <!-- Search model form -->
   <form id="search-form">
-    <label class="mat-title" for="search-box">Name</label>
-    <input #searchBox id="search-box" type="text">
-    <button mat-raised-button (click)="searchModel('')">Clear</button>
-    <button type="submit" color="primary" mat-raised-button (click)="searchModel(searchBox.value)">Search</button>
+    <label class="mat-title" for="search-box">Search by Name</label>
+    <input #searchBox (keyup)="searchModel($event.target.value)" id="search-box" type="text">
+    <button *ngIf="searchBox.value.length > 0" mat-raised-button (click)="searchModel('')" color="accent">Clear</button>
   </form>
 </div>
 
 <!-- Model list -->
+<h2 id='empty-list-msg' *ngIf="filteredModels.length == 0">No model meets the search criteria</h2>
 <mat-nav-list>
-  <mat-list-item *ngFor="let model of models">
+  <mat-list-item *ngFor="let model of filteredModels">
     <mat-icon matListIcon>image</mat-icon>
     <a matLine routerLink="/models/{{model.id}}">{{ model.name }}</a>
-    <p matLine>Format: {{model.sources[0].split('.')[model.sources[0].split('.').length - 1] | uppercase}}</p>
-    <p matLine>Uploaded: {{model.uploaded | date}}</p>
-    <p matLine>Last Modified: {{model.lastModified | date}}</p>
+    <a matLine routerLink="/models/{{model.id}}">Format: {{model.sources[0].split('.')[model.sources[0].split('.').length - 1] | uppercase}}</a>
+    <a matLine routerLink="/models/{{model.id}}">Uploaded: {{model.uploaded | date}}</a>
+    <a matLine routerLink="/models/{{model.id}}">Last Modified: {{model.lastModified | date}}</a>
     <a routerLink="/models/{{model.id}}">
       <button mat-raised-button color="primary">View</button>
     </a>
