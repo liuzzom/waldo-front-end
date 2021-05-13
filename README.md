@@ -12,7 +12,7 @@ The Waldo Module provides the user with the possibility to manage both 2D (i.e. 
 
 ## Available Providers
 
-- **HTML nativo**
+- **Native HTML**
   - *HTML Image View*: simple 2D image view using the <img> tag.
 - **HTML + Leaflet**
   - *HTML Image Marker*: 2D image view (using <canvas> tag) and marking using Leaflet.

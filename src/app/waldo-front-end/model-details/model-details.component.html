@@ -44,7 +44,7 @@
     <div id="pointer-message-section">
       <form>
         <!-- Default Provider selection -->
-        <mat-form-field *ngIf="editModelMode" appearance="outline">
+        <mat-form-field *ngIf="editModelMode" appearance="standard">
           <mat-label>Default Provider</mat-label>
           <mat-select [(value)]="selectedProvider">
             <mat-option *ngFor="let provider of this.supportedProviders" value="{{provider.id}}">

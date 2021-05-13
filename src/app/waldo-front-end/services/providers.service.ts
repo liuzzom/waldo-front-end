@@ -30,6 +30,14 @@ export class ProvidersService {
     );
   }
 
+  /** GET providers from the server */
+  getProviders(): Observable<Provider[]>{
+    return this.http.get<Provider[]>(this.providersUrl).pipe(
+      tap(_ => console.log('Fetched providers')),
+      catchError(this.handleError<Provider[]>('getProviders', []))
+    );
+  }
+
   /** GET formats */
   getFormats(): Observable<any> {
     return this.http.get<any>(this.formatsUrl).pipe(

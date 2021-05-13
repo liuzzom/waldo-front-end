@@ -8,7 +8,7 @@
 }
 
 #search-form * {
-    margin-left: 10px;
+    margin-left: 16px;
 }
 
 #search-form label{
@@ -20,7 +20,7 @@
 }
 
 mat-list-item button {
-    margin-left: 10px;
+    margin-left: 16px;
 }
 
 #empty-list-msg {
@@ -30,4 +30,18 @@ mat-list-item button {
 
 label{
     font-size: 16px;
+}
+
+#select-current-provider {
+    width: 250px;
+    margin-right: 16px;
+}
+
+#features-icons {
+    display: inline;
+    margin-right: 16px;
+}
+
+#features-icons mat-icon {
+    margin-right: 16px;
 }
