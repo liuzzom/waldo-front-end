@@ -157,7 +157,7 @@
       ],
       "description": "Mulino a vento con pale",
       "uploaded": "2021-03-02T18:11:19.772Z",
-      "lastModified": "2021-05-13T08:03:25.437Z",
+      "lastModified": "2021-05-13T10:02:33.838Z",
       "supportedProviders": [
         "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
         "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
@@ -192,7 +192,7 @@
       ],
       "description": "There's no description yet",
       "uploaded": "2021-03-02T18:11:19.772Z",
-      "lastModified": "2021-05-12T15:53:56.625Z",
+      "lastModified": "2021-05-13T10:09:51.196Z",
       "supportedProviders": [
         "0fc10eae-66f5-49e4-a593-9b38af78da0c",
         "72405b54-4d1f-4758-aa41-43009719aed8",
@@ -201,7 +201,7 @@
         "ac1cd20e-4ce2-4fd5-ad47-dd367566809b",
         "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb"
       ],
-      "defaultProvider": "a23a47fd-0f6d-4b80-9a0f-89f27104e5fb"
+      "defaultProvider": "7a65b86b-2a88-4964-8c6f-2519f90e479b"
     }
   ],
   "providers": [

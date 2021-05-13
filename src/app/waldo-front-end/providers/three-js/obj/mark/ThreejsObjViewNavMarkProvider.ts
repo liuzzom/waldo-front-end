@@ -51,6 +51,12 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
     document.getElementById('pointer-message').innerText = 'Click on a pointer';
     this.selectedPointerId = null;
 
+    // Set color of every pointer to red
+    let pointers = <any[]> scene.children.filter((elem) => elem.name === "pointer");
+    for(let pointer of pointers){
+      pointer.material.color.set(0xcc0000);
+    }
+
     let point = event.intersect.point;
 
     if (this.pointerTrigger) {
@@ -85,25 +91,35 @@ export class ThreejsObjViewNavMarkProvider implements Provider{
 
   // ----- Visual Methods ----- \\
   showPointer(pointer: Pointer, scene: THREE.Scene) {
-
-    // FIX: hard-coded division value
+    // TODO: fix hard-coded division value
     const geometry = new THREE.SphereGeometry(this.minBoxSize/25, 32, 32);
     const material = new THREE.MeshBasicMaterial({ color: 0xcc0000 });
     const sphere = new THREE.Mesh(geometry, material);
+    sphere.name = "pointer";
     sphere.position.x = pointer.position[0];
     sphere.position.y = pointer.position[1];
     sphere.position.z = pointer.position[2];
 
     scene.add(sphere);
 
-    this.domEvents.addEventListener(sphere, 'click', () => {
-      this.showPointerMessage(pointer);
+    this.domEvents.addEventListener(sphere, 'click', (event) => {
+      this.showPointerMessage(pointer, scene, event);
     })
   }
 
-  showPointerMessage(pointer: Pointer){
+  showPointerMessage(pointer: Pointer, scene, event){
     this.selectedPointerId = pointer.id;
     const defaultMessage = "This pointer has no message yet";
+
+    // Set color of every pointer to red
+    let pointers = scene.children.filter((elem) => elem.name === "pointer");
+    for(let pointer of pointers){
+      pointer.material.color.set(0xcc0000);
+    }
+
+    // Set selected pointer color to blue (Da ba dee da ba di)
+    let marker = event.target;
+    marker.material.color.set(0x0000cc);
 
     if(!pointer.message){
       document.getElementById('pointer-message-edit').innerText = `${defaultMessage}`;

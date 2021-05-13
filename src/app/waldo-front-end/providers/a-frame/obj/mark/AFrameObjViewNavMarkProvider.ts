@@ -50,8 +50,7 @@ export class AFrameObjViewNavMarkProvider implements Provider {
       pointer.setAttribute("color", "#CC0000");
     }
 
-    let point = event.detail.intersection.point
-    let pointString = point.x.toFixed(3) + " " + point.y.toFixed(3) + " " + point.z.toFixed(3);
+    let point = event.detail.intersection.point;
 
     if (!this.pointerTrigger) return;
 
@@ -113,6 +112,9 @@ export class AFrameObjViewNavMarkProvider implements Provider {
   }
 
   showPointerMessage(pointer: Pointer, event){
+    this.selectedPointerId = pointer.id;
+    const defaultMessage = "This pointer has no message yet";
+
     // Set color of every pointer to red
     let pointers = Array.from(document.getElementsByClassName('pointer'));
     for(let pointer of pointers){
@@ -122,9 +124,6 @@ export class AFrameObjViewNavMarkProvider implements Provider {
     // Set selected pointer color to blue (Da ba dee da ba di)
     let marker = event.target;
     marker.setAttribute("color", "#0000CC");
-
-    this.selectedPointerId = pointer.id;
-    const defaultMessage = "This pointer has no message yet";
 
     if(!pointer.message){
       document.getElementById('pointer-message-edit').innerText = `${defaultMessage}`;
