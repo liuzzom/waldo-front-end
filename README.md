@@ -58,10 +58,13 @@ The Waldo Module provides the user with the possibility to manage both 2D (i.e. 
 
 ## Screenshots
 
-![model-list](./docs/assets/images/model-list.png)
-![add-model-form-1](./docs/assets/images/add-model-form-1.png)
+![model-list-1](./docs/assets/images/model-list-1.png)
 
-![add-model-form-2](./docs/assets/images/add-model-form-2.png)
+![model-list-2](./docs/assets/images/model-list-2.png)![add-model-1](./docs/assets/images/add-model-1.png)
+
+![add-model-2](./docs/assets/images/add-model-2.png)
+
+![add-model-2](./docs/assets/images/add-model-2.png)
 
 ![model-details-1](./docs/assets/images/model-details-1.png)
 ![model-details-2](./docs/assets/images/model-details-2.png)
