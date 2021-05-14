@@ -2,6 +2,7 @@
   "pointers": [
     {
       "id": "d5361583-6173-4176-b651-43792533a19f",
+      "name": "Pointer name",
       "position": [
         1475.9888295994851,
         1659.2636688809403
@@ -13,6 +14,7 @@
     },
     {
       "id": "851bbf17-6c17-4db5-a41e-86b4d4e371b1",
+      "name": "Pointer name",
       "position": [
         1370.3397138827322,
         1132.0106820410015
@@ -24,6 +26,7 @@
     },
     {
       "id": "1ea8abbb-5c2d-42b8-bfaf-b640a43285ee",
+      "name": "Pointer name",
       "position": [
         1334.3614749143662,
         785.944863108913
@@ -35,6 +38,7 @@
     },
     {
       "id": "26d3f4fa-308d-46c0-8f07-d41956a847a6",
+      "name": "Pointer name",
       "position": [
         1634.180132984082,
         1360.054054054054
@@ -46,6 +50,7 @@
     },
     {
       "id": "c2d4201e-49ec-4a43-8533-37e52bd9c0e9",
+      "name": "Pointer name",
       "position": [
         1132.4835784807574,
         1340.031607135018
@@ -57,6 +62,7 @@
     },
     {
       "id": "c327246c-5b9d-488d-abcc-3cfda27f3612",
+      "name": "Pala 1",
       "position": [
         2.4488850233538066,
         7.831538766179623,
@@ -69,6 +75,7 @@
     },
     {
       "id": "a28b38a4-4551-47c5-9286-0bad9396bc89",
+      "name": "Pala 2",
       "position": [
         2.381784274765794,
         5.145199576887113,
@@ -81,6 +88,7 @@
     },
     {
       "id": "61f5f2d1-1309-4e36-bf8c-e1d5645d588d",
+      "name": "Pala 3",
       "position": [
         2.327038709879794,
         9.592336434142211,
@@ -93,6 +101,7 @@
     },
     {
       "id": "9bf3fb1d-a3a0-4e8f-bd4d-ac0515a6e8b9",
+      "name": "Pointer Name",
       "position": [
         22.934554655346496,
         8.951017789633944,
@@ -105,6 +114,7 @@
     },
     {
       "id": "4b71c893-bc34-43b8-ac99-6d606617387e",
+      "name": "Vela 01",
       "position": [
         14.7229837086782,
         7.275125321422138,
@@ -117,6 +127,7 @@
     },
     {
       "id": "156ca572-e2dc-42a4-a5ed-2506bed416db",
+      "name": "Pala 4",
       "position": [
         2.4372144379544913,
         3.5909497841382323,
@@ -157,7 +168,7 @@
       ],
       "description": "Mulino a vento con pale",
       "uploaded": "2021-03-02T18:11:19.772Z",
-      "lastModified": "2021-05-13T17:11:16.493Z",
+      "lastModified": "2021-05-14T17:41:52.507Z",
       "supportedProviders": [
         "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
         "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
@@ -166,7 +177,7 @@
         "34f51504-8326-421c-b0f1-383ebe88fa93",
         "29b8afd0-43ab-42ba-bc8b-c184624f2e49"
       ],
-      "defaultProvider": "31435989-d23e-401a-b1a7-44b4ae9889fb"
+      "defaultProvider": "29b8afd0-43ab-42ba-bc8b-c184624f2e49"
     },
     {
       "id": "c94fcdc6-031d-4a67-814f-8e3ae0cc2910",
@@ -192,7 +203,7 @@
       ],
       "description": "There's no description yet",
       "uploaded": "2021-03-02T18:11:19.772Z",
-      "lastModified": "2021-05-13T10:09:51.196Z",
+      "lastModified": "2021-05-14T17:42:55.384Z",
       "supportedProviders": [
         "0fc10eae-66f5-49e4-a593-9b38af78da0c",
         "72405b54-4d1f-4758-aa41-43009719aed8",
@@ -320,7 +331,10 @@
       "supported": [
         "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
         "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
-        "31435989-d23e-401a-b1a7-44b4ae9889fb"
+        "31435989-d23e-401a-b1a7-44b4ae9889fb",
+        "f6bc3993-456a-4cf3-900b-69e6c8ff888b",
+        "34f51504-8326-421c-b0f1-383ebe88fa93",
+        "29b8afd0-43ab-42ba-bc8b-c184624f2e49"
       ]
     },
     {
@@ -341,7 +355,8 @@
       "format": "png",
       "default": "b14bffff-ad8d-4fec-99fe-8e753bad0dff",
       "supported": [
-        "da484bd9-25d9-43cc-a74d-115b2bf3337d"
+        "da484bd9-25d9-43cc-a74d-115b2bf3337d",
+        "b14bffff-ad8d-4fec-99fe-8e753bad0dff"
       ]
     }
   ]

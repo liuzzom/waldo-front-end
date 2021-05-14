@@ -57,6 +57,7 @@ export class HtmlLeafletMarkProvider implements Provider{
 
   // Map Click Handler
   onMapClick(event, model: Model){
+    document.getElementById('pointer-header').innerHTML = `<b>Pointer Message</b>`;
     document.getElementById('pointer-message-edit').innerText = '';
     document.getElementById('pointer-message').innerText = 'Click on a pointer';
     this.selectedPointerId = null;
@@ -85,6 +86,7 @@ export class HtmlLeafletMarkProvider implements Provider{
       // create an object that is compliant with the Pointer interface
       let newPointer: Pointer = {
         id: id,
+        name: 'Pointer name',
         position: position,
         message: message,
         uploaded: uploaded,
@@ -108,6 +110,8 @@ export class HtmlLeafletMarkProvider implements Provider{
   showPointerMessage(pointer: Pointer){
     this.selectedPointerId = pointer.id;
     const defaultMessage = "This pointer has no message yet";
+
+    document.getElementById('pointer-header').innerHTML = `<b>${pointer.name}</b>`;
 
     if(!pointer.message){
       document.getElementById('pointer-message-edit').innerText = `${defaultMessage}`;

@@ -28,7 +28,7 @@
     <div id="rendering-area" (click)="deactivatePointerTrigger()"></div>
   </mat-sidenav-content>
 
-  <mat-sidenav mode="side" opened position="end">
+  <mat-sidenav mode="side" opened position="end" [disableClose]="true">
     <!-- model metadata -->
     <div id="model-info">
       <h3><b>Model Info</b></h3>
@@ -47,7 +47,8 @@
         </span>
       </p>
       <p *ngIf="model.sources[0] !== undefined">
-        Format: {{model.sources[0].split('.')[model.sources[0].split('.').length - 1] | uppercase}}</p>
+        Format: {{model.sources[0].split('.')[model.sources[0].split('.').length - 1] | uppercase}}
+      </p>
       <p>Uploaded: {{model.uploaded | date}}</p>
       <p>Last Modified: {{model.lastModified | date}}</p>
     </div>
@@ -66,7 +67,11 @@
 
         <!-- Pointer message view -->
         <div>
-          <h3 *ngIf="pointerSupport"><b>Pointer Message</b></h3>
+          <h3 id="pointer-header"
+              [class.editable]="editPointerMode" [contentEditable]="editPointerMode"
+              *ngIf="pointerSupport">
+            <b>Pointer Message</b>
+          </h3>
 
           <p *ngIf="pointerSupport && !editPointerMode" id="pointer-message">Click on a pointer</p>
 
@@ -80,18 +85,21 @@
         <!-- Edit Pointer section -->
         <div>
           <div class="view-pointer-mode-buttons" *ngIf="editModelMode && !editPointerMode && pointerSupport">
-            <button mat-raised-button color="primary" (click)="startEditPointerMode(pointerMessageEdit.value)"
-                    [disabled]="provider.selectedPointerId === null">Edit Message
+            <button mat-raised-button color="primary"
+                    (click)="startEditPointerMode(pointerMessageEdit.value)"
+                    [disabled]="provider.selectedPointerId === null">
+              Edit Pointer
             </button>
             <button mat-raised-button color="warn" (click)="openDeleteDialog()"
-                    [disabled]="provider.selectedPointerId === null">Delete Pointer
+                    [disabled]="provider.selectedPointerId === null">
+              Delete Pointer
             </button>
           </div>
 
           <div class="edit-pointer-mode-buttons" *ngIf="editModelMode && editPointerMode && pointerSupport">
             <button mat-raised-button (click)="pointerMessageEdit.value = ''">Clear Message Field</button>
             <button mat-raised-button color="accent" (click)="undo()">Undo</button>
-            <button mat-raised-button color="primary" (click)="editPointerMessage(pointerMessageEdit.value)">Save
+            <button mat-raised-button color="primary" (click)="editPointer(pointerMessageEdit.value)">Save
             </button>
           </div>
         </div>

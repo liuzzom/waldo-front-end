@@ -46,6 +46,7 @@ export class ThreejsGltfViewNavMarkProvider implements Provider {
 
   // ----- Handlers ----- \\
   private onModelClick(event, model: Model, scene: THREE.Scene): void {
+    document.getElementById('pointer-header').innerHTML = `<b>Pointer Message</b>`;
     document.getElementById('pointer-message-edit').innerText = '';
     document.getElementById('pointer-message').innerText = 'Click on a pointer';
     this.selectedPointerId = null;
@@ -74,6 +75,7 @@ export class ThreejsGltfViewNavMarkProvider implements Provider {
       // create an object that is compliant with the Pointer interface
       let newPointer: Pointer = {
         id: id,
+        name: 'Pointer name',
         position: position,
         message: message,
         uploaded: uploaded,
@@ -109,6 +111,8 @@ export class ThreejsGltfViewNavMarkProvider implements Provider {
   showPointerMessage(pointer: Pointer, scene, event){
     this.selectedPointerId = pointer.id;
     const defaultMessage = "This pointer has no message yet";
+
+    document.getElementById('pointer-header').innerHTML = `<b>${pointer.name}</b>`;
 
     // Set color of every pointer to red
     let pointers = scene.children.filter((elem) => elem.name === "pointer");

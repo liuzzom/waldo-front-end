@@ -34,7 +34,8 @@ export class ModelDetailsComponent implements OnInit {
   editPointerMode = false;
   pointerTrigger = false;
 
-  // saves the old message to avoid unnecessary edits
+  // saves old data to avoid unnecessary edits
+  oldPointerName: string = null;
   oldPointerMessage: string = null;
 
   constructor(
@@ -80,8 +81,10 @@ export class ModelDetailsComponent implements OnInit {
     }
   }
 
-  startEditPointerMode(value: string) {
-    this.oldPointerMessage = value;
+  startEditPointerMode(oldMessage: string) {
+    this.oldPointerName = document.getElementById('pointer-header').innerText;
+    console.log(this.oldPointerName);
+    this.oldPointerMessage = oldMessage;
     this.toggleEditPointerMode(true);
   }
 
@@ -205,10 +208,11 @@ export class ModelDetailsComponent implements OnInit {
   }
 
   // Save edited pointer message into the back-end (via services)
-  editPointerMessage(newMessage: string) {
+  editPointer(newMessage: string) {
     let newData: any = {};
+    let newName: string = document.getElementById('pointer-header').innerText.trim();
 
-    if (newMessage === this.oldPointerMessage) {
+    if (newMessage === this.oldPointerMessage && newName === this.oldPointerName) {
       console.log('Nothing to edit');
       this.toggleEditPointerMode(false);
       location.reload();
@@ -216,8 +220,12 @@ export class ModelDetailsComponent implements OnInit {
     }
 
     // prepare data
+    newData.name = newName;
+    console.log(newName);
     newData.message = newMessage;
     newData.lastModified = new Date().toJSON();
+
+    console.log(newData);
 
     // edit the pointer message into the back-end
     this.pointersService.editPointer(this.provider.selectedPointerId, newData).subscribe(res => {});
