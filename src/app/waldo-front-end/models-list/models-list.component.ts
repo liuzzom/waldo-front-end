@@ -130,4 +130,8 @@ export class ModelsListComponent implements OnInit {
       }
     });
   }
+
+  reload() {
+    location.reload();
+  }
 }

@@ -34,7 +34,18 @@
       <h3><b>Model Info</b></h3>
       <p #modelDescription [class.editable]="editModelMode" [contentEditable]="editModelMode">
         <em>{{model.description}}</em></p>
-      <p *ngIf="provider !== null">Current Provider: {{provider.name}}</p>
+      <p *ngIf="provider !== null">Current Provider: {{provider.name}}
+        <!-- Feature icons -->
+        <span>
+          <mat-icon matTooltip="View feature available" color="primary">visibility</mat-icon>
+          <mat-icon
+              *ngIf="provider !== null && provider.providerFeatures.includes('nav')"
+              matTooltip="Navigation feature available" color="primary">360</mat-icon>
+          <mat-icon
+              *ngIf="provider !== null && provider.providerFeatures.includes('mark')"
+              matTooltip="Mark feature available" color="primary">place</mat-icon>
+        </span>
+      </p>
       <p *ngIf="model.sources[0] !== undefined">
         Format: {{model.sources[0].split('.')[model.sources[0].split('.').length - 1] | uppercase}}</p>
       <p>Uploaded: {{model.uploaded | date}}</p>

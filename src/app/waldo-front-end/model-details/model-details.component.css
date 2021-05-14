@@ -46,3 +46,9 @@ mat-form-field {
 .hidden {
     display: none;
 }
+
+mat-icon {
+    position: relative;
+    top: 7px;
+    margin-left: 8px;
+}

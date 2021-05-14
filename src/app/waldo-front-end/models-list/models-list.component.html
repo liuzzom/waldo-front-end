@@ -13,6 +13,7 @@
     <input #searchBox (keyup)="searchModel($event.target.value)" id="search-box" type="text">
     <button *ngIf="searchBox.value.length > 0" mat-raised-button (click)="searchModel('')" color="accent">
       Clear</button>
+    <button mat-raised-button (click)="reload()" color="primary">Refresh</button>
   </form>
 </div>
 
