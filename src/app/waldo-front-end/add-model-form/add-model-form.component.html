@@ -1,5 +1,6 @@
 <div class="mat-headline">Add Model Form</div>
 <form [formGroup]="addModelForm" (ngSubmit)="onSubmit()">
+  <!-- Model Data -->
   <div>
     <div class="mat-subheading-1">Model Data</div>
 
@@ -18,20 +19,49 @@
       <mat-label>Model Description (Optional)</mat-label>
       <input formControlName="modelDescription" type="text" matInput>
     </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Source Format</mat-label>
+      <mat-select #modelFormat formControlName="modelFormat" (selectionChange)="onFormatSelect($event.value)">
+        <mat-option value="png">PNG</mat-option>
+        <mat-option value="obj">OBJ+MTL</mat-option>
+        <mat-option value="gltf">GLTF</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
+  <!-- Sources -->
   <div>
     <div class="mat-subheading-1">Model Source(s)</div>
-    <button type="button" mat-raised-button class="additionalSources" (click)="addAdditionalSource()"
-            [disabled]="modelSource.invalid">Add additional source
+    <button id="add-sources-btn" type="button" mat-raised-button class="additionalSources"
+            (click)="addAdditionalSource()"
+            [disabled]="modelSource.invalid || modelFormat.value === 'png'">Add additional source
     </button>
 
-    <!-- Source URL -->
+    <!-- Main Source URL -->
     <mat-form-field hideRequiredMarker appearance="outline">
       <mat-label>Source URL</mat-label>
       <input #modelSourceInput formControlName="modelSource" type="text" matInput>
       <!-- hint shown in case of error -->
-      <mat-hint *ngIf="modelSource.invalid && modelSource.touched">At least one source is required</mat-hint>
+      <mat-hint *ngIf="modelSource.invalid && modelSource.touched && modelSource.errors?.required">
+        Main source is required
+      </mat-hint>
+      <mat-hint *ngIf="modelSource.invalid && modelSource.touched && modelSource.errors?.pattern">
+        Format is not correct
+      </mat-hint>
+    </mat-form-field>
+
+    <!-- Optional MTL Source URL -->
+    <mat-form-field [class.hidden]="modelFormat.value !== 'obj'" hideRequiredMarker appearance="outline">
+      <mat-label>MTL Source URL</mat-label>
+      <input #MTLModelSourceInput formControlName="MTLModelSource" type="text" matInput>
+      <!-- hint shown in case of error -->
+      <mat-hint *ngIf="MTLModelSource.invalid && MTLModelSource.touched && MTLModelSource.errors?.required">
+        MTL source is required
+      </mat-hint>
+      <mat-hint *ngIf="MTLModelSource.invalid && MTLModelSource.touched && MTLModelSource.errors?.pattern">
+        Format is not correct
+      </mat-hint>
     </mat-form-field>
 
     <!-- Additional Source URLs -->
@@ -43,30 +73,43 @@
     </div>
   </div>
 
-  <mat-checkbox (change)="toggleMetadata()" class="example-margin" color="primary">Add Metadata
+  <!-- Metadata -->
+  <mat-checkbox id="metadata-checkbox" [disabled]="modelFormat.value === 'png'"
+                [checked]="addMetadata" (change)="toggleMetadata()" color="primary">Add Metadata
   </mat-checkbox>
   <div *ngIf="addMetadata">
     <div class="mat-subheading-1">Model Metadata</div>
 
     <mat-form-field appearance="outline">
-      <mat-label>Model Width (Optional)</mat-label>
+      <mat-label>Model Width (Optional for non PNG models)</mat-label>
       <input formControlName="modelWidth" type="text" matInput>
+      <!-- hint shown in case of error -->
+      <mat-hint *ngIf="modelWidth.invalid && modelWidth.touched && modelWidth.errors?.required">
+        Width is required
+      </mat-hint>
+      <mat-hint *ngIf="modelWidth.invalid && modelWidth.touched && modelWidth.errors?.pattern">
+        Width must be a number
+      </mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Model Height (Optional)</mat-label>
+      <mat-label>Model Height (Optional for non PNG models)</mat-label>
       <input formControlName="modelHeight" type="text" matInput>
       <!-- hint shown in case of error -->
-      <mat-hint *ngIf="modelHeight.invalid && modelHeight.touched">Height must be a number</mat-hint>
+      <mat-hint *ngIf="modelHeight.invalid && modelHeight.touched && modelHeight.errors?.required">
+        Height is required
+      </mat-hint>
+      <mat-hint *ngIf="modelHeight.invalid && modelHeight.touched && modelHeight.errors?.pattern">
+        Height must be a number
+      </mat-hint>
     </mat-form-field>
   </div>
 
+  <!-- Buttons -->
   <div>
     <button type="button" mat-raised-button color="accent" (click)="goBack()">Back</button>
     <button type="submit" [disabled]="addModelForm.invalid" mat-raised-button color="primary" class="addModel">Load
       Model
     </button>
   </div>
-
-  {{modelSourceInput.innerText}}
 </form>

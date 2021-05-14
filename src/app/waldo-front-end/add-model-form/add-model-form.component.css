@@ -9,6 +9,7 @@ form {
 
 mat-form-field {
     width: 98%;
+    margin-bottom: 8px;
 }
 
 button.addModel {
@@ -16,9 +17,13 @@ button.addModel {
 }
 
 button.additionalSources {
-    margin-bottom: 10px;
+    margin-bottom: 16px;
 }
 
 mat-checkbox {
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+}
+
+.hidden {
+    display: none;
 }

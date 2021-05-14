@@ -4,7 +4,7 @@ Front-End module for model rendering and information marking.
 
 The Waldo Module provides the user with the possibility to manage both 2D (i.e. digital images) and 3D models, render them into a web-based environment (using Providers) and place some markers on them.
 
-### Supported Formats
+### Supported (and Tested) Formats
 
 - png
 - obj+mtl

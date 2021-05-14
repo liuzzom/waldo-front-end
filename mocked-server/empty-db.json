@@ -117,7 +117,10 @@
       "supported": [
         "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
         "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
-        "31435989-d23e-401a-b1a7-44b4ae9889fb"
+        "31435989-d23e-401a-b1a7-44b4ae9889fb",
+        "f6bc3993-456a-4cf3-900b-69e6c8ff888b",
+        "34f51504-8326-421c-b0f1-383ebe88fa93",
+        "29b8afd0-43ab-42ba-bc8b-c184624f2e49"
       ]
     },
     {
@@ -138,7 +141,8 @@
       "format": "png",
       "default": "b14bffff-ad8d-4fec-99fe-8e753bad0dff",
       "supported": [
-        "da484bd9-25d9-43cc-a74d-115b2bf3337d"
+        "da484bd9-25d9-43cc-a74d-115b2bf3337d",
+        "b14bffff-ad8d-4fec-99fe-8e753bad0dff"
       ]
     }
   ]

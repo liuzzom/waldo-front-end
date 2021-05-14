@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Location} from '@angular/common';
 import {ModelsService} from "../services/models.service";
 import {v4 as uuidv4} from 'uuid';
@@ -36,6 +36,10 @@ export class AddModelFormComponent implements OnInit {
     return this.addModelForm.get('modelSource');
   }
 
+  get MTLModelSource(){
+    return this.addModelForm.get('MTLModelSource');
+  }
+
   get additionalSources(){
     return this.addModelForm.get('additionalSources') as FormArray
   }
@@ -54,7 +58,9 @@ export class AddModelFormComponent implements OnInit {
     this.addModelForm = this.fb.group({
       modelName: ['', [Validators.required, Validators.minLength(3)]],
       modelDescription: [''],
+      modelFormat: ['', [Validators.required]],
       modelSource: ['', Validators.required],
+      MTLModelSource: [''],
       additionalSources: this.fb.array([]),
       modelWidth: ['', Validators.pattern('\\d+')],
       modelHeight: ['', Validators.pattern('\\d+')]
@@ -105,7 +111,8 @@ export class AddModelFormComponent implements OnInit {
     if(formData.modelDescription.trim() !== "") newModelDescription = formData.modelDescription.trim();
 
     // Set sources array
-    newModelSources.push(formData.modelSource);
+    newModelSources.push(formData.modelSource.trim());
+    if (formData.MTLModelSource.trim()) newModelSources.push(formData.MTLModelSource.trim());
     for (let source of formData.additionalSources) {
       source = source.trim();
       if (source) {
@@ -177,6 +184,8 @@ export class AddModelFormComponent implements OnInit {
     let formData = this.addModelForm.value;
     let newModel = await this.prepareModel(formData);
 
+    console.log(newModel);
+
     // Load the new model into the back-end
     this.modelsService.loadModel(newModel).subscribe(res => {
       if(res){
@@ -191,5 +200,50 @@ export class AddModelFormComponent implements OnInit {
         this.snackBar.open('Something went wrong, Check your entries or contact support', 'Ok', {duration: 2000});
       }
     });
+  }
+
+  /** Handle the Format select change */
+  onFormatSelect(value: string) {
+    this.addModelForm.setControl('additionalSources', this.fb.array([]));
+
+    if (value === "png"){
+
+      console.log("png selected");
+      this.addMetadata = true;
+
+      this.addModelForm.setControl('modelWidth',
+        new FormControl('', [Validators.required, Validators.pattern('\\d+')]));
+      this.addModelForm.setControl('modelHeight',
+        new FormControl('', [Validators.required, Validators.pattern('\\d+')]));
+
+      this.addModelForm.setControl('modelSource',
+        new FormControl('', [Validators.required, Validators.pattern('^.+\\.png$')]));
+      this.addModelForm.setControl('MTLModelSource', new FormControl('', []));
+    } else if (value === "obj") {
+
+      console.log("obj selected");
+      this.addMetadata = false;
+      this.addModelForm.setControl('modelWidth',
+        new FormControl('', [Validators.pattern('\\d+')]));
+      this.addModelForm.setControl('modelHeight',
+        new FormControl('', [Validators.pattern('\\d+')]));
+
+      this.addModelForm.setControl('modelSource',
+        new FormControl('', [Validators.required, Validators.pattern('^.+\\.obj$')]));
+      this.addModelForm.setControl('MTLModelSource',
+        new FormControl('', [Validators.required, Validators.pattern('^.+\\.mtl$')]));
+    } else {
+
+      console.log("gltf selected");
+      this.addMetadata = false;
+      this.addModelForm.setControl('modelWidth',
+        new FormControl('', [Validators.pattern('\\d+')]));
+      this.addModelForm.setControl('modelHeight',
+        new FormControl('', [Validators.pattern('\\d+')]));
+
+      this.addModelForm.setControl('modelSource',
+        new FormControl('', [Validators.required, Validators.pattern('^.+\\.gltf$')]));
+      this.addModelForm.setControl('MTLModelSource', new FormControl('', []));
+    }
   }
 }
