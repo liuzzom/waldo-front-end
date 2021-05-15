@@ -45,3 +45,9 @@ label{
 #features-icons mat-icon {
     margin-right: 16px;
 }
+
+.chip-list {
+    position: relative;
+    right: 10px;
+    bottom: 5px;
+}

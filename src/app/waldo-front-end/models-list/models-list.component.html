@@ -12,8 +12,8 @@
     <label class="mat-title" for="search-box">Search by Name</label>
     <input #searchBox (keyup)="searchModel($event.target.value)" id="search-box" type="text">
     <button *ngIf="searchBox.value.length > 0" mat-raised-button (click)="searchModel('')" color="accent">
-      Clear</button>
-    <button mat-raised-button (click)="reload()" color="primary">Refresh</button>
+      Clear
+    </button>
   </form>
 </div>
 
@@ -23,6 +23,14 @@
   <mat-list-item *ngFor="let model of filteredModels">
     <mat-icon matListIcon>image</mat-icon>
     <a matLine routerLink="/models/{{model.id}}">{{ model.name }}</a>
+    <mat-chip-list class="chip-list">
+      <mat-chip
+          *ngIf="getFormat(model) !== 'obj' && getFormat(model) !== 'gltf'" color="primary" selected>2D
+      </mat-chip>
+      <mat-chip
+          *ngIf="getFormat(model) === 'obj' || getFormat(model) === 'gltf'" color="primary" selected>3D/VR
+      </mat-chip>
+    </mat-chip-list>
     <a matLine routerLink="/models/{{model.id}}">
       Format: {{model.sources[0].split('.')[model.sources[0].split('.').length - 1] | uppercase}}</a>
     <a matLine routerLink="/models/{{model.id}}">Uploaded: {{model.uploaded | date}}</a>

@@ -112,8 +112,16 @@
       <!-- A-Frame Caption -->
       <div *ngIf="provider.renderingEngine==='a-frame'">
         <ul>
-          <li><p>Use WASD to move within the scene</p></li>
-          <li><p>Use the mouse to rotate the view</p></li>
+          <li>
+            <p>Use WASD to move within the scene:</p>
+            <ul>
+              <li><p>W to move forward</p></li>
+              <li><p>A to move backward</p></li>
+              <li><p>S to move to the left</p></li>
+              <li><p>D to move to the right</p></li>
+            </ul>
+          </li>
+          <li><p>Use the left click of the mouse to rotate the view</p></li>
         </ul>
       </div>
       <!-- ThreeJs Caption -->

@@ -58,6 +58,10 @@ export class ModelsListComponent implements OnInit {
 
   // ----- Methods ----- \\
 
+  getFormat(model: Model): string{
+    return model.sources[0].split('.')[model.sources[0].split('.').length - 1];
+  }
+
   /** Get Models from back-end via services*/
   private getModels(): void {
     this.modelsService.getModels()
@@ -129,9 +133,5 @@ export class ModelsListComponent implements OnInit {
         console.error('Error during Provider update');
       }
     });
-  }
-
-  reload() {
-    location.reload();
   }
 }
