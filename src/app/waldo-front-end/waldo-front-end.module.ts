@@ -11,10 +11,11 @@ import {DeleteModelDialogComponent} from './delete-model-dialog/delete-model-dia
 import {AddModelFormComponent} from './add-model-form/add-model-form.component';
 import {DeletePointerDialogComponent} from './delete-pointer-dialog/delete-pointer-dialog.component';
 import {HttpClientModule} from "@angular/common/http";
+import {InfoComponent} from './info/info.component';
 
 
 @NgModule({
-  declarations: [ModelsListComponent, ModelDetailsComponent, WaldoEntryPointComponent, DeleteModelDialogComponent, AddModelFormComponent, DeletePointerDialogComponent],
+  declarations: [ModelsListComponent, ModelDetailsComponent, WaldoEntryPointComponent, DeleteModelDialogComponent, AddModelFormComponent, DeletePointerDialogComponent, InfoComponent],
   entryComponents: [
     DeleteModelDialogComponent,
     DeletePointerDialogComponent
