@@ -76,6 +76,10 @@ The Waldo Module provides the user with the possibility to manage both 2D (i.e. 
 
 ![app-info-2](./docs/assets/images/app-info-2.png)
 
+## Useful Links
+
+// TODO: ricopiare link dalla pagina info
+
 ## TO DO
 
 ### Documentazione

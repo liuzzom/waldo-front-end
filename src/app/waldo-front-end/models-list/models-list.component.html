@@ -18,7 +18,8 @@
 </div>
 
 <!-- Model list -->
-<h2 id='empty-list-msg' *ngIf="filteredModels.length == 0">No model meets the search criteria</h2>
+<h2 id='empty-list-msg' *ngIf="models.length == 0">There's no model here</h2>
+<h2 id='empty-list-msg' *ngIf="models.length != 0 && filteredModels.length == 0">No model meets the search criteria</h2>
 <mat-nav-list>
   <mat-list-item *ngFor="let model of filteredModels">
     <mat-icon matListIcon>image</mat-icon>

@@ -166,9 +166,9 @@
         "http://localhost:4200/assets/models/Windmill/windmill.obj",
         "http://localhost:4200/assets/models/Windmill/windmill-fixed.mtl"
       ],
-      "description": "Mulino a vento con pale",
+      "description": "Mulino a vento con pale in legno",
       "uploaded": "2021-03-02T18:11:19.772Z",
-      "lastModified": "2021-05-15T10:37:16.646Z",
+      "lastModified": "2021-05-17T10:50:07.997Z",
       "supportedProviders": [
         "8d93f4c5-c214-453e-b876-d1d6463ca1f8",
         "55800a26-fdc3-47d4-9c8e-b3d609646e1f",
