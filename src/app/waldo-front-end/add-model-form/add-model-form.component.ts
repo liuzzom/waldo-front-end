@@ -184,8 +184,6 @@ export class AddModelFormComponent implements OnInit {
     let formData = this.addModelForm.value;
     let newModel = await this.prepareModel(formData);
 
-    console.log(newModel);
-
     // Load the new model into the back-end
     this.modelsService.loadModel(newModel).subscribe(res => {
       if(res){
