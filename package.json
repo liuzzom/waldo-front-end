@@ -21,7 +21,7 @@
     "@angular/platform-browser": "~11.2.12",
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
-    "@types/three": "^0.126.1",
+    "@types/three": "^0.143.0",
     "aframe": "^1.2.0",
     "leaflet": "^1.7.1",
     "resize-observer": "^1.0.0",
